@@ -24,9 +24,9 @@
     "eyebrow": "48小时升级风险雷达",
     "statusIcon": "shield",
     "statusPrefix": "总体风险·",
-    "streamLabel": "CURRENT INTEL STREAM",
-    "streamContext": "US-IRAN CONFLICT / 2026.04.08",
-    "scoreLabel": "升级指数得分",
+    "streamLabel": "",
+    "streamContext": "",
+    "scoreLabel": "",
     "scoreMax": 100
   },
   "radar": {

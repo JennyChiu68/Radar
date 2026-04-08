@@ -97,6 +97,13 @@ function toggleHidden(id, shouldHide) {
   }
 }
 
+function setDisplay(id, value) {
+  const el = document.getElementById(id);
+  if (el) {
+    el.style.display = value;
+  }
+}
+
 function roundScore(value) {
   return Math.round(Number(value) || 0);
 }
@@ -288,6 +295,10 @@ function renderHero(data, derived) {
   setText("streamLabel", data.hero.streamLabel || "");
   setText("streamContext", data.hero.streamContext || "");
   setText("scoreLabel", data.hero.scoreLabel || "");
+  const hasStream = Boolean(data.hero.streamLabel || data.hero.streamContext);
+  toggleHidden("streamBlock", !hasStream);
+  setDisplay("streamDivider", hasStream ? "" : "none");
+  toggleHidden("scoreLabel", !data.hero.scoreLabel);
   setText("heroScoreValue", String(derived.overallScore));
   setText("heroScoreMax", `/ ${data.hero.scoreMax || 100}`);
   toggleHidden("dataKey", true);
