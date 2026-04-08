@@ -1,0 +1,202 @@
+{
+  "meta": {
+    "pageTitle": "美伊红线雷达 | KINETIC INTELLIGENCE",
+    "brandTitle": "美伊红线雷达"
+  },
+  "hero": {
+    "eyebrow": "48小时升级雷达",
+    "level": "",
+    "statusIcon": "shield",
+    "statusText": "脆弱停火",
+    "statusTone": "yellow",
+    "streamLabel": "CURRENT INTEL STREAM",
+    "streamContext": "US-IRAN CONFLICT / 2026.04.08",
+    "scoreLabel": "升级指数得分",
+    "scoreValue": 5.8,
+    "scoreMax": 10.0,
+    "scoreBars": ["red", "red", "red", "yellow", "dim"],
+    "dataKey": "",
+    "scanningRegion": ""
+  },
+  "radar": {
+    "leftMeta": [],
+    "rightMeta": [
+      "快照时间: 北京时间 2026-04-08 17:24"
+    ],
+    "centerLabel": "总雷达分",
+    "centerScore": 58,
+    "blips": [
+      {
+        "title": "霍尔木兹",
+        "score": 62,
+        "tone": "yellow",
+        "size": "lg",
+        "pulse": "ping",
+        "position": { "top": "18%", "right": "15%" }
+      },
+      {
+        "title": "停火/谈判",
+        "score": 64,
+        "tone": "yellow",
+        "size": "md",
+        "position": { "top": "35%", "left": "22%" }
+      },
+      {
+        "title": "新战线",
+        "score": 71,
+        "tone": "red",
+        "size": "md",
+        "position": { "bottom": "28%", "right": "20%" }
+      },
+      {
+        "title": "民用基础设施",
+        "score": 46,
+        "tone": "green",
+        "size": "lg",
+        "pulse": "pulse",
+        "position": { "bottom": "18%", "left": "28%" }
+      },
+      {
+        "title": "能源与航运",
+        "score": 55,
+        "tone": "green",
+        "size": "sm",
+        "position": { "top": "45%", "right": "10%" }
+      }
+    ]
+  },
+  "indicators": {
+    "title": "5 条红线核心指标",
+    "cards": [
+      {
+        "target": "TARGET 01",
+        "title": "霍尔木兹",
+        "summary": "从封锁风险转向执行风险。",
+        "score": 62,
+        "stateLabel": "警戒",
+        "tone": "yellow",
+        "evidence": "证据强度: 高",
+        "bullets": [
+          "两周停火条款已包含霍尔木兹重开，封锁风险较前一日明显回落。",
+          "伊朗表示未来两周允许通行，但仍会在军方管理下控制并收费。",
+          "现在真正要验证的是船流、保费和港口节奏是否恢复常态。"
+        ]
+      },
+      {
+        "target": "TARGET 02",
+        "title": "停火 / 谈判",
+        "summary": "窗口已经出现，但还远没稳住。",
+        "score": 64,
+        "stateLabel": "脆弱",
+        "tone": "yellow",
+        "evidence": "证据强度: 高",
+        "bullets": [
+          "美伊以已达成两周停火，特朗普暂停针对桥梁、电厂等目标的威胁性打击。",
+          "伊朗表示将于 4月10日在伊斯兰堡与美国继续谈判。",
+          "各方对停火适用范围和后续安排仍有分歧，执行期并不稳。"
+        ]
+      },
+      {
+        "target": "TARGET 03",
+        "title": "新战线",
+        "summary": "伊朗本土战线降温，但外溢战线并没有一起关掉。",
+        "score": 71,
+        "stateLabel": "紧绷",
+        "tone": "red",
+        "evidence": "证据强度: 高",
+        "bullets": [
+          "以色列总理内塔尼亚胡称，两周停火并不包含对黎巴嫩真主党的战争。",
+          "巴基斯坦称协议覆盖黎巴嫩，但以方说法不同，说明外溢战线仍存在解释冲突。",
+          "黎巴嫩危机管理部门已呼吁流离失所者不要因停火消息立即南返。"
+        ]
+      },
+      {
+        "target": "TARGET 04",
+        "title": "民用基础设施",
+        "summary": "最危险的打击阈值暂时后撤。",
+        "score": 46,
+        "stateLabel": "回落",
+        "tone": "green",
+        "evidence": "证据强度: 高",
+        "bullets": [
+          "特朗普已暂停针对桥梁、电厂和其他民用目标的威胁性打击。",
+          "最接近系统性升级的目标阈值目前被压回去。",
+          "若停火破裂，这条红线仍可能迅速反弹。"
+        ]
+      },
+      {
+        "target": "TARGET 05",
+        "title": "能源与航运",
+        "summary": "市场压力明显回落，但还没恢复常态。",
+        "score": 55,
+        "stateLabel": "警戒",
+        "tone": "green",
+        "evidence": "证据强度: 高",
+        "bullets": [
+          "Brent 已跌至 92.84 美元/桶，WTI 跌至 94.72 美元/桶。",
+          "天然气期货下跌 20%，战争风险溢价正在快速撤出。",
+          "市场仍在等待霍尔木兹船流与保险成本的实际修复。"
+        ]
+      }
+    ]
+  },
+  "watchlist": {
+    "title": "未来48小时盯什么",
+    "items": [
+      {
+        "label": "WATCH 01",
+        "tag": "4月10日",
+        "tone": "red",
+        "text": "伊斯兰堡会谈能否把两周停火推进为更长期框架。"
+      },
+      {
+        "label": "WATCH 02",
+        "tag": "霍尔木兹",
+        "tone": "yellow",
+        "text": "海峡是否真正恢复常态通航，而不只是名义重开。"
+      },
+      {
+        "label": "WATCH 03",
+        "tag": "黎巴嫩",
+        "tone": "red",
+        "text": "黎巴嫩方向会不会被单独排除在停火之外而继续升级。"
+      },
+      {
+        "label": "WATCH 04",
+        "tag": "市场验证",
+        "tone": "green",
+        "text": "油价、运价和保险成本能否在一两天内继续回落。"
+      }
+    ]
+  },
+  "timeline": {
+    "title": "过去48小时的关键转折",
+    "meta": "显示 4 个最新公开节点",
+    "items": [
+      {
+        "date": "4月8日",
+        "tag": "停火",
+        "tone": "yellow",
+        "text": "美伊以达成两周停火，局势从升级模式转入执行模式。"
+      },
+      {
+        "date": "4月8日",
+        "tag": "政策",
+        "tone": "red",
+        "text": "特朗普暂停针对桥梁、电厂等民用目标的威胁性打击。"
+      },
+      {
+        "date": "4月8日",
+        "tag": "市场",
+        "tone": "green",
+        "text": "Brent 跌至 92.84 美元/桶，天然气期货下跌约 20%。"
+      },
+      {
+        "date": "4月8日",
+        "tag": "外溢",
+        "tone": "red",
+        "text": "内塔尼亚胡称黎巴嫩不在停火范围，外溢战线仍未完全关掉。"
+      }
+    ]
+  }
+}

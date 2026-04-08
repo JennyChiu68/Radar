@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>美伊红线雷达 | KINETIC INTELLIGENCE</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script defer src="./radar.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-container": "#410001",
+            "on-primary-container": "#ffdad6",
+            "surface": "#0a0c10",
+            "on-primary-fixed": "#410001",
+            "secondary-fixed": "#ffdad5",
+            "surface-dim": "#0e1116",
+            "surface-container": "#161b22",
+            "on-tertiary-container": "#ffd8a8",
+            "outline-variant": "#30363d",
+            "primary-fixed": "#ffdad6",
+            "secondary-container": "#690005",
+            "error-container": "#93000a",
+            "surface-bright": "#21262d",
+            "primary": "#FF3B30",
+            "on-secondary-container": "#ffd2cc",
+            "outline": "#8b949e",
+            "inverse-on-surface": "#0d1117",
+            "surface-container-highest": "#30363d",
+            "on-secondary-fixed": "#410001",
+            "secondary-fixed-dim": "#ffb4aa",
+            "on-tertiary-fixed": "#2d1600",
+            "background": "#0a0c10",
+            "surface-container-high": "#21262d",
+            "surface-tint": "#FF3B30",
+            "on-tertiary": "#4b2800",
+            "on-error": "#ffffff",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb874",
+            "secondary": "#FF3B30",
+            "on-secondary": "#ffffff",
+            "on-surface": "#f0f6fc",
+            "primary-fixed-dim": "#ffb4ab",
+            "on-secondary-fixed-variant": "#930005",
+            "on-surface-variant": "#c9d1d9",
+            "tertiary-container": "#4d2d00",
+            "on-error-container": "#ffdad6",
+            "inverse-surface": "#f0f6fc",
+            "tertiary": "#fcc419",
+            "error": "#FF3B30",
+            "surface-variant": "#161b22",
+            "inverse-primary": "#ff3b30",
+            "tertiary-fixed": "#ffdcbf",
+            "on-background": "#f0f6fc",
+            "surface-container-lowest": "#010409",
+            "surface-container-low": "#0d1117",
+            "on-primary-fixed-variant": "#930005",
+            "on-tertiary-fixed-variant": "#6a3b00"
+          },
+          borderRadius: {
+            DEFAULT: "0px",
+            lg: "0px",
+            xl: "0px",
+            full: "9999px"
+          },
+          fontFamily: {
+            headline: ["Space Grotesk", "Noto Sans SC"],
+            body: ["Inter", "Noto Sans SC"],
+            label: ["Space Grotesk", "Noto Sans SC"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    html { font-size: 18px; }
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      vertical-align: middle;
+    }
+    .grid-texture {
+      background-image: radial-gradient(rgba(255, 59, 48, 0.05) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+    .radar-sweep {
+      background: conic-gradient(from 0deg at 50% 50%, rgba(255, 59, 48, 0.2) 0deg, transparent 60deg);
+      animation: rotate 6s linear infinite;
+    }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes pulse-red {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .animate-pulse-alert {
+      animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .tactical-border-red,
+    .tactical-border-yellow,
+    .tactical-border-green,
+    .tactical-border {
+      position: relative;
+    }
+    .tactical-border-red { border: 1px solid rgba(255, 59, 48, 0.5); }
+    .tactical-border-yellow { border: 1px solid rgba(252, 196, 25, 0.5); }
+    .tactical-border-green { border: 1px solid rgba(52, 211, 153, 0.5); }
+    .tactical-border { border: 1px solid rgba(255, 59, 48, 0.3); }
+    .tactical-border-red::before,
+    .tactical-border-red::after,
+    .tactical-border-yellow::before,
+    .tactical-border-yellow::after,
+    .tactical-border-green::before,
+    .tactical-border-green::after,
+    .tactical-border::before,
+    .tactical-border::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      border-style: solid;
+    }
+    .tactical-border-red::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; border-color: rgba(255, 59, 48, 0.8); }
+    .tactical-border-red::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-color: rgba(255, 59, 48, 0.8); }
+    .tactical-border-yellow::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; border-color: rgba(252, 196, 25, 0.8); }
+    .tactical-border-yellow::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-color: rgba(252, 196, 25, 0.8); }
+    .tactical-border-green::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; border-color: rgba(52, 211, 153, 0.8); }
+    .tactical-border-green::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-color: rgba(52, 211, 153, 0.8); }
+    .tactical-border::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; border-color: rgba(255, 59, 48, 0.6); }
+    .tactical-border::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-color: rgba(255, 59, 48, 0.6); }
+    .radar-grid-line {
+      stroke: rgba(255, 59, 48, 0.2);
+      stroke-width: 1;
+    }
+    .radar-text {
+      fill: rgba(240, 246, 252, 0.7);
+      font-family: "Space Grotesk";
+      font-size: 11px;
+    }
+    @keyframes scanline {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+    .scan-line {
+      background: linear-gradient(to bottom, transparent, rgba(255, 59, 48, 0.1), transparent);
+      animation: scanline 4s linear infinite;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+  <main class="min-h-screen grid-texture pb-20">
+    <div class="max-w-[1600px] mx-auto pt-10 px-6 lg:px-10">
+      <div class="hidden bg-surface-container-lowest border-l-[6px] border-primary tactical-border-red p-6 text-sm text-on-surface-variant" id="loadError">
+        数据加载失败。请确认 `radar-data.json` 与 `radar.js` 存在于同目录。
+      </div>
+    </div>
+    <div class="max-w-[1600px] mx-auto pt-10 px-6 lg:px-10 space-y-10" id="appRoot">
+      <header class="relative overflow-hidden bg-surface-container-lowest border-l-[6px] border-primary tactical-border-red group">
+        <div class="absolute inset-0 scan-line pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full -mr-32 -mt-32"></div>
+        <div class="relative z-10 flex flex-col md:flex-row justify-between items-stretch p-8 lg:p-12 gap-10">
+          <div class="flex-1 space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="h-[1px] w-12 bg-primary/50"></div>
+              <span class="text-primary font-label text-sm tracking-[0.5em] font-bold uppercase" id="heroEyebrow">48小时升级雷达</span>
+              <div class="flex gap-1">
+                <span class="w-1 h-1 bg-primary"></span>
+                <span class="w-1 h-1 bg-primary/40"></span>
+                <span class="w-1 h-1 bg-primary/20"></span>
+              </div>
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-black font-headline tracking-tighter text-on-surface leading-[1.1]" id="brandTitle">美伊红线雷达</h1>
+            <div class="flex flex-wrap items-center gap-6 pt-2">
+              <div class="text-[12px] font-label font-black px-5 py-2 tracking-[0.25em] uppercase flex items-center gap-2" id="statusBadge"></div>
+              <div class="h-10 w-[1px] bg-outline-variant/30 hidden sm:block"></div>
+              <div class="flex flex-col">
+                <span class="font-label text-xs text-on-surface-variant tracking-[0.2em] uppercase mb-0.5" id="streamLabel">CURRENT INTEL STREAM</span>
+                <span class="font-label text-sm tracking-widest font-bold" id="streamContext">US-IRAN CONFLICT / 2026.04.08</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center items-center md:items-end border-t md:border-t-0 md:border-l border-outline-variant/20 pt-8 md:pt-0 md:pl-12">
+            <div class="text-lg lg:text-xl font-label mb-2 tracking-[0.3em] uppercase text-primary font-bold" id="scoreLabel">升级指数得分</div>
+            <div class="relative">
+              <div class="absolute inset-0 blur-2xl bg-primary/20 rounded-full"></div>
+              <div class="relative text-8xl lg:text-[9rem] font-black font-headline flex items-baseline gap-2 text-primary leading-none">
+                <span id="heroScoreValue">5.8</span>
+                <span class="text-4xl lg:text-5xl font-medium text-on-surface/40" id="heroScoreMax">/ 10.0</span>
+              </div>
+            </div>
+            <div class="mt-8 flex gap-2 w-full max-w-[300px]" id="scoreBars"></div>
+          </div>
+        </div>
+        <div class="absolute bottom-2 left-8 right-8 flex justify-between items-center opacity-30 hidden" id="heroFooter">
+          <div class="text-[9px] font-mono tracking-tighter hidden" id="dataKey"></div>
+          <div class="text-[9px] font-mono tracking-tighter uppercase hidden" id="scanningRegion"></div>
+        </div>
+      </header>
+
+      <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
+        <div class="xl:col-span-8 space-y-8">
+          <div class="bg-surface-container-low p-1 relative h-[500px] md:h-[700px] overflow-hidden tactical-border shadow-2xl">
+            <div class="absolute inset-0 z-20 p-8 pointer-events-none">
+              <div class="flex justify-between items-start">
+                <div class="font-label text-[12px] text-primary space-y-1 opacity-70 hidden" id="overlayLeft"></div>
+                <div class="text-right font-label text-[12px] space-y-1 hidden" id="overlayRight"></div>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-[#060000] flex items-center justify-center">
+              <div class="relative w-[340px] h-[340px] md:w-[600px] md:h-[600px]">
+                <svg class="absolute inset-0 w-full h-full" viewBox="0 0 600 600">
+                  <circle class="radar-grid-line" cx="300" cy="300" fill="none" r="280"></circle>
+                  <circle class="radar-grid-line" cx="300" cy="300" fill="none" r="210"></circle>
+                  <circle class="radar-grid-line" cx="300" cy="300" fill="none" r="140"></circle>
+                  <circle class="radar-grid-line" cx="300" cy="300" fill="none" r="70"></circle>
+                  <line class="radar-grid-line" x1="300" x2="300" y1="20" y2="580"></line>
+                  <line class="radar-grid-line" x1="20" x2="580" y1="300" y2="300"></line>
+                  <line class="radar-grid-line" x1="102" x2="498" y1="102" y2="498"></line>
+                  <line class="radar-grid-line" x1="102" x2="498" y1="498" y2="102"></line>
+                  <text class="radar-text" x="555" y="305">100</text>
+                  <text class="radar-text" x="305" y="575">100</text>
+                  <text class="radar-text" x="25" y="305">100</text>
+                  <text class="radar-text" x="305" y="20">100</text>
+                  <text class="radar-text" x="305" y="90">75</text>
+                  <text class="radar-text" x="305" y="160">50</text>
+                  <text class="radar-text" x="305" y="230">25</text>
+                </svg>
+                <div class="absolute inset-0 radar-sweep rounded-full z-10"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
+                  <div class="w-2.5 h-2.5 bg-primary rounded-full shadow-[0_0_12px_#FF3B30] mb-2"></div>
+                  <span class="text-[11px] text-primary/70 font-label tracking-tighter uppercase" id="radarCenterLabel">总雷达分</span>
+                  <span class="text-6xl font-black font-headline text-on-surface leading-none" id="radarCenterScore">58</span>
+                </div>
+                <div id="radarBlips"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="flex items-center gap-3 px-4">
+              <span class="material-symbols-outlined text-primary">warning</span>
+              <h2 class="text-3xl font-black font-headline tracking-tight" id="indicatorsTitle">5 条红线核心指标</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="indicatorCards"></div>
+          </div>
+        </div>
+
+        <aside class="xl:col-span-4 space-y-8">
+          <div class="bg-surface-container-low p-8 tactical-border space-y-6">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary">visibility</span>
+              <h2 class="text-2xl font-black font-headline tracking-tight uppercase" id="watchlistTitle">未来48小时盯什么</h2>
+            </div>
+            <div class="space-y-5" id="watchItems"></div>
+          </div>
+
+          <div class="bg-surface-container-low p-8 tactical-border">
+            <div class="flex flex-col items-start justify-between mb-8 gap-4">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined">history</span>
+                <h2 class="text-2xl font-black font-headline tracking-tight uppercase" id="timelineTitle">过去48小时的关键转折</h2>
+              </div>
+              <div class="text-[12px] font-label tracking-widest uppercase opacity-70" id="timelineMeta"></div>
+            </div>
+            <div class="space-y-4" id="timelineItems"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
