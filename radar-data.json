@@ -204,32 +204,32 @@
       {
         "date": "2026-04-07",
         "snapshot_time_bjt": "2026-04-07 21:00",
-        "source_ids": ["ap_0407_ceasefire", "ap_0407_markets"],
+        "source_ids": ["ap_0407_deadline", "ap_0406_infra"],
         "facts": {
           "hormuz": {
-            "policy_status": "military_controlled_open",
-            "traffic_recovery_pct_estimate": 20,
-            "shipping_disruption_level": "high"
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
           },
           "ceasefire": {
-            "ceasefire_status": "formal_fragile",
-            "violation_level": "repeated",
-            "talks_continuity": "scheduled_and_confirmed"
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "uncertain"
           },
           "new_front": {
-            "geographic_spillover": "sustained_outer_front",
-            "actor_expansion": "indirect_state_support",
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
             "attack_intensity": "high"
           },
           "civilian_infra": {
-            "threat_posture": "explicit",
-            "confirmed_strikes": "none",
-            "service_disruption": "none"
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
           },
           "energy_shipping": {
-            "brent_change_48h_pct": -13.3,
-            "freight_insurance_level": "severe",
-            "port_lng_disruption": "low"
+            "brent_change_48h_pct": 14.0,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
           }
         }
       },
@@ -698,6 +698,13 @@
       "date": "2026-04-06",
       "title": "The Latest: Trump brushes off war crime concerns as he repeats threat to Iran’s infrastructure",
       "url": "https://apnews.com/article/93f8ec25d61b58882b25d34bda08d0f9"
+    },
+    {
+      "id": "ap_0407_deadline",
+      "publisher": "Associated Press",
+      "date": "2026-04-07",
+      "title": "Iranians fear power outages and further attacks as Trump's deadline nears",
+      "url": "https://apnews.com/article/iran-us-trump-power-station-ultimatum-tehran-cc651d7588ecc7b7bdca424474e26e30"
     },
     {
       "id": "ap_0407_ceasefire",
