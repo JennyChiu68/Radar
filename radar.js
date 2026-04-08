@@ -218,6 +218,27 @@ function renderScoreBars(score, tone) {
   }).join("");
 }
 
+function renderHistoryBars(values, currentScore) {
+  const maxValue = Math.max(...(values || []), currentScore, 100);
+  return (values || []).map((value, index, list) => {
+    const isLatest = index === list.length - 1;
+    const height = Math.max(18, Math.round((value / maxValue) * 56));
+    const bg = isLatest ? "bg-[#e37b36]" : "bg-[#5b3a28]";
+    return `<div class="flex-1 ${bg}" style="height:${height}px"></div>`;
+  }).join("");
+}
+
+function renderHistoryDelta(currentScore, previous24hScore) {
+  const diff = currentScore - previous24hScore;
+  if (diff === 0) {
+    return { text: "0", className: "text-on-surface/70" };
+  }
+  if (diff < 0) {
+    return { text: `↓ ${Math.abs(diff)}`, className: "text-emerald-400" };
+  }
+  return { text: `↑ ${diff}`, className: "text-primary" };
+}
+
 function renderOverlayRight(snapshotTime, items) {
   const values = [`快照时间: 北京时间 ${snapshotTime}`, ...(items || [])];
   return values.map((item) => `<div>${escapeHtml(item)}</div>`).join("");
@@ -321,10 +342,6 @@ function renderHero(data, derived) {
   setText("brandTitle", data.meta.brandTitle || "美伊红线指数");
   setText("heroEyebrow", data.hero.eyebrow || "");
   toggleHidden("heroEyebrow", !data.hero.eyebrow);
-  setText("sourceName", data.hero.sourceName || "");
-  setText("sourceNameEn", data.hero.sourceNameEn || "");
-  setText("sourceTagline", data.hero.sourceTagline || "");
-  setText("sourceLogoBox", data.hero.logoText || "10");
   setText("streamLabel", data.hero.streamLabel || "");
   setText("streamContext", data.hero.streamContext || "");
   setText("scoreLabel", data.hero.scoreLabel || "");
@@ -339,6 +356,15 @@ function renderHero(data, derived) {
   toggleHidden("heroFooter", true);
   setHtml("scoreBars", renderScoreBars(derived.overallScore, derived.overallTone));
   startHeroClock();
+  const history = renderHistoryDelta(derived.overallScore, data.hero.previous24hScore || derived.overallScore);
+  setText("historyLabel", data.hero.historyLabel || "历史");
+  setText("historyComparisonLabel", data.hero.comparisonLabel || "vs 24h前");
+  setText("historyPreviousScore", String(data.hero.previous24hScore || derived.overallScore));
+  setText("historyTrendLabel", data.hero.trendLabel || "过去7天趋势");
+  setText("historyDelta", history.text);
+  const historyDelta = document.getElementById("historyDelta");
+  historyDelta.className = `text-3xl font-headline font-black ${history.className}`;
+  setHtml("historyBars", renderHistoryBars(data.hero.trend7d || [], derived.overallScore));
 
   const statusTone = getTone(derived.overallTone);
   const statusText = `${data.hero.statusPrefix || ""}${derived.overallLabel}`;

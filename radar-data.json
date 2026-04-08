@@ -24,14 +24,15 @@
     "eyebrow": "48小时升级风险雷达",
     "statusIcon": "shield",
     "statusPrefix": "总体风险·",
-    "sourceName": "金十数据",
-    "sourceNameEn": "JIN10 DATA",
-    "sourceTagline": "快讯流与公开信息整理",
-    "logoText": "10",
     "streamLabel": "",
     "streamContext": "",
     "scoreLabel": "",
-    "scoreMax": 100
+    "scoreMax": 100,
+    "historyLabel": "历史",
+    "comparisonLabel": "vs 24h前",
+    "trendLabel": "过去7天趋势",
+    "previous24hScore": 78,
+    "trend7d": [84, 82, 80, 79, 77, 74, 68, 57]
   },
   "radar": {
     "centerLabel": "总雷达分",
