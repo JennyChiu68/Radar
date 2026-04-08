@@ -2,7 +2,7 @@
   "meta": {
     "pageTitle": "美伊红线指数 | 48小时升级风险雷达",
     "brandTitle": "美伊红线指数",
-    "snapshot_time_bjt": "2026-04-08 18:47",
+    "snapshot_time_bjt": "2026-04-08 21:58",
     "scoring_version": "v1.0"
   },
   "bands": {
@@ -27,16 +27,245 @@
     "streamLabel": "",
     "streamContext": "",
     "scoreLabel": "",
-    "scoreMax": 100,
-    "historyLabel": "历史",
-    "comparisonLabel": "vs 24h前",
-    "trendLabel": "过去7天趋势",
-    "previous24hScore": 78,
-    "trend7d": [84, 82, 80, 79, 77, 74, 68, 57]
+    "scoreMax": 100
   },
   "radar": {
     "centerLabel": "总雷达分",
     "rightMeta": []
+  },
+  "history": {
+    "label": "历史",
+    "comparisonLabel": "vs 24h前",
+    "trendLabel": "过去7天趋势",
+    "timezone": "Asia/Shanghai",
+    "cutoff_time_bjt": "21:00",
+    "method": "按北京时间每日同一时点回填公开报道事实，并用当前权重与阈值重算总分。",
+    "snapshots": [
+      {
+        "date": "2026-04-02",
+        "snapshot_time_bjt": "2026-04-02 21:00",
+        "source_ids": ["ap_0402_war"],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "uncertain"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18.0,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-04-03",
+        "snapshot_time_bjt": "2026-04-03 21:00",
+        "source_ids": ["ap_0403_hormuz", "ap_0403_fuel"],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 14.0,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-04-04",
+        "snapshot_time_bjt": "2026-04-04 21:00",
+        "source_ids": ["ap_0404_live", "ap_0404_energy"],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12.0,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-04-05",
+        "snapshot_time_bjt": "2026-04-05 21:00",
+        "source_ids": ["ap_0405_live"],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "imminent",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 14.0,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-04-06",
+        "snapshot_time_bjt": "2026-04-06 21:00",
+        "source_ids": ["ap_0406_infra", "ap_0406_live"],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12.0,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-04-07",
+        "snapshot_time_bjt": "2026-04-07 21:00",
+        "source_ids": ["ap_0407_ceasefire", "ap_0407_markets"],
+        "facts": {
+          "hormuz": {
+            "policy_status": "military_controlled_open",
+            "traffic_recovery_pct_estimate": 20,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "scheduled_and_confirmed"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "indirect_state_support",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "none",
+            "service_disruption": "none"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": -13.3,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "low"
+          }
+        }
+      },
+      {
+        "date": "2026-04-08",
+        "snapshot_time_bjt": "2026-04-08 21:00",
+        "source_ids": ["ap_0408_ceasefire", "ap_0408_markets", "ap_0408_beirut", "ap_0408_live"],
+        "facts": {
+          "hormuz": {
+            "policy_status": "military_controlled_open",
+            "traffic_recovery_pct_estimate": 20,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "indirect_state_support",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "none",
+            "service_disruption": "none"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": -16.6,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "low"
+          }
+        }
+      }
+    ]
   },
   "dimensions": [
     {
@@ -176,7 +405,7 @@
       "facts": {
         "geographic_spillover": "sustained_outer_front",
         "actor_expansion": "indirect_state_support",
-        "attack_intensity": "high"
+        "attack_intensity": "extreme"
       },
       "metrics": [
         {
@@ -216,9 +445,9 @@
         }
       ],
       "bullets": [
-        "以色列方面表示，对黎巴嫩真主党的战争并不在两周停火范围内。",
-        "巴基斯坦方面的说法与以色列并不一致，说明外围战线的解释仍有冲突。",
-        "只要黎巴嫩方向没有被明确纳入，外溢风险就不会真正解除。"
+        "以军在停火宣布后 10 分钟内打击了 100 多个真主党目标，黎巴嫩战线明显升温。",
+        "以色列坚持称对伊停火不包括黎巴嫩，而巴基斯坦方面的说法并不一致。",
+        "伊朗本土战线降温，不代表外围战线已经同步收口。"
       ]
     },
     {
@@ -299,7 +528,7 @@
         "size": "sm"
       },
       "facts": {
-        "brent_change_48h_pct": -12.6,
+        "brent_change_48h_pct": -16.6,
         "freight_insurance_level": "severe",
         "port_lng_disruption": "low"
       },
@@ -343,9 +572,9 @@
         }
       ],
       "bullets": [
-        "Brent 当日跌至 95.48 美元/桶，WTI 跌至 96.48 美元/桶，市场明显回吐避险溢价。",
-        "天然气期货下跌约 5%，说明金融市场先行押注停火能够延续。",
-        "但霍尔木兹的实际船流和保险成本是否恢复常态，仍未得到验证。"
+        "AP 报道显示，Brent 一度跌至 91.11 美元/桶，市场明显回吐战争溢价。",
+        "但油价仍高于战前水平，说明投资者并不认为风险已经被完全清掉。",
+        "霍尔木兹的实际船流和保险成本是否恢复常态，仍未得到确认。"
       ]
     }
   ],
@@ -366,9 +595,9 @@
       },
       {
         "label": "WATCH 03",
-        "tag": "4月10日",
+        "tag": "谈判时间表",
         "tone": "red",
-        "text": "伊斯兰堡会谈能否按期举行，并把两周停火推进成更长期框架。"
+        "text": "白宫称面对面会谈安排仍未最终敲定，停火能否转成长协议仍有悬念。"
       },
       {
         "label": "WATCH 04",
@@ -383,50 +612,133 @@
     "items": [
       {
         "date": "4月8日",
+        "tag": "黎巴嫩",
+        "tone": "red",
+        "text": "以军在停火宣布后对贝鲁特、南黎和贝卡谷地发动逾 100 个目标的协同打击。"
+      },
+      {
+        "date": "4月8日",
         "tag": "停火",
         "tone": "yellow",
         "text": "美伊以达成两周停火，局势从全面升级转入脆弱执行期。"
       },
       {
         "date": "4月8日",
-        "tag": "违约",
-        "tone": "red",
-        "text": "停火宣布后，伊朗和海湾阿拉伯国家仍出现了新一轮袭击。"
+        "tag": "航运",
+        "tone": "yellow",
+        "text": "霍尔木兹恢复为受控通行状态，但伊朗和阿曼收费、船只是否愿意回流仍不清楚。"
       },
       {
         "date": "4月8日",
         "tag": "市场",
         "tone": "green",
-        "text": "Brent 跌至 95.48 美元/桶，天然气期货跌约 5%，战争溢价明显回吐。"
+        "text": "Brent 一度跌至 91.11 美元/桶，金融市场明显回吐战争溢价。"
       },
       {
-        "date": "4月8日",
-        "tag": "外溢",
+        "date": "4月7日",
+        "tag": "最后通牒",
         "tone": "red",
-        "text": "以色列称黎巴嫩方向不在停火范围内，外围战线仍未真正关掉。"
+        "text": "特朗普在最后通牒前威胁毁掉伊朗桥梁与电厂，随后在截止前转向两周停火。"
       }
     ]
   },
   "sources": [
     {
-      "id": "ap_ceasefire",
+      "id": "ap_0402_war",
+      "publisher": "Associated Press",
+      "date": "2026-04-02",
+      "title": "No sign of war winding down in Mideast as Friday dawns with attacks across region",
+      "url": "https://apnews.com/article/c41dbdb8148d02ce6561ea6bd4aa0da1"
+    },
+    {
+      "id": "ap_0403_hormuz",
+      "publisher": "Associated Press",
+      "date": "2026-04-03",
+      "title": "Bahrain waters down UN proposal over opposition to allowing force to open Strait of Hormuz",
+      "url": "https://apnews.com/article/f2a2fafe3e1691b9f0be5e7d691a90d0"
+    },
+    {
+      "id": "ap_0403_fuel",
+      "publisher": "Associated Press",
+      "date": "2026-04-03",
+      "title": "Pakistanis face unprecedented fuel price rise of up to 54% as global oil price spikes",
+      "url": "https://apnews.com/article/d649ed3d36e603d57ed5a0e374858832"
+    },
+    {
+      "id": "ap_0404_live",
+      "publisher": "Associated Press",
+      "date": "2026-04-04",
+      "title": "The Latest: US and Iran race to find missing crew member from downed military plane",
+      "url": "https://apnews.com/article/4d6ae06a883920d15ecc800fd8eeb496"
+    },
+    {
+      "id": "ap_0404_energy",
+      "publisher": "Associated Press",
+      "date": "2026-04-04",
+      "title": "European ministers call for profit caps on energy companies as Iran war drives price surge",
+      "url": "https://apnews.com/article/85b036564fe87a205bc96e743cb22e83"
+    },
+    {
+      "id": "ap_0405_live",
+      "publisher": "Associated Press",
+      "date": "2026-04-05",
+      "title": "The Latest: Trump threatens to strike Iran's infrastructure if Strait of Hormuz isn't reopened",
+      "url": "https://apnews.com/article/004f246d084871c4e2460a9baf786506"
+    },
+    {
+      "id": "ap_0406_infra",
+      "publisher": "Associated Press",
+      "date": "2026-04-06",
+      "title": "Trump widens threat to all of Iran's power plants and bridges as his deadline for a deal approaches",
+      "url": "https://apnews.com/article/87b62d531d3290fde5255077179bd3b5"
+    },
+    {
+      "id": "ap_0406_live",
+      "publisher": "Associated Press",
+      "date": "2026-04-06",
+      "title": "The Latest: Trump brushes off war crime concerns as he repeats threat to Iran’s infrastructure",
+      "url": "https://apnews.com/article/93f8ec25d61b58882b25d34bda08d0f9"
+    },
+    {
+      "id": "ap_0407_ceasefire",
+      "publisher": "Associated Press",
+      "date": "2026-04-07",
+      "title": "US and Iran agree to 2-week ceasefire as Trump pulls back on threats",
+      "url": "https://apnews.com/article/421ee64fdc9a5c26460df8119c7d1b3f"
+    },
+    {
+      "id": "ap_0407_markets",
+      "publisher": "Associated Press",
+      "date": "2026-04-07",
+      "title": "Oil prices sink and US stock futures jump as US and Iran agree to 2-week ceasefire",
+      "url": "https://apnews.com/article/bcd3342cd0b4e60ebedc1e81db08f465"
+    },
+    {
+      "id": "ap_0408_ceasefire",
       "publisher": "Associated Press",
       "date": "2026-04-08",
-      "title": "US, Israel and Iran agree to a 2-week ceasefire as Trump pulls back on his threats",
+      "title": "US, Israel and Iran agree to a 2-week ceasefire but much remains unclear and some attacks continue",
       "url": "https://apnews.com/article/38d75d5e4f1c7339a1456fc99415bb2a"
     },
     {
-      "id": "ap_markets",
+      "id": "ap_0408_markets",
       "publisher": "Associated Press",
       "date": "2026-04-08",
-      "title": "Asian markets jump and oil prices decline as Iran ceasefire agreement reached",
+      "title": "The Dow surges 1,300 in a worldwide rally as oil plunges toward $90 following a ceasefire with Iran",
       "url": "https://apnews.com/article/2fc5ac7823bea71984b3578ec36aacee"
     },
     {
-      "id": "ap_live",
+      "id": "ap_0408_beirut",
       "publisher": "Associated Press",
       "date": "2026-04-08",
-      "title": "The Latest: Trump pulls back on threats as US, Israel and Iran reach a 2-week ceasefire deal",
+      "title": "Israel strikes central Beirut without warning after saying Iran ceasefire doesn't apply there",
+      "url": "https://apnews.com/article/9402965418687c634d4a157c966ec6ea"
+    },
+    {
+      "id": "ap_0408_live",
+      "publisher": "Associated Press",
+      "date": "2026-04-08",
+      "title": "The Latest: Attacks reported in Iran and Gulf Arab nations hours after ceasefire announcement",
       "url": "https://apnews.com/article/4b464b08aaf7220899526c0c6da4317d"
     }
   ]

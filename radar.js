@@ -209,6 +209,42 @@ function computeDerived(data) {
   };
 }
 
+function withSnapshotFacts(data, snapshot) {
+  if (!snapshot?.facts) {
+    return data;
+  }
+  return {
+    ...data,
+    dimensions: (data.dimensions || []).map((dimension) => {
+      const overrideFacts = snapshot.facts?.[dimension.id];
+      if (!overrideFacts) {
+        return dimension;
+      }
+      return {
+        ...dimension,
+        facts: {
+          ...(dimension.facts || {}),
+          ...overrideFacts
+        }
+      };
+    })
+  };
+}
+
+function computeHistorySnapshots(data) {
+  return (data.history?.snapshots || []).map((snapshot) => {
+    const snapshotData = withSnapshotFacts(data, snapshot);
+    const derived = computeDerived(snapshotData);
+    return {
+      ...snapshot,
+      overallScore: derived.overallScore,
+      overallTone: derived.overallTone,
+      overallLabel: derived.overallLabel,
+      dimensions: derived.dimensions
+    };
+  });
+}
+
 function renderScoreBars(score, tone) {
   const activeBars = Math.max(1, Math.round(score / 20));
   const activeClass = getTone(tone).scoreBar;
@@ -222,7 +258,7 @@ function renderHistoryBars(values, currentScore) {
   const maxValue = Math.max(...(values || []), currentScore, 100);
   return (values || []).map((value, index, list) => {
     const isLatest = index === list.length - 1;
-    const height = Math.max(18, Math.round((value / maxValue) * 56));
+    const height = Math.max(14, Math.round((value / maxValue) * 42));
     const bg = isLatest ? "bg-[#e37b36]" : "bg-[#5b3a28]";
     return `<div class="flex-1 ${bg}" style="height:${height}px"></div>`;
   }).join("");
@@ -337,7 +373,7 @@ function renderTimelineItems(items) {
   }).join("");
 }
 
-function renderHero(data, derived) {
+function renderHero(data, derived, historySnapshots) {
   document.title = data.meta.pageTitle || document.title;
   setText("brandTitle", data.meta.brandTitle || "美伊红线指数");
   setText("heroEyebrow", data.hero.eyebrow || "");
@@ -356,15 +392,18 @@ function renderHero(data, derived) {
   toggleHidden("heroFooter", true);
   setHtml("scoreBars", renderScoreBars(derived.overallScore, derived.overallTone));
   startHeroClock();
-  const history = renderHistoryDelta(derived.overallScore, data.hero.previous24hScore || derived.overallScore);
-  setText("historyLabel", data.hero.historyLabel || "历史");
-  setText("historyComparisonLabel", data.hero.comparisonLabel || "vs 24h前");
-  setText("historyPreviousScore", String(data.hero.previous24hScore || derived.overallScore));
-  setText("historyTrendLabel", data.hero.trendLabel || "过去7天趋势");
+  const previousSnapshot = historySnapshots.length > 1 ? historySnapshots[historySnapshots.length - 2] : null;
+  const previousScore = previousSnapshot?.overallScore ?? derived.overallScore;
+  const historyValues = historySnapshots.map((snapshot) => snapshot.overallScore);
+  const history = renderHistoryDelta(derived.overallScore, previousScore);
+  setText("historyLabel", data.history?.label || "历史");
+  setText("historyComparisonLabel", data.history?.comparisonLabel || "vs 24h前");
+  setText("historyPreviousScore", String(previousScore));
+  setText("historyTrendLabel", data.history?.trendLabel || "过去7天趋势");
   setText("historyDelta", history.text);
   const historyDelta = document.getElementById("historyDelta");
-  historyDelta.className = `text-3xl font-headline font-black ${history.className}`;
-  setHtml("historyBars", renderHistoryBars(data.hero.trend7d || [], derived.overallScore));
+  historyDelta.className = `text-2xl md:text-[2rem] font-headline font-black ${history.className}`;
+  setHtml("historyBars", renderHistoryBars(historyValues, derived.overallScore));
 
   const statusTone = getTone(derived.overallTone);
   const statusText = `${data.hero.statusPrefix || ""}${derived.overallLabel}`;
@@ -435,7 +474,8 @@ async function loadRadarData() {
   try {
     const data = await fetchRadarData();
     const derived = computeDerived(data);
-    renderHero(data, derived);
+    const historySnapshots = computeHistorySnapshots(data);
+    renderHero(data, derived, historySnapshots);
     renderRadar(data, derived);
     renderSections(data, derived);
   } catch (error) {
