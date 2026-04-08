@@ -1,4 +1,3 @@
-const DATA_URL = "./radar-data.json";
 const RING_CIRCUMFERENCE = 282.7;
 
 const TONE_MAP = {
@@ -331,20 +330,46 @@ function showLoadError(message) {
   appRoot.classList.add("hidden");
 }
 
+function buildDataCandidates() {
+  const base = window.location.origin;
+  const path = window.location.pathname;
+  const pathDir = path.endsWith("/") ? path : `${path.substring(0, path.lastIndexOf("/") + 1)}`;
+  const repoRoot = path.startsWith("/Radar") ? "/Radar/" : "/";
+  return [
+    new URL("radar-data.json", `${base}${pathDir}`).toString(),
+    new URL("radar-data.json", `${base}${repoRoot}`).toString(),
+    new URL("./radar-data.json", window.location.href.endsWith("/") ? window.location.href : `${window.location.href}/`).toString()
+  ].filter((value, index, list) => list.indexOf(value) === index);
+}
+
+async function fetchRadarData() {
+  const candidates = buildDataCandidates();
+  let lastError;
+  for (const candidate of candidates) {
+    try {
+      const response = await fetch(candidate, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status} @ ${candidate}`);
+      }
+      return await response.json();
+    } catch (error) {
+      lastError = error;
+      console.warn("radar-data fetch failed", candidate, error);
+    }
+  }
+  throw lastError || new Error("radar-data fetch failed");
+}
+
 async function loadRadarData() {
   try {
-    const response = await fetch(DATA_URL, { cache: "no-store" });
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
-    const data = await response.json();
+    const data = await fetchRadarData();
     const derived = computeDerived(data);
     renderHero(data, derived);
     renderRadar(data, derived);
     renderSections(data, derived);
   } catch (error) {
     console.error(error);
-    showLoadError("数据加载失败。请确认 radar-data.json 可访问。");
+    showLoadError("数据加载失败。请刷新页面重试；若仍失败，请重新打开预览链接。");
   }
 }
 
