@@ -1,7 +1,7 @@
 {
   "meta": {
-    "pageTitle": "美伊红线雷达 | KINETIC INTELLIGENCE",
-    "brandTitle": "美伊红线雷达",
+    "pageTitle": "美伊红线指数 | 48小时升级风险雷达",
+    "brandTitle": "美伊红线指数",
     "snapshot_time_bjt": "2026-04-08 18:47",
     "scoring_version": "v1.0"
   },
@@ -21,7 +21,7 @@
     ]
   },
   "hero": {
-    "eyebrow": "48小时升级雷达",
+    "eyebrow": "48小时升级风险雷达",
     "statusIcon": "shield",
     "statusPrefix": "总体风险·",
     "streamLabel": "CURRENT INTEL STREAM",

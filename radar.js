@@ -282,7 +282,7 @@ function renderTimelineItems(items) {
 
 function renderHero(data, derived) {
   document.title = data.meta.pageTitle || document.title;
-  setText("brandTitle", data.meta.brandTitle || "美伊红线雷达");
+  setText("brandTitle", data.meta.brandTitle || "美伊红线指数");
   setText("heroEyebrow", data.hero.eyebrow || "");
   toggleHidden("heroEyebrow", !data.hero.eyebrow);
   setText("streamLabel", data.hero.streamLabel || "");
