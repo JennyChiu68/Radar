@@ -166,7 +166,7 @@
         <div class="absolute inset-0 scan-line pointer-events-none"></div>
         <div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-[100px] rounded-full -mr-32 -mt-32"></div>
         <div class="relative z-10 flex flex-col md:flex-row justify-between items-stretch p-8 lg:p-12 gap-10">
-          <div class="flex-1 space-y-6">
+          <div class="flex-1 space-y-7">
             <div class="flex items-center gap-4">
               <div class="h-[1px] w-12 bg-primary/50"></div>
               <span class="text-primary font-label text-sm tracking-[0.5em] font-bold uppercase" id="heroEyebrow">48小时升级风险雷达</span>
@@ -177,17 +177,25 @@
               </div>
             </div>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-black font-headline tracking-tighter text-on-surface leading-[1.1]" id="brandTitle">美伊红线指数</h1>
-            <div class="flex flex-wrap items-center gap-6 pt-2">
+            <div class="flex flex-wrap items-stretch gap-5 pt-1">
               <div class="text-[12px] font-label font-black px-5 py-2 tracking-[0.25em] uppercase flex items-center gap-2" id="statusBadge"></div>
-              <div class="h-10 w-[1px] bg-outline-variant/30" id="streamDivider"></div>
-              <div class="flex flex-col" id="streamBlock">
-                <span class="font-label text-xs text-on-surface-variant tracking-[0.2em] uppercase mb-0.5" id="streamLabel">CURRENT INTEL STREAM</span>
-                <span class="font-label text-sm tracking-widest font-bold" id="streamContext">US-IRAN CONFLICT / 2026.04.08</span>
+              <div class="min-w-[260px] bg-surface-container-low border border-primary/20 px-4 py-3 flex items-center gap-4" id="sourceCard">
+                <div class="w-12 h-12 border border-primary/40 bg-primary/10 flex items-center justify-center text-primary font-headline font-black text-xl tracking-tight" id="sourceLogoBox">10</div>
+                <div class="flex flex-col leading-tight">
+                  <span class="text-sm font-black font-headline text-on-surface" id="sourceName">金十数据</span>
+                  <span class="text-[11px] uppercase tracking-[0.25em] text-on-surface-variant font-label" id="sourceNameEn">JIN10 DATA</span>
+                  <span class="text-[12px] text-on-surface-variant mt-1" id="sourceTagline">快讯流与公开信息整理</span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="flex flex-col justify-center items-center md:items-end border-t md:border-t-0 md:border-l border-outline-variant/20 pt-8 md:pt-0 md:pl-12">
-            <div class="text-lg lg:text-xl font-label mb-2 tracking-[0.3em] uppercase text-primary font-bold" id="scoreLabel">升级指数得分</div>
+          <div class="flex flex-col justify-between items-start md:items-end border-t md:border-t-0 md:border-l border-outline-variant/20 pt-8 md:pt-0 md:pl-12 min-w-[360px]">
+            <div class="self-stretch md:self-auto border border-primary/35 bg-primary/5 px-5 py-3 min-w-[260px]" id="heroClockBox">
+              <div class="text-[11px] uppercase tracking-[0.35em] text-primary font-label mb-2">北京时间</div>
+              <div class="text-sm text-on-surface-variant font-label mb-1" id="heroClockDate">2026-04-08</div>
+              <div class="text-3xl font-headline font-black text-on-surface tracking-[0.12em]" id="heroClockTime">18:47:00</div>
+            </div>
+            <div class="w-full flex flex-col items-start md:items-end">
             <div class="relative">
               <div class="absolute inset-0 blur-2xl bg-primary/20 rounded-full"></div>
               <div class="relative text-8xl lg:text-[9rem] font-black font-headline flex items-baseline gap-2 text-primary leading-none">
@@ -196,6 +204,7 @@
               </div>
             </div>
             <div class="mt-8 flex gap-2 w-full max-w-[300px]" id="scoreBars"></div>
+            </div>
           </div>
         </div>
         <div class="absolute bottom-2 left-8 right-8 flex justify-between items-center opacity-30 hidden" id="heroFooter">

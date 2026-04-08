@@ -104,6 +104,35 @@ function setDisplay(id, value) {
   }
 }
 
+function formatBeijingNow() {
+  const parts = new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false
+  }).formatToParts(new Date());
+  const get = (type) => parts.find((part) => part.type === type)?.value || "";
+  return {
+    date: `${get("year")}-${get("month")}-${get("day")}`,
+    time: `${get("hour")}:${get("minute")}:${get("second")}`
+  };
+}
+
+function startHeroClock() {
+  const tick = () => {
+    const now = formatBeijingNow();
+    setText("heroClockDate", now.date);
+    setText("heroClockTime", now.time);
+  };
+  tick();
+  window.clearInterval(window.__radarClockTimer);
+  window.__radarClockTimer = window.setInterval(tick, 1000);
+}
+
 function roundScore(value) {
   return Math.round(Number(value) || 0);
 }
@@ -292,6 +321,10 @@ function renderHero(data, derived) {
   setText("brandTitle", data.meta.brandTitle || "美伊红线指数");
   setText("heroEyebrow", data.hero.eyebrow || "");
   toggleHidden("heroEyebrow", !data.hero.eyebrow);
+  setText("sourceName", data.hero.sourceName || "");
+  setText("sourceNameEn", data.hero.sourceNameEn || "");
+  setText("sourceTagline", data.hero.sourceTagline || "");
+  setText("sourceLogoBox", data.hero.logoText || "10");
   setText("streamLabel", data.hero.streamLabel || "");
   setText("streamContext", data.hero.streamContext || "");
   setText("scoreLabel", data.hero.scoreLabel || "");
@@ -305,6 +338,7 @@ function renderHero(data, derived) {
   toggleHidden("scanningRegion", true);
   toggleHidden("heroFooter", true);
   setHtml("scoreBars", renderScoreBars(derived.overallScore, derived.overallTone));
+  startHeroClock();
 
   const statusTone = getTone(derived.overallTone);
   const statusText = `${data.hero.statusPrefix || ""}${derived.overallLabel}`;
