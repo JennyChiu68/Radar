@@ -1,202 +1,428 @@
 {
   "meta": {
     "pageTitle": "美伊红线雷达 | KINETIC INTELLIGENCE",
-    "brandTitle": "美伊红线雷达"
+    "brandTitle": "美伊红线雷达",
+    "snapshot_time_bjt": "2026-04-08 18:47",
+    "scoring_version": "v1.0"
+  },
+  "bands": {
+    "risk_labels": [
+      { "min": 0, "max": 19, "label": "低" },
+      { "min": 20, "max": 39, "label": "可观察" },
+      { "min": 40, "max": 59, "label": "脆弱" },
+      { "min": 60, "max": 74, "label": "紧绷" },
+      { "min": 75, "max": 89, "label": "临界" },
+      { "min": 90, "max": 100, "label": "极高" }
+    ],
+    "ui_tones": [
+      { "min": 0, "max": 49, "tone": "green" },
+      { "min": 50, "max": 64, "tone": "yellow" },
+      { "min": 65, "max": 100, "tone": "red" }
+    ]
   },
   "hero": {
     "eyebrow": "48小时升级雷达",
-    "level": "",
     "statusIcon": "shield",
-    "statusText": "脆弱停火",
-    "statusTone": "yellow",
+    "statusPrefix": "总体风险·",
     "streamLabel": "CURRENT INTEL STREAM",
     "streamContext": "US-IRAN CONFLICT / 2026.04.08",
     "scoreLabel": "升级指数得分",
-    "scoreValue": 5.8,
-    "scoreMax": 10.0,
-    "scoreBars": ["red", "red", "red", "yellow", "dim"],
-    "dataKey": "",
-    "scanningRegion": ""
+    "scoreMax": 100
   },
   "radar": {
-    "leftMeta": [],
-    "rightMeta": [
-      "快照时间: 北京时间 2026-04-08 17:24"
-    ],
     "centerLabel": "总雷达分",
-    "centerScore": 58,
-    "blips": [
-      {
-        "title": "霍尔木兹",
-        "score": 62,
-        "tone": "yellow",
-        "size": "lg",
-        "pulse": "ping",
-        "position": { "top": "18%", "right": "15%" }
-      },
-      {
-        "title": "停火/谈判",
-        "score": 64,
-        "tone": "yellow",
-        "size": "md",
-        "position": { "top": "35%", "left": "22%" }
-      },
-      {
-        "title": "新战线",
-        "score": 71,
-        "tone": "red",
-        "size": "md",
-        "position": { "bottom": "28%", "right": "20%" }
-      },
-      {
-        "title": "民用基础设施",
-        "score": 46,
-        "tone": "green",
-        "size": "lg",
-        "pulse": "pulse",
-        "position": { "bottom": "18%", "left": "28%" }
-      },
-      {
-        "title": "能源与航运",
-        "score": 55,
-        "tone": "green",
-        "size": "sm",
-        "position": { "top": "45%", "right": "10%" }
-      }
-    ]
+    "rightMeta": []
   },
-  "indicators": {
-    "title": "5 条红线核心指标",
-    "cards": [
-      {
-        "target": "TARGET 01",
-        "title": "霍尔木兹",
-        "summary": "从封锁风险转向执行风险。",
-        "score": 62,
-        "stateLabel": "警戒",
-        "tone": "yellow",
-        "evidence": "证据强度: 高",
-        "bullets": [
-          "两周停火条款已包含霍尔木兹重开，封锁风险较前一日明显回落。",
-          "伊朗表示未来两周允许通行，但仍会在军方管理下控制并收费。",
-          "现在真正要验证的是船流、保费和港口节奏是否恢复常态。"
-        ]
+  "dimensions": [
+    {
+      "id": "hormuz",
+      "target": "TARGET 01",
+      "title": "霍尔木兹",
+      "summary": "从政治重开转向执行检验。",
+      "overall_weight": 0.25,
+      "evidence": "证据强度: 高",
+      "display": {
+        "position": { "top": "18%", "right": "15%" },
+        "size": "lg",
+        "pulse": "ping"
       },
-      {
-        "target": "TARGET 02",
-        "title": "停火 / 谈判",
-        "summary": "窗口已经出现，但还远没稳住。",
-        "score": 64,
-        "stateLabel": "脆弱",
-        "tone": "yellow",
-        "evidence": "证据强度: 高",
-        "bullets": [
-          "美伊以已达成两周停火，特朗普暂停针对桥梁、电厂等目标的威胁性打击。",
-          "伊朗表示将于 4月10日在伊斯兰堡与美国继续谈判。",
-          "各方对停火适用范围和后续安排仍有分歧，执行期并不稳。"
-        ]
+      "facts": {
+        "policy_status": "military_controlled_open",
+        "traffic_recovery_pct_estimate": 20,
+        "shipping_disruption_level": "high"
       },
-      {
-        "target": "TARGET 03",
-        "title": "新战线",
-        "summary": "伊朗本土战线降温，但外溢战线并没有一起关掉。",
-        "score": 71,
-        "stateLabel": "紧绷",
-        "tone": "red",
-        "evidence": "证据强度: 高",
-        "bullets": [
-          "以色列总理内塔尼亚胡称，两周停火并不包含对黎巴嫩真主党的战争。",
-          "巴基斯坦称协议覆盖黎巴嫩，但以方说法不同，说明外溢战线仍存在解释冲突。",
-          "黎巴嫩危机管理部门已呼吁流离失所者不要因停火消息立即南返。"
-        ]
+      "metrics": [
+        {
+          "fact": "policy_status",
+          "weight": 0.4,
+          "type": "enum",
+          "scores": {
+            "normal_open": 10,
+            "open_with_minor_controls": 25,
+            "restricted_open": 55,
+            "military_controlled_open": 70,
+            "partial_closure": 85,
+            "closed_or_blocked": 95
+          }
+        },
+        {
+          "fact": "traffic_recovery_pct_estimate",
+          "weight": 0.35,
+          "type": "band",
+          "bands": [
+            { "min": 90, "score": 10 },
+            { "min": 70, "max": 89.99, "score": 25 },
+            { "min": 50, "max": 69.99, "score": 45 },
+            { "min": 30, "max": 49.99, "score": 65 },
+            { "min": 10, "max": 29.99, "score": 80 },
+            { "max": 9.99, "score": 95 }
+          ]
+        },
+        {
+          "fact": "shipping_disruption_level",
+          "weight": 0.25,
+          "type": "enum",
+          "scores": {
+            "none": 10,
+            "low": 30,
+            "medium": 45,
+            "high": 75,
+            "extreme": 95
+          }
+        }
+      ],
+      "bullets": [
+        "停火协议包含霍尔木兹重开，但伊朗仍准备在军方管理下开放并收费。",
+        "公开报道仍未显示船流已经恢复常态，真正的执行风险还在后面。",
+        "印度等外部参与方已把“是否恢复不受阻碍航行”视为核心观察点。"
+      ]
+    },
+    {
+      "id": "ceasefire",
+      "target": "TARGET 02",
+      "title": "停火 / 谈判",
+      "summary": "停火已经出现，但执行面很脆弱。",
+      "overall_weight": 0.2,
+      "evidence": "证据强度: 高",
+      "display": {
+        "position": { "top": "35%", "left": "22%" },
+        "size": "md"
       },
-      {
-        "target": "TARGET 04",
-        "title": "民用基础设施",
-        "summary": "最危险的打击阈值暂时后撤。",
-        "score": 46,
-        "stateLabel": "回落",
-        "tone": "green",
-        "evidence": "证据强度: 高",
-        "bullets": [
-          "特朗普已暂停针对桥梁、电厂和其他民用目标的威胁性打击。",
-          "最接近系统性升级的目标阈值目前被压回去。",
-          "若停火破裂，这条红线仍可能迅速反弹。"
-        ]
+      "facts": {
+        "ceasefire_status": "formal_fragile",
+        "violation_level": "repeated",
+        "talks_continuity": "proposed"
       },
-      {
-        "target": "TARGET 05",
-        "title": "能源与航运",
-        "summary": "市场压力明显回落，但还没恢复常态。",
-        "score": 55,
-        "stateLabel": "警戒",
-        "tone": "green",
-        "evidence": "证据强度: 高",
-        "bullets": [
-          "Brent 已跌至 92.84 美元/桶，WTI 跌至 94.72 美元/桶。",
-          "天然气期货下跌 20%，战争风险溢价正在快速撤出。",
-          "市场仍在等待霍尔木兹船流与保险成本的实际修复。"
-        ]
-      }
-    ]
-  },
+      "metrics": [
+        {
+          "fact": "ceasefire_status",
+          "weight": 0.35,
+          "type": "enum",
+          "scores": {
+            "formal_stable": 15,
+            "formal_fragile": 45,
+            "temporary_verbal": 60,
+            "repeatedly_disrupted": 80,
+            "collapsed": 95
+          }
+        },
+        {
+          "fact": "violation_level",
+          "weight": 0.35,
+          "type": "enum",
+          "scores": {
+            "none": 10,
+            "isolated": 35,
+            "repeated": 70,
+            "severe": 85,
+            "widespread": 95
+          }
+        },
+        {
+          "fact": "talks_continuity",
+          "weight": 0.3,
+          "type": "enum",
+          "scores": {
+            "scheduled_and_confirmed": 20,
+            "proposed": 55,
+            "uncertain": 65,
+            "suspended": 80,
+            "broken": 95
+          }
+        }
+      ],
+      "bullets": [
+        "美伊以已达成两周停火，但这仍是短期、脆弱的安排。",
+        "公开报道显示，协议宣布后伊朗和海湾阿拉伯国家仍出现了新一轮袭击。",
+        "巴基斯坦称后续会谈最早可在 4月10日于伊斯兰堡举行，但连续性仍待验证。"
+      ]
+    },
+    {
+      "id": "new_front",
+      "target": "TARGET 03",
+      "title": "新战线",
+      "summary": "伊朗本土战线降温，但外围战线没有一起关闭。",
+      "overall_weight": 0.25,
+      "evidence": "证据强度: 高",
+      "display": {
+        "position": { "bottom": "28%", "right": "20%" },
+        "size": "md"
+      },
+      "facts": {
+        "geographic_spillover": "sustained_outer_front",
+        "actor_expansion": "indirect_state_support",
+        "attack_intensity": "high"
+      },
+      "metrics": [
+        {
+          "fact": "geographic_spillover",
+          "weight": 0.45,
+          "type": "enum",
+          "scores": {
+            "contained": 10,
+            "rhetoric_only": 25,
+            "one_limited_front": 50,
+            "sustained_outer_front": 75,
+            "multi_front": 95
+          }
+        },
+        {
+          "fact": "actor_expansion",
+          "weight": 0.3,
+          "type": "enum",
+          "scores": {
+            "no_new_actor": 10,
+            "proxy_only": 35,
+            "indirect_state_support": 60,
+            "direct_new_actor": 80,
+            "multiple_new_actors": 95
+          }
+        },
+        {
+          "fact": "attack_intensity",
+          "weight": 0.25,
+          "type": "enum",
+          "scores": {
+            "low": 20,
+            "moderate": 45,
+            "high": 70,
+            "extreme": 90
+          }
+        }
+      ],
+      "bullets": [
+        "以色列方面表示，对黎巴嫩真主党的战争并不在两周停火范围内。",
+        "巴基斯坦方面的说法与以色列并不一致，说明外围战线的解释仍有冲突。",
+        "只要黎巴嫩方向没有被明确纳入，外溢风险就不会真正解除。"
+      ]
+    },
+    {
+      "id": "civilian_infra",
+      "target": "TARGET 04",
+      "title": "民用基础设施",
+      "summary": "最危险的打击阈值暂时回撤，但没有完全消失。",
+      "overall_weight": 0.15,
+      "evidence": "证据强度: 高",
+      "display": {
+        "position": { "bottom": "18%", "left": "28%" },
+        "size": "lg",
+        "pulse": "pulse"
+      },
+      "facts": {
+        "threat_posture": "explicit",
+        "confirmed_strikes": "none",
+        "service_disruption": "none"
+      },
+      "metrics": [
+        {
+          "fact": "threat_posture",
+          "weight": 0.3,
+          "type": "enum",
+          "scores": {
+            "none": 10,
+            "vague": 30,
+            "explicit": 55,
+            "imminent": 75,
+            "active": 95
+          }
+        },
+        {
+          "fact": "confirmed_strikes",
+          "weight": 0.5,
+          "type": "enum",
+          "scores": {
+            "none": 10,
+            "dual_use_only": 45,
+            "limited_civilian": 75,
+            "repeated_systemic": 95
+          }
+        },
+        {
+          "fact": "service_disruption",
+          "weight": 0.2,
+          "type": "enum",
+          "scores": {
+            "none": 10,
+            "local": 35,
+            "multi_city": 65,
+            "strategic": 90
+          }
+        }
+      ],
+      "hard_floor_rules": [
+        {
+          "fact": "confirmed_strikes",
+          "any_of": ["limited_civilian", "repeated_systemic"],
+          "min_score": 75
+        }
+      ],
+      "bullets": [
+        "特朗普已暂停针对桥梁、电厂等民用目标的威胁性打击。",
+        "目前没有新的公开信息显示伊朗民用基础设施正遭受系统性打击。",
+        "这条红线回落最快，但一旦停火破裂，也会是最容易急剧跳升的一项。"
+      ]
+    },
+    {
+      "id": "energy_shipping",
+      "target": "TARGET 05",
+      "title": "能源与航运",
+      "summary": "市场正在回吐战争溢价，但航运层面的修复还没证实。",
+      "overall_weight": 0.15,
+      "evidence": "证据强度: 高",
+      "display": {
+        "position": { "top": "45%", "right": "10%" },
+        "size": "sm"
+      },
+      "facts": {
+        "brent_change_48h_pct": -12.6,
+        "freight_insurance_level": "severe",
+        "port_lng_disruption": "low"
+      },
+      "metrics": [
+        {
+          "fact": "brent_change_48h_pct",
+          "weight": 0.35,
+          "type": "band",
+          "bands": [
+            { "max": -10.01, "score": 20 },
+            { "min": -10, "max": -5.01, "score": 30 },
+            { "min": -5, "max": 5, "score": 45 },
+            { "min": 5.01, "max": 10, "score": 65 },
+            { "min": 10.01, "max": 20, "score": 80 },
+            { "min": 20.01, "score": 95 }
+          ]
+        },
+        {
+          "fact": "freight_insurance_level",
+          "weight": 0.35,
+          "type": "enum",
+          "scores": {
+            "normal": 10,
+            "elevated": 30,
+            "stressed": 55,
+            "severe": 75,
+            "dislocated": 95
+          }
+        },
+        {
+          "fact": "port_lng_disruption",
+          "weight": 0.3,
+          "type": "enum",
+          "scores": {
+            "none": 10,
+            "low": 25,
+            "medium": 50,
+            "high": 75,
+            "extreme": 95
+          }
+        }
+      ],
+      "bullets": [
+        "Brent 当日跌至 95.48 美元/桶，WTI 跌至 96.48 美元/桶，市场明显回吐避险溢价。",
+        "天然气期货下跌约 5%，说明金融市场先行押注停火能够延续。",
+        "但霍尔木兹的实际船流和保险成本是否恢复常态，仍未得到验证。"
+      ]
+    }
+  ],
   "watchlist": {
     "title": "未来48小时盯什么",
     "items": [
       {
         "label": "WATCH 01",
-        "tag": "4月10日",
-        "tone": "red",
-        "text": "伊斯兰堡会谈能否把两周停火推进为更长期框架。"
+        "tag": "霍尔木兹",
+        "tone": "yellow",
+        "text": "海峡是否真正恢复常态通航，而不只是政治层面的“重开”。"
       },
       {
         "label": "WATCH 02",
-        "tag": "霍尔木兹",
+        "tag": "停火执行",
         "tone": "yellow",
-        "text": "海峡是否真正恢复常态通航，而不只是名义重开。"
+        "text": "停火宣布后出现的新一轮袭击，会不会演变成持续性违约。"
       },
       {
         "label": "WATCH 03",
-        "tag": "黎巴嫩",
+        "tag": "4月10日",
         "tone": "red",
-        "text": "黎巴嫩方向会不会被单独排除在停火之外而继续升级。"
+        "text": "伊斯兰堡会谈能否按期举行，并把两周停火推进成更长期框架。"
       },
       {
         "label": "WATCH 04",
-        "tag": "市场验证",
-        "tone": "green",
-        "text": "油价、运价和保险成本能否在一两天内继续回落。"
+        "tag": "黎巴嫩",
+        "tone": "red",
+        "text": "黎巴嫩方向会不会继续被排除在停火之外，成为最先重新升温的外围战线。"
       }
     ]
   },
   "timeline": {
     "title": "过去48小时的关键转折",
-    "meta": "显示 4 个最新公开节点",
     "items": [
       {
         "date": "4月8日",
         "tag": "停火",
         "tone": "yellow",
-        "text": "美伊以达成两周停火，局势从升级模式转入执行模式。"
+        "text": "美伊以达成两周停火，局势从全面升级转入脆弱执行期。"
       },
       {
         "date": "4月8日",
-        "tag": "政策",
+        "tag": "违约",
         "tone": "red",
-        "text": "特朗普暂停针对桥梁、电厂等民用目标的威胁性打击。"
+        "text": "停火宣布后，伊朗和海湾阿拉伯国家仍出现了新一轮袭击。"
       },
       {
         "date": "4月8日",
         "tag": "市场",
         "tone": "green",
-        "text": "Brent 跌至 92.84 美元/桶，天然气期货下跌约 20%。"
+        "text": "Brent 跌至 95.48 美元/桶，天然气期货跌约 5%，战争溢价明显回吐。"
       },
       {
         "date": "4月8日",
         "tag": "外溢",
         "tone": "red",
-        "text": "内塔尼亚胡称黎巴嫩不在停火范围，外溢战线仍未完全关掉。"
+        "text": "以色列称黎巴嫩方向不在停火范围内，外围战线仍未真正关掉。"
       }
     ]
-  }
+  },
+  "sources": [
+    {
+      "id": "ap_ceasefire",
+      "publisher": "Associated Press",
+      "date": "2026-04-08",
+      "title": "US, Israel and Iran agree to a 2-week ceasefire as Trump pulls back on his threats",
+      "url": "https://apnews.com/article/38d75d5e4f1c7339a1456fc99415bb2a"
+    },
+    {
+      "id": "ap_markets",
+      "publisher": "Associated Press",
+      "date": "2026-04-08",
+      "title": "Asian markets jump and oil prices decline as Iran ceasefire agreement reached",
+      "url": "https://apnews.com/article/2fc5ac7823bea71984b3578ec36aacee"
+    },
+    {
+      "id": "ap_live",
+      "publisher": "Associated Press",
+      "date": "2026-04-08",
+      "title": "The Latest: Trump pulls back on threats as US, Israel and Iran reach a 2-week ceasefire deal",
+      "url": "https://apnews.com/article/4b464b08aaf7220899526c0c6da4317d"
+    }
+  ]
 }

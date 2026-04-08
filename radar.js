@@ -17,7 +17,8 @@ const TONE_MAP = {
     blipBorder: "border-primary/50",
     blipShadow: "shadow-[0_0_10px_#FF3B30]",
     blipGlow: "shadow-[0_0_15px_#FF3B30]",
-    statusBadge: "bg-primary text-on-primary"
+    statusBadge: "bg-primary text-on-primary",
+    scoreBar: "bg-primary"
   },
   yellow: {
     tactical: "tactical-border-yellow",
@@ -34,7 +35,8 @@ const TONE_MAP = {
     blipBorder: "border-tertiary/50",
     blipShadow: "shadow-[0_0_10px_#fcc419]",
     blipGlow: "shadow-[0_0_15px_#fcc419]",
-    statusBadge: "bg-tertiary text-black"
+    statusBadge: "bg-tertiary text-black",
+    scoreBar: "bg-tertiary"
   },
   green: {
     tactical: "tactical-border-green",
@@ -51,7 +53,8 @@ const TONE_MAP = {
     blipBorder: "border-emerald-400/50",
     blipShadow: "shadow-[0_0_10px_#34d399]",
     blipGlow: "shadow-[0_0_15px_#34d399]",
-    statusBadge: "bg-emerald-400/15 text-emerald-300 border border-emerald-400/30"
+    statusBadge: "bg-emerald-400/15 text-emerald-300 border border-emerald-400/30",
+    scoreBar: "bg-emerald-400"
   }
 };
 
@@ -76,22 +79,27 @@ function escapeHtml(value) {
 
 function setText(id, value) {
   const el = document.getElementById(id);
-  if (el) el.textContent = value ?? "";
+  if (el) {
+    el.textContent = value ?? "";
+  }
 }
 
 function setHtml(id, html) {
   const el = document.getElementById(id);
-  if (el) el.innerHTML = html;
+  if (el) {
+    el.innerHTML = html;
+  }
 }
 
 function toggleHidden(id, shouldHide) {
   const el = document.getElementById(id);
-  if (!el) return;
-  el.classList.toggle("hidden", shouldHide);
+  if (el) {
+    el.classList.toggle("hidden", shouldHide);
+  }
 }
 
-function formatScore(value) {
-  return Number(value).toFixed(1);
+function roundScore(value) {
+  return Math.round(Number(value) || 0);
 }
 
 function ringOffset(score) {
@@ -99,57 +107,104 @@ function ringOffset(score) {
   return (RING_CIRCUMFERENCE * (1 - normalized / 100)).toFixed(1);
 }
 
-function scoreBarClass(tone) {
-  switch (tone) {
-    case "red":
-      return "bg-primary";
-    case "yellow":
-      return "bg-tertiary/40";
-    case "green":
-      return "bg-emerald-400/50";
-    default:
-      return "bg-primary/20";
-  }
-}
-
 function positionStyle(position) {
   return Object.entries(position || {}).map(([key, value]) => `${key}: ${value}`).join("; ");
 }
 
-function renderScoreBars(bars) {
-  return (bars || []).map((tone) => `<div class="h-1.5 flex-1 ${scoreBarClass(tone)}"></div>`).join("");
+function lookupBand(value, bands, key) {
+  return (bands || []).find((band) => {
+    const min = band.min ?? Number.NEGATIVE_INFINITY;
+    const max = band.max ?? Number.POSITIVE_INFINITY;
+    return value >= min && value <= max;
+  })?.[key];
 }
 
-function renderOverlayLeft(items) {
-  return (items || []).map((item) => {
-    if (item.dot) {
-      return `<div class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-primary rounded-full"></span>${escapeHtml(item.text)}</div>`;
+function lookupTone(score, bands) {
+  return lookupBand(score, bands, "tone") || "yellow";
+}
+
+function lookupRiskLabel(score, bands) {
+  return lookupBand(score, bands, "label") || "";
+}
+
+function metricScore(metric, facts) {
+  const value = facts?.[metric.fact];
+  if (metric.type === "enum") {
+    return metric.scores?.[value] ?? 0;
+  }
+  if (metric.type === "band") {
+    return lookupBand(Number(value), metric.bands, "score") ?? 0;
+  }
+  return 0;
+}
+
+function applyHardFloors(score, dimension) {
+  return (dimension.hard_floor_rules || []).reduce((current, rule) => {
+    const factValue = dimension.facts?.[rule.fact];
+    if ((rule.any_of || []).includes(factValue)) {
+      return Math.max(current, rule.min_score || 0);
     }
-    return `<div>${escapeHtml(item.text)}</div>`;
+    return current;
+  }, score);
+}
+
+function computeDimension(dimension, config) {
+  const rawScore = (dimension.metrics || []).reduce((sum, metric) => {
+    return sum + metricScore(metric, dimension.facts) * (metric.weight || 0);
+  }, 0);
+  const rounded = roundScore(applyHardFloors(rawScore, dimension));
+  return {
+    ...dimension,
+    score: rounded,
+    tone: lookupTone(rounded, config.bands.ui_tones),
+    riskLabel: lookupRiskLabel(rounded, config.bands.risk_labels)
+  };
+}
+
+function computeDerived(data) {
+  const dimensions = (data.dimensions || []).map((dimension) => computeDimension(dimension, data));
+  const overallScore = roundScore(dimensions.reduce((sum, dimension) => {
+    return sum + dimension.score * (dimension.overall_weight || 0);
+  }, 0));
+  return {
+    overallScore,
+    overallTone: lookupTone(overallScore, data.bands.ui_tones),
+    overallLabel: lookupRiskLabel(overallScore, data.bands.risk_labels),
+    dimensions
+  };
+}
+
+function renderScoreBars(score, tone) {
+  const activeBars = Math.max(1, Math.round(score / 20));
+  const activeClass = getTone(tone).scoreBar;
+  return Array.from({ length: 5 }, (_, index) => {
+    const className = index < activeBars ? activeClass : "bg-primary/20";
+    return `<div class="h-1.5 flex-1 ${className}"></div>`;
   }).join("");
 }
 
-function renderOverlayRight(items) {
-  return (items || []).map((item) => `<div>${escapeHtml(item)}</div>`).join("");
+function renderOverlayRight(snapshotTime, items) {
+  const values = [`快照时间: 北京时间 ${snapshotTime}`, ...(items || [])];
+  return values.map((item) => `<div>${escapeHtml(item)}</div>`).join("");
 }
 
-function renderBlips(blips) {
-  return (blips || []).map((blip) => {
-    const tone = getTone(blip.tone);
-    const size = DOT_SIZE_MAP[blip.size] || DOT_SIZE_MAP.md;
-    const pulseNode = blip.pulse === "ping"
+function renderBlips(dimensions) {
+  return (dimensions || []).map((dimension) => {
+    const tone = getTone(dimension.tone);
+    const size = DOT_SIZE_MAP[dimension.display?.size] || DOT_SIZE_MAP.md;
+    const pulseNode = dimension.display?.pulse === "ping"
       ? `<div class="${size} ${tone.blipDot} rounded-full animate-ping absolute inset-0 opacity-50"></div>`
       : "";
-    const dotAnimation = blip.pulse === "pulse" ? "animate-pulse" : "";
+    const dotAnimation = dimension.display?.pulse === "pulse" ? "animate-pulse" : "";
     return `
-      <div class="absolute group z-30" style="${positionStyle(blip.position)}">
+      <div class="absolute group z-30" style="${positionStyle(dimension.display?.position)}">
         <div class="relative">
           ${pulseNode}
-          <div class="${size} ${tone.blipDot} rounded-full ${dotAnimation} ${blip.pulse === "ping" ? tone.blipGlow : tone.blipShadow}"></div>
+          <div class="${size} ${tone.blipDot} rounded-full ${dotAnimation} ${dimension.display?.pulse === "ping" ? tone.blipGlow : tone.blipShadow}"></div>
         </div>
         <div class="mt-2 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
           <div class="bg-black/90 border ${tone.blipBorder} px-2 py-1">
-            <span class="text-[12px] font-bold ${tone.blipText} font-label">${escapeHtml(blip.title)} ${escapeHtml(blip.score)}</span>
+            <span class="text-[12px] font-bold ${tone.blipText} font-label">${escapeHtml(dimension.title)} ${dimension.score}</span>
           </div>
         </div>
       </div>
@@ -157,11 +212,10 @@ function renderBlips(blips) {
   }).join("");
 }
 
-function renderIndicatorCards(cards) {
-  return (cards || []).map((card, index) => {
-    const tone = getTone(card.tone);
-    const target = card.target || `TARGET ${String(index + 1).padStart(2, "0")}`;
-    const bullets = (card.bullets || []).map((bullet) => `
+function renderIndicatorCards(dimensions) {
+  return (dimensions || []).map((dimension) => {
+    const tone = getTone(dimension.tone);
+    const bullets = (dimension.bullets || []).map((bullet) => `
       <li class="flex gap-2">
         <span class="mt-1.5 w-1.5 h-1.5 rounded-full ${tone.bullet} flex-shrink-0"></span>
         ${escapeHtml(bullet)}
@@ -172,24 +226,24 @@ function renderIndicatorCards(cards) {
       <div class="bg-surface-container-low p-6 ${tone.tactical} space-y-5 flex flex-col min-h-[480px]">
         <div class="flex justify-between items-start gap-4">
           <div>
-            <span class="text-[12px] font-label tracking-widest uppercase opacity-70">${escapeHtml(target)}</span>
-            <h3 class="text-2xl font-bold font-headline mt-1">${escapeHtml(card.title)}</h3>
-            <p class="text-[14px] mt-1 text-on-surface-variant">${escapeHtml(card.summary)}</p>
+            <span class="text-[12px] font-label tracking-widest uppercase opacity-70">${escapeHtml(dimension.target)}</span>
+            <h3 class="text-2xl font-bold font-headline mt-1">${escapeHtml(dimension.title)}</h3>
+            <p class="text-[14px] mt-1 text-on-surface-variant">${escapeHtml(dimension.summary)}</p>
           </div>
           <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
             <svg class="absolute inset-0 -rotate-90" viewBox="0 0 100 100">
               <circle cx="50" cy="50" fill="none" r="45" stroke="${tone.ringBg}" stroke-width="8"></circle>
-              <circle cx="50" cy="50" fill="none" r="45" stroke="${tone.ringStroke}" stroke-dasharray="${RING_CIRCUMFERENCE}" stroke-dashoffset="${ringOffset(card.score)}" stroke-width="8"></circle>
+              <circle cx="50" cy="50" fill="none" r="45" stroke="${tone.ringStroke}" stroke-dasharray="${RING_CIRCUMFERENCE}" stroke-dashoffset="${ringOffset(dimension.score)}" stroke-width="8"></circle>
             </svg>
             <div class="flex flex-col items-center leading-none">
-              <span class="text-xl font-black font-headline">${escapeHtml(card.score)}</span>
-              <span class="text-[9px] font-bold ${tone.label} uppercase">${escapeHtml(card.stateLabel)}</span>
+              <span class="text-xl font-black font-headline">${dimension.score}</span>
+              <span class="text-[9px] font-bold ${tone.label} uppercase">${escapeHtml(dimension.riskLabel)}</span>
             </div>
           </div>
         </div>
         <ul class="space-y-4 text-[15px] text-on-surface leading-relaxed pb-4">${bullets}</ul>
         <div class="mt-auto pt-4 border-t border-outline-variant/10 flex gap-2">
-          <span class="text-[11px] ${tone.chipBg} ${tone.chipText} border ${tone.chipBorder} px-2 py-0.5 font-bold">${escapeHtml(card.evidence)}</span>
+          <span class="text-[11px] ${tone.chipBg} ${tone.chipText} border ${tone.chipBorder} px-2 py-0.5 font-bold">${escapeHtml(dimension.evidence)}</span>
         </div>
       </div>
     `;
@@ -227,46 +281,45 @@ function renderTimelineItems(items) {
   }).join("");
 }
 
-function renderHero(hero, meta) {
-  document.title = meta.pageTitle || document.title;
-  setText("brandTitle", meta.brandTitle || "美伊红线雷达");
-  setText("heroEyebrow", hero.eyebrow || "");
-  toggleHidden("heroEyebrow", !hero.eyebrow);
-  setText("streamLabel", hero.streamLabel);
-  setText("streamContext", hero.streamContext);
-  setText("scoreLabel", hero.scoreLabel);
-  setText("heroScoreValue", formatScore(hero.scoreValue));
-  setText("heroScoreMax", `/ ${formatScore(hero.scoreMax)}`);
-  setText("dataKey", hero.dataKey ? `DATA_KEY: ${hero.dataKey}` : "");
-  setText("scanningRegion", hero.scanningRegion ? `SCANNING REGION: ${hero.scanningRegion}` : "");
-  toggleHidden("dataKey", !hero.dataKey);
-  toggleHidden("scanningRegion", !hero.scanningRegion);
-  toggleHidden("heroFooter", !hero.dataKey && !hero.scanningRegion);
-  setHtml("scoreBars", renderScoreBars(hero.scoreBars));
+function renderHero(data, derived) {
+  document.title = data.meta.pageTitle || document.title;
+  setText("brandTitle", data.meta.brandTitle || "美伊红线雷达");
+  setText("heroEyebrow", data.hero.eyebrow || "");
+  toggleHidden("heroEyebrow", !data.hero.eyebrow);
+  setText("streamLabel", data.hero.streamLabel || "");
+  setText("streamContext", data.hero.streamContext || "");
+  setText("scoreLabel", data.hero.scoreLabel || "");
+  setText("heroScoreValue", String(derived.overallScore));
+  setText("heroScoreMax", `/ ${data.hero.scoreMax || 100}`);
+  toggleHidden("dataKey", true);
+  toggleHidden("scanningRegion", true);
+  toggleHidden("heroFooter", true);
+  setHtml("scoreBars", renderScoreBars(derived.overallScore, derived.overallTone));
 
-  const statusTone = getTone(hero.statusTone);
-  setHtml("statusBadge", `<span class="material-symbols-outlined text-sm">${escapeHtml(hero.statusIcon || "shield")}</span><span>${escapeHtml(hero.statusText)}</span>`);
+  const statusTone = getTone(derived.overallTone);
+  const statusText = `${data.hero.statusPrefix || ""}${derived.overallLabel}`;
+  setHtml("statusBadge", `<span class="material-symbols-outlined text-sm">${escapeHtml(data.hero.statusIcon || "shield")}</span><span>${escapeHtml(statusText)}</span>`);
   const badge = document.getElementById("statusBadge");
   badge.className = `text-[12px] font-label font-black px-5 py-2 tracking-[0.25em] uppercase flex items-center gap-2 ${statusTone.statusBadge}`;
 }
 
-function renderRadar(radar) {
-  setHtml("overlayLeft", renderOverlayLeft(radar.leftMeta));
-  setHtml("overlayRight", renderOverlayRight(radar.rightMeta));
-  toggleHidden("overlayLeft", !radar.leftMeta || radar.leftMeta.length === 0);
-  toggleHidden("overlayRight", !radar.rightMeta || radar.rightMeta.length === 0);
-  setText("radarCenterLabel", radar.centerLabel);
-  setText("radarCenterScore", radar.centerScore);
-  setHtml("radarBlips", renderBlips(radar.blips));
+function renderRadar(data, derived) {
+  setHtml("overlayLeft", "");
+  setHtml("overlayRight", renderOverlayRight(data.meta.snapshot_time_bjt, data.radar.rightMeta));
+  toggleHidden("overlayLeft", true);
+  toggleHidden("overlayRight", false);
+  setText("radarCenterLabel", data.radar.centerLabel || "总雷达分");
+  setText("radarCenterScore", String(derived.overallScore));
+  setHtml("radarBlips", renderBlips(derived.dimensions));
 }
 
-function renderSections(data) {
-  setText("indicatorsTitle", data.indicators.title);
-  setHtml("indicatorCards", renderIndicatorCards(data.indicators.cards));
-  setText("watchlistTitle", data.watchlist.title);
+function renderSections(data, derived) {
+  setText("indicatorsTitle", "5 条红线核心指标");
+  setHtml("indicatorCards", renderIndicatorCards(derived.dimensions));
+  setText("watchlistTitle", data.watchlist.title || "");
   setHtml("watchItems", renderWatchItems(data.watchlist.items));
-  setText("timelineTitle", data.timeline.title);
-  setText("timelineMeta", data.timeline.meta || "");
+  setText("timelineTitle", data.timeline.title || "");
+  setText("timelineMeta", `显示 ${data.timeline.items.length} 个最新公开节点`);
   setHtml("timelineItems", renderTimelineItems(data.timeline.items));
 }
 
@@ -285,9 +338,10 @@ async function loadRadarData() {
       throw new Error(`HTTP ${response.status}`);
     }
     const data = await response.json();
-    renderHero(data.hero, data.meta);
-    renderRadar(data.radar);
-    renderSections(data);
+    const derived = computeDerived(data);
+    renderHero(data, derived);
+    renderRadar(data, derived);
+    renderSections(data, derived);
   } catch (error) {
     console.error(error);
     showLoadError("数据加载失败。请确认 radar-data.json 可访问。");
