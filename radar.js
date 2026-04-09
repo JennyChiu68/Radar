@@ -428,7 +428,6 @@ function renderSections(data, derived) {
   setText("watchlistTitle", data.watchlist.title || "");
   setHtml("watchItems", renderWatchItems(data.watchlist.items));
   setText("timelineTitle", data.timeline.title || "");
-  setText("timelineMeta", `显示 ${data.timeline.items.length} 个最新公开节点`);
   setHtml("timelineItems", renderTimelineItems(data.timeline.items));
 }
 
