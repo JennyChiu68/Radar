@@ -72,11 +72,23 @@
       font-size: 8px;
     }
     @keyframes breathing {
-      0%, 100% { opacity: 1; text-shadow: 0 0 10px rgba(255, 59, 48, 0.5); }
-      50% { opacity: 0.6; text-shadow: 0 0 20px rgba(255, 59, 48, 0.8); }
+      0%, 100% { opacity: 1; text-shadow: 0 0 10px var(--alert-glow-soft, rgba(255, 59, 48, 0.5)); }
+      50% { opacity: 0.6; text-shadow: 0 0 20px var(--alert-glow-strong, rgba(255, 59, 48, 0.8)); }
     }
-    .emergency-glow {
+    .alert-glow {
       animation: breathing 2s ease-in-out infinite;
+    }
+    .alert-glow-red {
+      --alert-glow-soft: rgba(255, 59, 48, 0.5);
+      --alert-glow-strong: rgba(255, 59, 48, 0.8);
+    }
+    .alert-glow-yellow {
+      --alert-glow-soft: rgba(252, 196, 25, 0.45);
+      --alert-glow-strong: rgba(252, 196, 25, 0.75);
+    }
+    .alert-glow-green {
+      --alert-glow-soft: rgba(88, 214, 141, 0.45);
+      --alert-glow-strong: rgba(88, 214, 141, 0.75);
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar {
@@ -209,8 +221,8 @@
             <p id="brand-subtitle" class="text-[13px] font-bold text-on-surface-variant tracking-[0.1em] mt-1.5 uppercase">48小时升级风险雷达</p>
           </div>
           <div id="alertBadge" class="flex items-center gap-2 mb-2">
-            <span class="material-symbols-outlined text-primary text-2xl emergency-glow">error</span>
-            <span class="text-[14px] font-bold text-primary tracking-tighter emergency-glow">紧急警报</span>
+            <span class="material-symbols-outlined text-primary text-2xl alert-glow alert-glow-red">error</span>
+            <span class="text-[14px] font-bold text-primary tracking-tighter alert-glow alert-glow-red">紧急警报</span>
           </div>
         </div>
       </header>

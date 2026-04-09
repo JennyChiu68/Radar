@@ -280,23 +280,23 @@ function getAlertConfig(tone, labelOverride) {
     return {
       icon: "check_circle",
       label: label || "持续观察",
-      iconClass: "text-success text-2xl",
-      textClass: "text-[14px] font-bold text-success tracking-tighter"
+      iconClass: "text-success text-2xl alert-glow alert-glow-green",
+      textClass: "text-[14px] font-bold text-success tracking-tighter alert-glow alert-glow-green"
     };
   }
   if (tone === "yellow") {
     return {
       icon: "warning",
       label: label || "高度警戒",
-      iconClass: "text-tertiary text-2xl",
-      textClass: "text-[14px] font-bold text-tertiary tracking-tighter"
+      iconClass: "text-tertiary text-2xl alert-glow alert-glow-yellow",
+      textClass: "text-[14px] font-bold text-tertiary tracking-tighter alert-glow alert-glow-yellow"
     };
   }
   return {
     icon: "error",
     label: label || "紧急警报",
-    iconClass: "text-primary text-2xl emergency-glow",
-    textClass: "text-[14px] font-bold text-primary tracking-tighter emergency-glow"
+    iconClass: "text-primary text-2xl alert-glow alert-glow-red",
+    textClass: "text-[14px] font-bold text-primary tracking-tighter alert-glow alert-glow-red"
   };
 }
 
