@@ -149,6 +149,25 @@
           "ap_0306_week",
           "ap_0308_successor"
         ],
+        "score_adjustment": {
+          "type": "threshold_aftershock",
+          "label": "阈值跃迁余震",
+          "delta": 12,
+          "reasons": [
+            {
+              "label": "政权级斩首后的继任与指挥真空仍在扩散",
+              "delta": 5
+            },
+            {
+              "label": "报复链已从首轮打击转为持续对攻",
+              "delta": 4
+            },
+            {
+              "label": "外围安全体系被迅速卷入",
+              "delta": 3
+            }
+          ]
+        },
         "facts": {
           "hormuz": {
             "policy_status": "restricted_open",
@@ -187,6 +206,25 @@
           "ap_0302_scope",
           "ap_0321_hezbollah"
         ],
+        "score_adjustment": {
+          "type": "threshold_aftershock",
+          "label": "阈值跃迁余震",
+          "delta": 8,
+          "reasons": [
+            {
+              "label": "外围代理人与新战线加入",
+              "delta": 4
+            },
+            {
+              "label": "首轮政权冲击仍在向多前线传导",
+              "delta": 2
+            },
+            {
+              "label": "海峡与能源变量尚未完全反映战场冲击",
+              "delta": 2
+            }
+          ]
+        },
         "facts": {
           "hormuz": {
             "policy_status": "restricted_open",
@@ -225,6 +263,21 @@
           "ap_0302_scope",
           "ap_0321_hezbollah"
         ],
+        "score_adjustment": {
+          "type": "threshold_aftershock",
+          "label": "阈值跃迁余震",
+          "delta": 6,
+          "reasons": [
+            {
+              "label": "斩首冲击的政治余震仍在",
+              "delta": 3
+            },
+            {
+              "label": "多前线动员尚未完全体现进海峡与能源分项",
+              "delta": 3
+            }
+          ]
+        },
         "facts": {
           "hormuz": {
             "policy_status": "restricted_open",
@@ -263,6 +316,17 @@
           "ap_0306_week",
           "ap_0312_leader"
         ],
+        "score_adjustment": {
+          "type": "threshold_aftershock",
+          "label": "阈值跃迁余震",
+          "delta": 3,
+          "reasons": [
+            {
+              "label": "阈值跃迁的滞后影响尚未被分项完全消化",
+              "delta": 3
+            }
+          ]
+        },
         "facts": {
           "hormuz": {
             "policy_status": "partial_closure",
@@ -301,6 +365,17 @@
           "ap_0306_week",
           "ap_0312_leader"
         ],
+        "score_adjustment": {
+          "type": "threshold_aftershock",
+          "label": "阈值跃迁余震",
+          "delta": 2,
+          "reasons": [
+            {
+              "label": "开战首周的高压惯性仍在延续",
+              "delta": 2
+            }
+          ]
+        },
         "facts": {
           "hormuz": {
             "policy_status": "partial_closure",
