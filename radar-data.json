@@ -2,22 +2,58 @@
   "meta": {
     "pageTitle": "美伊红线指数 | 48小时升级风险雷达",
     "brandTitle": "美伊红线指数",
-    "snapshot_time_bjt": "2026-04-08 21:58",
+    "snapshot_time_bjt": "2026-04-09 11:36",
     "scoring_version": "v1.0"
   },
   "bands": {
     "risk_labels": [
-      { "min": 0, "max": 19, "label": "低" },
-      { "min": 20, "max": 39, "label": "可观察" },
-      { "min": 40, "max": 59, "label": "脆弱" },
-      { "min": 60, "max": 74, "label": "紧绷" },
-      { "min": 75, "max": 89, "label": "临界" },
-      { "min": 90, "max": 100, "label": "极高" }
+      {
+        "min": 0,
+        "max": 19,
+        "label": "低"
+      },
+      {
+        "min": 20,
+        "max": 39,
+        "label": "可观察"
+      },
+      {
+        "min": 40,
+        "max": 59,
+        "label": "脆弱"
+      },
+      {
+        "min": 60,
+        "max": 74,
+        "label": "紧绷"
+      },
+      {
+        "min": 75,
+        "max": 89,
+        "label": "临界"
+      },
+      {
+        "min": 90,
+        "max": 100,
+        "label": "极高"
+      }
     ],
     "ui_tones": [
-      { "min": 0, "max": 49, "tone": "green" },
-      { "min": 50, "max": 64, "tone": "yellow" },
-      { "min": 65, "max": 100, "tone": "red" }
+      {
+        "min": 0,
+        "max": 49,
+        "tone": "green"
+      },
+      {
+        "min": 50,
+        "max": 64,
+        "tone": "yellow"
+      },
+      {
+        "min": 65,
+        "max": 100,
+        "tone": "red"
+      }
     ]
   },
   "hero": {
@@ -42,41 +78,12 @@
     "method": "按北京时间每日同一时点回填公开报道事实，并用当前权重与阈值重算总分。",
     "snapshots": [
       {
-        "date": "2026-04-02",
-        "snapshot_time_bjt": "2026-04-02 21:00",
-        "source_ids": ["ap_0402_war"],
-        "facts": {
-          "hormuz": {
-            "policy_status": "closed_or_blocked",
-            "traffic_recovery_pct_estimate": 0,
-            "shipping_disruption_level": "extreme"
-          },
-          "ceasefire": {
-            "ceasefire_status": "collapsed",
-            "violation_level": "widespread",
-            "talks_continuity": "uncertain"
-          },
-          "new_front": {
-            "geographic_spillover": "multi_front",
-            "actor_expansion": "direct_new_actor",
-            "attack_intensity": "extreme"
-          },
-          "civilian_infra": {
-            "threat_posture": "active",
-            "confirmed_strikes": "limited_civilian",
-            "service_disruption": "local"
-          },
-          "energy_shipping": {
-            "brent_change_48h_pct": 18.0,
-            "freight_insurance_level": "dislocated",
-            "port_lng_disruption": "high"
-          }
-        }
-      },
-      {
         "date": "2026-04-03",
         "snapshot_time_bjt": "2026-04-03 21:00",
-        "source_ids": ["ap_0403_hormuz", "ap_0403_fuel"],
+        "source_ids": [
+          "ap_0403_hormuz",
+          "ap_0403_fuel"
+        ],
         "facts": {
           "hormuz": {
             "policy_status": "partial_closure",
@@ -108,7 +115,10 @@
       {
         "date": "2026-04-04",
         "snapshot_time_bjt": "2026-04-04 21:00",
-        "source_ids": ["ap_0404_live", "ap_0404_energy"],
+        "source_ids": [
+          "ap_0404_live",
+          "ap_0404_energy"
+        ],
         "facts": {
           "hormuz": {
             "policy_status": "partial_closure",
@@ -140,7 +150,9 @@
       {
         "date": "2026-04-05",
         "snapshot_time_bjt": "2026-04-05 21:00",
-        "source_ids": ["ap_0405_live"],
+        "source_ids": [
+          "ap_0405_live"
+        ],
         "facts": {
           "hormuz": {
             "policy_status": "partial_closure",
@@ -172,7 +184,10 @@
       {
         "date": "2026-04-06",
         "snapshot_time_bjt": "2026-04-06 21:00",
-        "source_ids": ["ap_0406_infra", "ap_0406_live"],
+        "source_ids": [
+          "ap_0406_infra",
+          "ap_0406_live"
+        ],
         "facts": {
           "hormuz": {
             "policy_status": "partial_closure",
@@ -204,7 +219,10 @@
       {
         "date": "2026-04-07",
         "snapshot_time_bjt": "2026-04-07 21:00",
-        "source_ids": ["ap_0407_deadline", "ap_0406_infra"],
+        "source_ids": [
+          "ap_0407_deadline",
+          "ap_0406_infra"
+        ],
         "facts": {
           "hormuz": {
             "policy_status": "partial_closure",
@@ -236,7 +254,12 @@
       {
         "date": "2026-04-08",
         "snapshot_time_bjt": "2026-04-08 21:00",
-        "source_ids": ["ap_0408_ceasefire", "ap_0408_markets", "ap_0408_beirut", "ap_0408_live"],
+        "source_ids": [
+          "ap_0408_ceasefire",
+          "ap_0408_markets",
+          "ap_0408_beirut",
+          "ap_0408_live"
+        ],
         "facts": {
           "hormuz": {
             "policy_status": "military_controlled_open",
@@ -264,6 +287,44 @@
             "port_lng_disruption": "low"
           }
         }
+      },
+      {
+        "date": "2026-04-09",
+        "snapshot_time_bjt": "2026-04-09 11:36",
+        "source_ids": [
+          "ap_0408_ceasefire",
+          "ap_0408_markets",
+          "ap_0408_beirut",
+          "ap_0408_live",
+          "ap_0408_terms"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "repeatedly_disrupted",
+            "violation_level": "widespread",
+            "talks_continuity": "uncertain"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": -13.3,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        }
       }
     ]
   },
@@ -272,18 +333,21 @@
       "id": "hormuz",
       "target": "TARGET 01",
       "title": "霍尔木兹",
-      "summary": "从政治重开转向执行检验。",
+      "summary": "海峡再次关闭，停火后的通行恢复已被打断。",
       "overall_weight": 0.25,
       "evidence": "证据强度: 高",
       "display": {
-        "position": { "top": "18%", "right": "15%" },
+        "position": {
+          "top": "18%",
+          "right": "15%"
+        },
         "size": "lg",
         "pulse": "ping"
       },
       "facts": {
-        "policy_status": "military_controlled_open",
-        "traffic_recovery_pct_estimate": 20,
-        "shipping_disruption_level": "high"
+        "policy_status": "closed_or_blocked",
+        "traffic_recovery_pct_estimate": 0,
+        "shipping_disruption_level": "extreme"
       },
       "metrics": [
         {
@@ -304,12 +368,34 @@
           "weight": 0.35,
           "type": "band",
           "bands": [
-            { "min": 90, "score": 10 },
-            { "min": 70, "max": 89.99, "score": 25 },
-            { "min": 50, "max": 69.99, "score": 45 },
-            { "min": 30, "max": 49.99, "score": 65 },
-            { "min": 10, "max": 29.99, "score": 80 },
-            { "max": 9.99, "score": 95 }
+            {
+              "min": 90,
+              "score": 10
+            },
+            {
+              "min": 70,
+              "max": 89.99,
+              "score": 25
+            },
+            {
+              "min": 50,
+              "max": 69.99,
+              "score": 45
+            },
+            {
+              "min": 30,
+              "max": 49.99,
+              "score": 65
+            },
+            {
+              "min": 10,
+              "max": 29.99,
+              "score": 80
+            },
+            {
+              "max": 9.99,
+              "score": 95
+            }
           ]
         },
         {
@@ -326,26 +412,29 @@
         }
       ],
       "bullets": [
-        "停火协议包含霍尔木兹重开，但伊朗仍准备在军方管理下开放并收费。",
-        "公开报道仍未显示船流已经恢复常态，真正的执行风险还在后面。",
-        "印度等外部参与方已把“是否恢复不受阻碍航行”视为核心观察点。"
+        "AP 报道显示，伊朗在以军扩大黎巴嫩打击后再次关闭霍尔木兹海峡。",
+        "独立航运分析仍未观察到船流恢复，前一日只有 11 艘船通过海峡。",
+        "伊朗仍坚持对过境船只收费，海峡已从“受控开放”重新退回到“再次封堵”。"
       ]
     },
     {
       "id": "ceasefire",
       "target": "TARGET 02",
       "title": "停火 / 谈判",
-      "summary": "停火已经出现，但执行面很脆弱。",
+      "summary": "停火没有正式破裂，但已经进入高频违约状态。",
       "overall_weight": 0.2,
       "evidence": "证据强度: 高",
       "display": {
-        "position": { "top": "35%", "left": "22%" },
+        "position": {
+          "top": "35%",
+          "left": "22%"
+        },
         "size": "md"
       },
       "facts": {
-        "ceasefire_status": "formal_fragile",
-        "violation_level": "repeated",
-        "talks_continuity": "proposed"
+        "ceasefire_status": "repeatedly_disrupted",
+        "violation_level": "widespread",
+        "talks_continuity": "uncertain"
       },
       "metrics": [
         {
@@ -386,25 +475,28 @@
         }
       ],
       "bullets": [
-        "美伊以已达成两周停火，但这仍是短期、脆弱的安排。",
-        "公开报道显示，协议宣布后伊朗和海湾阿拉伯国家仍出现了新一轮袭击。",
-        "巴基斯坦称后续会谈最早可在 4月10日于伊斯兰堡举行，但连续性仍待验证。"
+        "AP 称这项两周停火“悬于一线”，各方对条款版本和适用范围说法冲突。",
+        "伊朗议长公开称停火和后续谈判“unreasonable”，指责美方违反三项条件。",
+        "白宫仍在推动最早周五于巴基斯坦开启谈判，但连续性和可信度都在下降。"
       ]
     },
     {
       "id": "new_front",
       "target": "TARGET 03",
       "title": "新战线",
-      "summary": "伊朗本土战线降温，但外围战线没有一起关闭。",
+      "summary": "战火已经重新从伊朗本土外溢到多方向。",
       "overall_weight": 0.25,
       "evidence": "证据强度: 高",
       "display": {
-        "position": { "bottom": "28%", "right": "20%" },
+        "position": {
+          "bottom": "28%",
+          "right": "20%"
+        },
         "size": "md"
       },
       "facts": {
-        "geographic_spillover": "sustained_outer_front",
-        "actor_expansion": "indirect_state_support",
+        "geographic_spillover": "multi_front",
+        "actor_expansion": "direct_new_actor",
         "attack_intensity": "extreme"
       },
       "metrics": [
@@ -445,27 +537,30 @@
         }
       ],
       "bullets": [
-        "以军在停火宣布后 10 分钟内打击了 100 多个真主党目标，黎巴嫩战线明显升温。",
-        "以色列坚持称对伊停火不包括黎巴嫩，而巴基斯坦方面的说法并不一致。",
-        "伊朗本土战线降温，不代表外围战线已经同步收口。"
+        "以军在 10 分钟内打击了超过 100 个真主党目标，覆盖贝鲁特、南黎和贝卡谷地。",
+        "AP 报道称停火宣布后，伊朗和海湾阿拉伯国家仍遭遇新一轮导弹和无人机袭击。",
+        "真主党随后继续向以色列北部发射火箭，外围战线已不是单点摩擦。"
       ]
     },
     {
       "id": "civilian_infra",
       "target": "TARGET 04",
       "title": "民用基础设施",
-      "summary": "最危险的打击阈值暂时回撤，但没有完全消失。",
+      "summary": "民用区域已被直接打击，风险重新跃升到高位。",
       "overall_weight": 0.15,
       "evidence": "证据强度: 高",
       "display": {
-        "position": { "bottom": "18%", "left": "28%" },
+        "position": {
+          "bottom": "18%",
+          "left": "28%"
+        },
         "size": "lg",
         "pulse": "pulse"
       },
       "facts": {
-        "threat_posture": "explicit",
-        "confirmed_strikes": "none",
-        "service_disruption": "none"
+        "threat_posture": "active",
+        "confirmed_strikes": "limited_civilian",
+        "service_disruption": "local"
       },
       "metrics": [
         {
@@ -506,31 +601,37 @@
       "hard_floor_rules": [
         {
           "fact": "confirmed_strikes",
-          "any_of": ["limited_civilian", "repeated_systemic"],
+          "any_of": [
+            "limited_civilian",
+            "repeated_systemic"
+          ],
           "min_score": 75
         }
       ],
       "bullets": [
-        "特朗普已暂停针对桥梁、电厂等民用目标的威胁性打击。",
-        "目前没有新的公开信息显示伊朗民用基础设施正遭受系统性打击。",
-        "这条红线回落最快，但一旦停火破裂，也会是最容易急剧跳升的一项。"
+        "AP 报道称，以军周三击中了贝鲁特中部的商业区和居民区。",
+        "黎巴嫩卫生部称，当天至少 182 人死亡、数百人受伤，是本轮战争最致命的一天。",
+        "这一项不再只是“威胁阈值”，而是已经出现确认打击。"
       ]
     },
     {
       "id": "energy_shipping",
       "target": "TARGET 05",
       "title": "能源与航运",
-      "summary": "市场正在回吐战争溢价，但航运层面的修复还没证实。",
+      "summary": "金融价格回吐了部分溢价，但航运与保险链条仍然紧绷。",
       "overall_weight": 0.15,
       "evidence": "证据强度: 高",
       "display": {
-        "position": { "top": "45%", "right": "10%" },
+        "position": {
+          "top": "45%",
+          "right": "10%"
+        },
         "size": "sm"
       },
       "facts": {
-        "brent_change_48h_pct": -16.6,
+        "brent_change_48h_pct": -13.3,
         "freight_insurance_level": "severe",
-        "port_lng_disruption": "low"
+        "port_lng_disruption": "medium"
       },
       "metrics": [
         {
@@ -538,12 +639,34 @@
           "weight": 0.35,
           "type": "band",
           "bands": [
-            { "max": -10.01, "score": 20 },
-            { "min": -10, "max": -5.01, "score": 30 },
-            { "min": -5, "max": 5, "score": 45 },
-            { "min": 5.01, "max": 10, "score": 65 },
-            { "min": 10.01, "max": 20, "score": 80 },
-            { "min": 20.01, "score": 95 }
+            {
+              "max": -10.01,
+              "score": 20
+            },
+            {
+              "min": -10,
+              "max": -5.01,
+              "score": 30
+            },
+            {
+              "min": -5,
+              "max": 5,
+              "score": 45
+            },
+            {
+              "min": 5.01,
+              "max": 10,
+              "score": 65
+            },
+            {
+              "min": 10.01,
+              "max": 20,
+              "score": 80
+            },
+            {
+              "min": 20.01,
+              "score": 95
+            }
           ]
         },
         {
@@ -572,9 +695,9 @@
         }
       ],
       "bullets": [
-        "AP 报道显示，Brent 一度跌至 91.11 美元/桶，市场明显回吐战争溢价。",
-        "但油价仍高于战前水平，说明投资者并不认为风险已经被完全清掉。",
-        "霍尔木兹的实际船流和保险成本是否恢复常态，仍未得到确认。"
+        "AP 报道中，Brent 一度跌回 95 美元附近，但仍明显高于战前大约 70 美元的水平。",
+        "海峡再次关闭后，市场日内乐观情绪迅速降温，说明价格并未真正反映通行恢复。",
+        "航运分析机构称并未看到船流改善，且伊朗仍要求高额过境费用。"
       ]
     }
   ],
@@ -584,26 +707,26 @@
       {
         "label": "WATCH 01",
         "tag": "霍尔木兹",
-        "tone": "yellow",
-        "text": "海峡是否真正恢复常态通航，而不只是政治层面的“重开”。"
+        "tone": "red",
+        "text": "海峡再次关闭后，白宫要求重开；未来 24 小时最关键的是是否真的恢复放行，而不是口头承诺。"
       },
       {
         "label": "WATCH 02",
-        "tag": "停火执行",
-        "tone": "yellow",
-        "text": "停火宣布后出现的新一轮袭击，会不会演变成持续性违约。"
+        "tag": "停火条款",
+        "tone": "red",
+        "text": "伊朗称部分框架条款已被美方破坏，若“停火有效但谈判无效”的状态持续，指数仍会维持高位。"
       },
       {
         "label": "WATCH 03",
-        "tag": "谈判时间表",
+        "tag": "黎巴嫩",
         "tone": "red",
-        "text": "白宫称面对面会谈安排仍未最终敲定，停火能否转成长协议仍有悬念。"
+        "text": "若以军继续扩大对贝鲁特与真主党目标的空袭，外围战线会继续主导风险评分。"
       },
       {
         "label": "WATCH 04",
-        "tag": "黎巴嫩",
-        "tone": "red",
-        "text": "黎巴嫩方向会不会继续被排除在停火之外，成为最先重新升温的外围战线。"
+        "tag": "周五会谈",
+        "tone": "yellow",
+        "text": "白宫称最早周五可在巴基斯坦开启谈判；若时间表落空，停火/谈判项可能进一步上修。"
       }
     ]
   },
@@ -611,34 +734,28 @@
     "title": "过去48小时的关键转折",
     "items": [
       {
-        "date": "4月8日",
+        "date": "4月9日",
+        "tag": "霍尔木兹",
+        "tone": "red",
+        "text": "AP 报道称伊朗在以军扩大黎巴嫩打击后再次关闭霍尔木兹海峡，白宫要求立即重开。"
+      },
+      {
+        "date": "4月9日",
         "tag": "黎巴嫩",
         "tone": "red",
-        "text": "以军在停火宣布后对贝鲁特、南黎和贝卡谷地发动逾 100 个目标的协同打击。"
+        "text": "以军 10 分钟内打击超 100 个目标，贝鲁特商业区和居民区遭袭，至少 182 人死亡。"
       },
       {
-        "date": "4月8日",
-        "tag": "停火",
+        "date": "4月9日",
+        "tag": "谈判",
         "tone": "yellow",
-        "text": "美伊以达成两周停火，局势从全面升级转入脆弱执行期。"
+        "text": "伊朗议长称停火与谈判“unreasonable”，指责美方违反三项条件，条款解释冲突加剧。"
       },
       {
-        "date": "4月8日",
-        "tag": "航运",
-        "tone": "yellow",
-        "text": "霍尔木兹恢复为受控通行状态，但伊朗和阿曼收费、船只是否愿意回流仍不清楚。"
-      },
-      {
-        "date": "4月8日",
+        "date": "4月9日",
         "tag": "市场",
-        "tone": "green",
-        "text": "Brent 一度跌至 91.11 美元/桶，金融市场明显回吐战争溢价。"
-      },
-      {
-        "date": "4月7日",
-        "tag": "最后通牒",
-        "tone": "red",
-        "text": "特朗普在最后通牒前威胁毁掉伊朗桥梁与电厂，随后在截止前转向两周停火。"
+        "tone": "yellow",
+        "text": "油价虽曾跌回 95 美元附近，但市场乐观情绪迅速回落，因为船流与通行并未真正恢复。"
       }
     ]
   },
@@ -724,29 +841,36 @@
       "id": "ap_0408_ceasefire",
       "publisher": "Associated Press",
       "date": "2026-04-08",
-      "title": "US, Israel and Iran agree to a 2-week ceasefire but much remains unclear and some attacks continue",
+      "title": "Ceasefire is threatened as Israel expands Lebanon strikes and Iran closes strait again",
       "url": "https://apnews.com/article/38d75d5e4f1c7339a1456fc99415bb2a"
     },
     {
       "id": "ap_0408_markets",
       "publisher": "Associated Press",
       "date": "2026-04-08",
-      "title": "The Dow surges 1,300 in a worldwide rally as oil plunges toward $90 following a ceasefire with Iran",
+      "title": "Oil plunges below $95 as the Dow surges 1,300 in a worldwide rally following a ceasefire with Iran",
       "url": "https://apnews.com/article/2fc5ac7823bea71984b3578ec36aacee"
     },
     {
       "id": "ap_0408_beirut",
       "publisher": "Associated Press",
       "date": "2026-04-08",
-      "title": "Israel strikes central Beirut without warning after saying Iran ceasefire doesn't apply there",
+      "title": "At least 182 killed as Israel strikes central Beirut after saying Iran truce doesn’t apply there",
       "url": "https://apnews.com/article/9402965418687c634d4a157c966ec6ea"
     },
     {
       "id": "ap_0408_live",
       "publisher": "Associated Press",
       "date": "2026-04-08",
-      "title": "The Latest: Attacks reported in Iran and Gulf Arab nations hours after ceasefire announcement",
+      "title": "The Latest: Iran closes the Strait of Hormuz in response to Israeli attacks on Lebanon",
       "url": "https://apnews.com/article/4b464b08aaf7220899526c0c6da4317d"
+    },
+    {
+      "id": "ap_0408_terms",
+      "publisher": "Associated Press",
+      "date": "2026-04-08",
+      "title": "What does the Iran ceasefire deal mean? It depends on which side you talk to",
+      "url": "https://apnews.com/article/9f5d7fce2cf32b8513861ca872e3cfb2"
     }
   ]
 }
