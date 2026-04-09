@@ -89,6 +89,12 @@ const MODAL_METRIC_IDS = {
   energy_shipping: "m-energy"
 };
 
+const HISTORY_SIGNAL_LABELS = {
+  green: "短暂缓和",
+  yellow: "胶着脆弱",
+  red: "升级高压"
+};
+
 function getTone(tone) {
   return TONE_MAP[tone] || TONE_MAP.red;
 }
@@ -268,11 +274,12 @@ function buildSourceMap(sources) {
   return new Map((sources || []).map((source) => [source.id, source]));
 }
 
-function getAlertConfig(tone) {
+function getAlertConfig(tone, labelOverride) {
+  const label = labelOverride || HISTORY_SIGNAL_LABELS[tone];
   if (tone === "green") {
     return {
       icon: "check_circle",
-      label: "持续观察",
+      label: label || "持续观察",
       iconClass: "text-success text-2xl",
       textClass: "text-[14px] font-bold text-success tracking-tighter"
     };
@@ -280,21 +287,26 @@ function getAlertConfig(tone) {
   if (tone === "yellow") {
     return {
       icon: "warning",
-      label: "高度警戒",
+      label: label || "高度警戒",
       iconClass: "text-tertiary text-2xl",
       textClass: "text-[14px] font-bold text-tertiary tracking-tighter"
     };
   }
   return {
     icon: "error",
-    label: "紧急警报",
+    label: label || "紧急警报",
     iconClass: "text-primary text-2xl emergency-glow",
     textClass: "text-[14px] font-bold text-primary tracking-tighter emergency-glow"
   };
 }
 
-function renderAlertBadge(overallTone) {
-  const config = getAlertConfig(overallTone);
+function getHistorySignalTone(score, data) {
+  return lookupBand(score, data.history?.history_ui_tones, "tone") || lookupTone(score, data.bands?.ui_tones);
+}
+
+function renderAlertBadge(data, score) {
+  const tone = getHistorySignalTone(score, data);
+  const config = getAlertConfig(tone, HISTORY_SIGNAL_LABELS[tone]);
   setHtml(
     "alertBadge",
     `<span class="material-symbols-outlined ${config.iconClass}">${config.icon}</span><span class="${config.textClass}">${config.label}</span>`
@@ -529,7 +541,7 @@ function updateHeader(data, derived) {
   setText("brand-subtitle", data.hero?.eyebrow || "48小时升级风险雷达");
   setText("radar-date-display", formatSnapshotDisplay(data.meta?.snapshot_time_bjt));
   setText("hero-score", `${derived.overallScore}%`);
-  renderAlertBadge(derived.overallTone);
+  renderAlertBadge(data, derived.overallScore);
 }
 
 function renderDashboard(data, derived, historySnapshots) {
