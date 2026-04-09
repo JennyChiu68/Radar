@@ -81,12 +81,36 @@
         "date": "2026-02-28",
         "snapshot_time_bjt": "2026-02-28 21:00",
         "tag": "开战",
-        "headline": "开战首日，美以打击伊朗高层并引发报复，战争正式成形。",
-        "summary": "首日冲击集中在伊朗政军高层与导弹报复，海峡和能源链还没完全断裂，但未来 48 小时升级窗口已经打开。",
+        "headline": "开战首日，哈梅内伊在首轮打击中身亡，战争以政权级冲击开场。",
+        "summary": "首日冲击不只是高层遇袭，而是直接越过最高权力阈值。海峡和能源链尚未完全断裂，但未来 48 小时的升级窗口被显著抬高。",
         "source_ids": [
           "ap_0302_scope",
+          "ap_0308_successor",
           "ap_0309_assessment"
         ],
+        "score_adjustment": {
+          "type": "threshold_transition",
+          "label": "阈值跃迁修正",
+          "delta": 18,
+          "reasons": [
+            {
+              "label": "开战首轮大规模打击",
+              "delta": 4
+            },
+            {
+              "label": "政权级斩首",
+              "delta": 8
+            },
+            {
+              "label": "48小时内明确报复链启动",
+              "delta": 4
+            },
+            {
+              "label": "指挥中枢不确定性急升",
+              "delta": 2
+            }
+          ]
+        },
         "facts": {
           "hormuz": {
             "policy_status": "restricted_open",

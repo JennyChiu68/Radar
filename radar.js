@@ -228,6 +228,15 @@ function computeDerived(data) {
   };
 }
 
+function clampScore(score) {
+  return Math.max(0, Math.min(100, roundScore(score)));
+}
+
+function getSnapshotAdjustment(snapshot) {
+  const delta = Number(snapshot?.score_adjustment?.delta || 0);
+  return Number.isFinite(delta) ? delta : 0;
+}
+
 function withSnapshotFacts(data, snapshot) {
   if (!snapshot?.facts) {
     return data;
@@ -254,11 +263,15 @@ function computeHistorySnapshots(data) {
   return (data.history?.snapshots || []).map((snapshot) => {
     const snapshotData = withSnapshotFacts(data, snapshot);
     const derived = computeDerived(snapshotData);
+    const appliedAdjustment = getSnapshotAdjustment(snapshot);
+    const adjustedOverallScore = clampScore(derived.overallScore + appliedAdjustment);
     return {
       ...snapshot,
-      overallScore: derived.overallScore,
-      overallTone: derived.overallTone,
-      overallLabel: derived.overallLabel,
+      baseOverallScore: derived.overallScore,
+      overallScore: adjustedOverallScore,
+      overallTone: lookupTone(adjustedOverallScore, data.bands.ui_tones),
+      overallLabel: lookupRiskLabel(adjustedOverallScore, data.bands.risk_labels),
+      appliedAdjustment,
       dimensions: derived.dimensions
     };
   });
