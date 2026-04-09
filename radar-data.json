@@ -2,7 +2,7 @@
   "meta": {
     "pageTitle": "美伊红线指数 | 48小时升级风险雷达",
     "brandTitle": "美伊红线指数",
-    "snapshot_time_bjt": "2026-04-09 11:36",
+    "snapshot_time_bjt": "2026-04-09 13:56",
     "scoring_version": "v1.0"
   },
   "bands": {
@@ -75,8 +75,1306 @@
     "trendLabel": "过去7天趋势",
     "timezone": "Asia/Shanghai",
     "cutoff_time_bjt": "21:00",
-    "method": "按北京时间每日同一时点回填公开报道事实，并用当前权重与阈值重算总分。",
+    "method": "按北京时间每日固定时点回填公开报道事实；若当日无同口径新变化，则沿用最近一次已确认状态，直到关键事件改变事实变量。",
     "snapshots": [
+      {
+        "date": "2026-02-28",
+        "snapshot_time_bjt": "2026-02-28 21:00",
+        "tag": "开战",
+        "headline": "开战首日，美以打击伊朗高层并引发报复，战争正式成形。",
+        "summary": "首日冲击集中在伊朗政军高层与导弹报复，海峡和能源链还没完全断裂，但未来 48 小时升级窗口已经打开。",
+        "source_ids": [
+          "ap_0302_scope",
+          "ap_0309_assessment"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "restricted_open",
+            "traffic_recovery_pct_estimate": 70,
+            "shipping_disruption_level": "medium"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "severe",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "one_limited_front",
+            "actor_expansion": "no_new_actor",
+            "attack_intensity": "moderate"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "none",
+            "service_disruption": "none"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 8,
+            "freight_insurance_level": "elevated",
+            "port_lng_disruption": "low"
+          }
+        }
+      },
+      {
+        "date": "2026-03-01",
+        "snapshot_time_bjt": "2026-03-01 21:00",
+        "tag": "外溢",
+        "headline": "海湾与以色列方向开始持续承压，战争从单次打击转为连续对攻。",
+        "summary": "海湾安全与导弹防御被卷入，指数从开战震荡转向稳定上行。",
+        "source_ids": [
+          "ap_0306_week",
+          "ap_0308_successor"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "restricted_open",
+            "traffic_recovery_pct_estimate": 70,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "severe",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "proxy_only",
+            "attack_intensity": "moderate"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "none",
+            "service_disruption": "none"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 10.2,
+            "freight_insurance_level": "stressed",
+            "port_lng_disruption": "low"
+          }
+        }
+      },
+      {
+        "date": "2026-03-02",
+        "snapshot_time_bjt": "2026-03-02 21:00",
+        "tag": "黎巴嫩",
+        "headline": "真主党加入后，外围战线从伊朗本土迅速外溢到黎巴嫩。",
+        "summary": "战区不再局限于伊朗与以色列之间，冲突开始具备多前线特征。",
+        "source_ids": [
+          "ap_0302_scope",
+          "ap_0321_hezbollah"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "restricted_open",
+            "traffic_recovery_pct_estimate": 30,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "proxy_only",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "none",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12.5,
+            "freight_insurance_level": "stressed",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-03-03",
+        "snapshot_time_bjt": "2026-03-03 21:00",
+        "tag": "黎巴嫩",
+        "headline": "真主党加入后，外围战线从伊朗本土迅速外溢到黎巴嫩。",
+        "summary": "战区不再局限于伊朗与以色列之间，冲突开始具备多前线特征。",
+        "source_ids": [
+          "ap_0302_scope",
+          "ap_0321_hezbollah"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "restricted_open",
+            "traffic_recovery_pct_estimate": 30,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "proxy_only",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "none",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12.5,
+            "freight_insurance_level": "stressed",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-03-04",
+        "snapshot_time_bjt": "2026-03-04 21:00",
+        "tag": "航运",
+        "headline": "霍尔木兹通行收缩、油价跳升，战争开始咬住全球能源链。",
+        "summary": "这两天的主变量从单纯军事打击转为海峡与航运，风险开始进入红区。",
+        "source_ids": [
+          "ap_0306_week",
+          "ap_0312_leader"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 30,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "proxy_only",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "none",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12,
+            "freight_insurance_level": "stressed",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-03-05",
+        "snapshot_time_bjt": "2026-03-05 21:00",
+        "tag": "航运",
+        "headline": "霍尔木兹通行收缩、油价跳升，战争开始咬住全球能源链。",
+        "summary": "这两天的主变量从单纯军事打击转为海峡与航运，风险开始进入红区。",
+        "source_ids": [
+          "ap_0306_week",
+          "ap_0312_leader"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 30,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "proxy_only",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "none",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12,
+            "freight_insurance_level": "stressed",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-03-06",
+        "snapshot_time_bjt": "2026-03-06 21:00",
+        "tag": "升级",
+        "headline": "战争首周末进入高强度轰炸，伊拉克和海湾同步承压。",
+        "summary": "油气、补给、港口和外围军事目标都被卷入，冲突从扩散进入持续高压。",
+        "source_ids": [
+          "ap_0306_week",
+          "ap_0308_successor"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 20,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "imminent",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 15,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-03-07",
+        "snapshot_time_bjt": "2026-03-07 21:00",
+        "tag": "升级",
+        "headline": "战争首周末进入高强度轰炸，伊拉克和海湾同步承压。",
+        "summary": "油气、补给、港口和外围军事目标都被卷入，冲突从扩散进入持续高压。",
+        "source_ids": [
+          "ap_0306_week",
+          "ap_0308_successor"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 20,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "imminent",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 15,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-03-08",
+        "snapshot_time_bjt": "2026-03-08 21:00",
+        "tag": "升级",
+        "headline": "战争首周末进入高强度轰炸，伊拉克和海湾同步承压。",
+        "summary": "油气、补给、港口和外围军事目标都被卷入，冲突从扩散进入持续高压。",
+        "source_ids": [
+          "ap_0306_week",
+          "ap_0308_successor"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 20,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "imminent",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 15,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        }
+      },
+      {
+        "date": "2026-03-09",
+        "snapshot_time_bjt": "2026-03-09 21:00",
+        "tag": "封控",
+        "headline": "新最高领袖确认硬抗，霍尔木兹几近封死，油价重新冲高。",
+        "summary": "领导层延战、海峡封控、能源恐慌一起抬升，日指数第一次稳定在高危区。",
+        "source_ids": [
+          "ap_0309_assessment",
+          "ap_0312_leader",
+          "ap_0312_kharg"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "imminent",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-10",
+        "snapshot_time_bjt": "2026-03-10 21:00",
+        "tag": "封控",
+        "headline": "新最高领袖确认硬抗，霍尔木兹几近封死，油价重新冲高。",
+        "summary": "领导层延战、海峡封控、能源恐慌一起抬升，日指数第一次稳定在高危区。",
+        "source_ids": [
+          "ap_0309_assessment",
+          "ap_0312_leader",
+          "ap_0312_kharg"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "imminent",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-11",
+        "snapshot_time_bjt": "2026-03-11 21:00",
+        "tag": "封控",
+        "headline": "新最高领袖确认硬抗，霍尔木兹几近封死，油价重新冲高。",
+        "summary": "领导层延战、海峡封控、能源恐慌一起抬升，日指数第一次稳定在高危区。",
+        "source_ids": [
+          "ap_0309_assessment",
+          "ap_0312_leader",
+          "ap_0312_kharg"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "imminent",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-12",
+        "snapshot_time_bjt": "2026-03-12 21:00",
+        "tag": "封控",
+        "headline": "新最高领袖确认硬抗，霍尔木兹几近封死，油价重新冲高。",
+        "summary": "领导层延战、海峡封控、能源恐慌一起抬升，日指数第一次稳定在高危区。",
+        "source_ids": [
+          "ap_0309_assessment",
+          "ap_0312_leader",
+          "ap_0312_kharg"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "imminent",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-13",
+        "snapshot_time_bjt": "2026-03-13 21:00",
+        "tag": "多战线",
+        "headline": "袭击蔓延到迪拜与海湾，战火不再局限于伊朗本土。",
+        "summary": "高层互杀与海湾防空承压并行，外围战线的广度和烈度继续升级。",
+        "source_ids": [
+          "ap_0316_uae",
+          "ap_0317_barrage"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-14",
+        "snapshot_time_bjt": "2026-03-14 21:00",
+        "tag": "多战线",
+        "headline": "袭击蔓延到迪拜与海湾，战火不再局限于伊朗本土。",
+        "summary": "高层互杀与海湾防空承压并行，外围战线的广度和烈度继续升级。",
+        "source_ids": [
+          "ap_0316_uae",
+          "ap_0317_barrage"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-15",
+        "snapshot_time_bjt": "2026-03-15 21:00",
+        "tag": "多战线",
+        "headline": "袭击蔓延到迪拜与海湾，战火不再局限于伊朗本土。",
+        "summary": "高层互杀与海湾防空承压并行，外围战线的广度和烈度继续升级。",
+        "source_ids": [
+          "ap_0316_uae",
+          "ap_0317_barrage"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-16",
+        "snapshot_time_bjt": "2026-03-16 21:00",
+        "tag": "多战线",
+        "headline": "袭击蔓延到迪拜与海湾，战火不再局限于伊朗本土。",
+        "summary": "高层互杀与海湾防空承压并行，外围战线的广度和烈度继续升级。",
+        "source_ids": [
+          "ap_0316_uae",
+          "ap_0317_barrage"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-17",
+        "snapshot_time_bjt": "2026-03-17 21:00",
+        "tag": "多战线",
+        "headline": "袭击蔓延到迪拜与海湾，战火不再局限于伊朗本土。",
+        "summary": "高层互杀与海湾防空承压并行，外围战线的广度和烈度继续升级。",
+        "source_ids": [
+          "ap_0316_uae",
+          "ap_0317_barrage"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-18",
+        "snapshot_time_bjt": "2026-03-18 21:00",
+        "tag": "多战线",
+        "headline": "袭击蔓延到迪拜与海湾，战火不再局限于伊朗本土。",
+        "summary": "高层互杀与海湾防空承压并行，外围战线的广度和烈度继续升级。",
+        "source_ids": [
+          "ap_0316_uae",
+          "ap_0317_barrage"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "dual_use_only",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-19",
+        "snapshot_time_bjt": "2026-03-19 21:00",
+        "tag": "能源",
+        "headline": "南帕尔斯与海湾能源设施互击，战争进入最危险的能源震荡段。",
+        "summary": "海峡、民用与能源基础设施三项高权重变量同时拉满，这是 41 天里的高峰区间。",
+        "source_ids": [
+          "ap_0319_energy",
+          "ap_0321_hezbollah"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 20,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-20",
+        "snapshot_time_bjt": "2026-03-20 21:00",
+        "tag": "能源",
+        "headline": "南帕尔斯与海湾能源设施互击，战争进入最危险的能源震荡段。",
+        "summary": "海峡、民用与能源基础设施三项高权重变量同时拉满，这是 41 天里的高峰区间。",
+        "source_ids": [
+          "ap_0319_energy",
+          "ap_0321_hezbollah"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 20,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-21",
+        "snapshot_time_bjt": "2026-03-21 21:00",
+        "tag": "能源",
+        "headline": "南帕尔斯与海湾能源设施互击，战争进入最危险的能源震荡段。",
+        "summary": "海峡、民用与能源基础设施三项高权重变量同时拉满，这是 41 天里的高峰区间。",
+        "source_ids": [
+          "ap_0319_energy",
+          "ap_0321_hezbollah"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 20,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-22",
+        "snapshot_time_bjt": "2026-03-22 21:00",
+        "tag": "能源",
+        "headline": "南帕尔斯与海湾能源设施互击，战争进入最危险的能源震荡段。",
+        "summary": "海峡、民用与能源基础设施三项高权重变量同时拉满，这是 41 天里的高峰区间。",
+        "source_ids": [
+          "ap_0319_energy",
+          "ap_0321_hezbollah"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 20,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-23",
+        "snapshot_time_bjt": "2026-03-23 21:00",
+        "tag": "能源",
+        "headline": "南帕尔斯与海湾能源设施互击，战争进入最危险的能源震荡段。",
+        "summary": "海峡、民用与能源基础设施三项高权重变量同时拉满，这是 41 天里的高峰区间。",
+        "source_ids": [
+          "ap_0319_energy",
+          "ap_0321_hezbollah"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "collapsed",
+            "violation_level": "widespread",
+            "talks_continuity": "broken"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "extreme"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 20,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-24",
+        "snapshot_time_bjt": "2026-03-24 21:00",
+        "tag": "胶着",
+        "headline": "停战风声开始出现，但海峡收费与民用伤害让风险只小幅回落。",
+        "summary": "谈判气味出现后，总分有所回落，但没有任何一个高权重变量真正出清。",
+        "source_ids": [
+          "ap_0328_month",
+          "ap_0408_takeaways"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 10,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-25",
+        "snapshot_time_bjt": "2026-03-25 21:00",
+        "tag": "胶着",
+        "headline": "停战风声开始出现，但海峡收费与民用伤害让风险只小幅回落。",
+        "summary": "谈判气味出现后，总分有所回落，但没有任何一个高权重变量真正出清。",
+        "source_ids": [
+          "ap_0328_month",
+          "ap_0408_takeaways"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 10,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-26",
+        "snapshot_time_bjt": "2026-03-26 21:00",
+        "tag": "胶着",
+        "headline": "停战风声开始出现，但海峡收费与民用伤害让风险只小幅回落。",
+        "summary": "谈判气味出现后，总分有所回落，但没有任何一个高权重变量真正出清。",
+        "source_ids": [
+          "ap_0328_month",
+          "ap_0408_takeaways"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 10,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-27",
+        "snapshot_time_bjt": "2026-03-27 21:00",
+        "tag": "胶着",
+        "headline": "停战风声开始出现，但海峡收费与民用伤害让风险只小幅回落。",
+        "summary": "谈判气味出现后，总分有所回落，但没有任何一个高权重变量真正出清。",
+        "source_ids": [
+          "ap_0328_month",
+          "ap_0408_takeaways"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 10,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-28",
+        "snapshot_time_bjt": "2026-03-28 21:00",
+        "tag": "满月",
+        "headline": "开战满月之际，美方谈收尾但目标未完成，海峡收费与高油价并存。",
+        "summary": "名义上的收尾表述没有带来真正缓和，战争进入拖长后的高位僵持。",
+        "source_ids": [
+          "ap_0328_month",
+          "ap_0402_war",
+          "ap_0408_takeaways"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "uncertain"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-29",
+        "snapshot_time_bjt": "2026-03-29 21:00",
+        "tag": "满月",
+        "headline": "开战满月之际，美方谈收尾但目标未完成，海峡收费与高油价并存。",
+        "summary": "名义上的收尾表述没有带来真正缓和，战争进入拖长后的高位僵持。",
+        "source_ids": [
+          "ap_0328_month",
+          "ap_0402_war",
+          "ap_0408_takeaways"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "uncertain"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-30",
+        "snapshot_time_bjt": "2026-03-30 21:00",
+        "tag": "满月",
+        "headline": "开战满月之际，美方谈收尾但目标未完成，海峡收费与高油价并存。",
+        "summary": "名义上的收尾表述没有带来真正缓和，战争进入拖长后的高位僵持。",
+        "source_ids": [
+          "ap_0328_month",
+          "ap_0402_war",
+          "ap_0408_takeaways"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "uncertain"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-03-31",
+        "snapshot_time_bjt": "2026-03-31 21:00",
+        "tag": "满月",
+        "headline": "开战满月之际，美方谈收尾但目标未完成，海峡收费与高油价并存。",
+        "summary": "名义上的收尾表述没有带来真正缓和，战争进入拖长后的高位僵持。",
+        "source_ids": [
+          "ap_0328_month",
+          "ap_0402_war",
+          "ap_0408_takeaways"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "uncertain"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 18,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-04-01",
+        "snapshot_time_bjt": "2026-04-01 21:00",
+        "tag": "僵局",
+        "headline": "战事没有明显收束，区域攻击持续，指数维持在危险平台。",
+        "summary": "4 月开局没有带来降温，海峡、外溢战线和民用风险仍旧并行。",
+        "source_ids": [
+          "ap_0402_war"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
+      {
+        "date": "2026-04-02",
+        "snapshot_time_bjt": "2026-04-02 21:00",
+        "tag": "僵局",
+        "headline": "战事没有明显收束，区域攻击持续，指数维持在危险平台。",
+        "summary": "4 月开局没有带来降温，海峡、外溢战线和民用风险仍旧并行。",
+        "source_ids": [
+          "ap_0402_war"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "temporary_verbal",
+            "violation_level": "severe",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 12,
+            "freight_insurance_level": "dislocated",
+            "port_lng_disruption": "high"
+          }
+        }
+      },
       {
         "date": "2026-04-03",
         "snapshot_time_bjt": "2026-04-03 21:00",
@@ -106,11 +1404,14 @@
             "service_disruption": "local"
           },
           "energy_shipping": {
-            "brent_change_48h_pct": 14.0,
+            "brent_change_48h_pct": 14,
             "freight_insurance_level": "dislocated",
             "port_lng_disruption": "high"
           }
-        }
+        },
+        "tag": "霍尔木兹",
+        "headline": "联合国为霍尔木兹开路的提案被削弱，海峡僵局没有实质松动。",
+        "summary": "外界开始谈制度性解套，但海峡现实通行并未恢复，指数仍维持高位。"
       },
       {
         "date": "2026-04-04",
@@ -141,11 +1442,14 @@
             "service_disruption": "local"
           },
           "energy_shipping": {
-            "brent_change_48h_pct": 12.0,
+            "brent_change_48h_pct": 12,
             "freight_insurance_level": "dislocated",
             "port_lng_disruption": "medium"
           }
-        }
+        },
+        "tag": "扩散",
+        "headline": "搜救与战场扩散并行，欧洲开始讨论能源暴利上限。",
+        "summary": "军事与能源两条线继续互相推高，只是市场端开始出现政策缓冲讨论。"
       },
       {
         "date": "2026-04-05",
@@ -175,11 +1479,14 @@
             "service_disruption": "local"
           },
           "energy_shipping": {
-            "brent_change_48h_pct": 14.0,
+            "brent_change_48h_pct": 14,
             "freight_insurance_level": "dislocated",
             "port_lng_disruption": "high"
           }
-        }
+        },
+        "tag": "威胁",
+        "headline": "特朗普威胁若不重开海峡就打伊朗基础设施，指数继续高位徘徊。",
+        "summary": "海峡与民用基础设施两个变量同时被抬高，谈判空间明显收窄。"
       },
       {
         "date": "2026-04-06",
@@ -210,11 +1517,14 @@
             "service_disruption": "local"
           },
           "energy_shipping": {
-            "brent_change_48h_pct": 12.0,
+            "brent_change_48h_pct": 12,
             "freight_insurance_level": "dislocated",
             "port_lng_disruption": "medium"
           }
-        }
+        },
+        "tag": "电厂",
+        "headline": "最后通牒前，桥梁和电厂被明确纳入打击威胁范围。",
+        "summary": "这一天的上行几乎全部来自民用阈值被公开抬升。"
       },
       {
         "date": "2026-04-07",
@@ -245,11 +1555,14 @@
             "service_disruption": "local"
           },
           "energy_shipping": {
-            "brent_change_48h_pct": 14.0,
+            "brent_change_48h_pct": 14,
             "freight_insurance_level": "dislocated",
             "port_lng_disruption": "high"
           }
-        }
+        },
+        "tag": "期限",
+        "headline": "最终期限逼近，伊朗国内担忧停电与进一步袭击。",
+        "summary": "在停火消息出现前，战争仍沿着最坏情景向前推进。"
       },
       {
         "date": "2026-04-08",
@@ -286,11 +1599,14 @@
             "freight_insurance_level": "severe",
             "port_lng_disruption": "low"
           }
-        }
+        },
+        "tag": "停火",
+        "headline": "两周停火短暂压低总分，但黎巴嫩与海峡执行并未一起降温。",
+        "summary": "指数出现 41 天里最大的单日回落，但只来自停火窗口，并非战区一并收缩。"
       },
       {
         "date": "2026-04-09",
-        "snapshot_time_bjt": "2026-04-09 11:36",
+        "snapshot_time_bjt": "2026-04-09 13:56",
         "source_ids": [
           "ap_0408_ceasefire",
           "ap_0408_markets",
@@ -324,7 +1640,27 @@
             "freight_insurance_level": "severe",
             "port_lng_disruption": "medium"
           }
-        }
+        },
+        "tag": "反弹",
+        "headline": "海峡再关、贝鲁特重创、条款争议重燃，指数从停火低点迅速反弹。",
+        "summary": "停火未能封住外溢战场和海峡风险，4 月 9 日重新回到高压区。"
+      }
+    ],
+    "archiveTitle": "过去41天战争历史指数",
+    "archiveSubtitle": "按北京时间日快照回填公开报道事实。点击任一天，查看当日五条红线的结构。",
+    "modalTitle": "当日红线雷达",
+    "legend": [
+      {
+        "tone": "green",
+        "label": "短暂缓和"
+      },
+      {
+        "tone": "yellow",
+        "label": "胶着脆弱"
+      },
+      {
+        "tone": "red",
+        "label": "升级高压"
       }
     ]
   },
@@ -761,6 +2097,83 @@
   },
   "sources": [
     {
+      "id": "ap_0302_scope",
+      "publisher": "Associated Press",
+      "date": "2026-03-02",
+      "title": "How the AP decided to call fighting in the Middle East the Iran war",
+      "url": "https://apnews.com/article/e8f367497c26ceb6b055f9c354833b82"
+    },
+    {
+      "id": "ap_0306_week",
+      "publisher": "Associated Press",
+      "date": "2026-03-06",
+      "title": "Explosions rock Iran's capital as the conflict's first week has been the deadliest yet",
+      "url": "https://apnews.com/article/6108249f19c4bc162eacd7847976c174"
+    },
+    {
+      "id": "ap_0308_successor",
+      "publisher": "Associated Press",
+      "date": "2026-03-08",
+      "title": "Iran's clerics choose the supreme leader's son as successor, cementing their grip on power",
+      "url": "https://apnews.com/article/d086d66e54280838c925b65067858afb"
+    },
+    {
+      "id": "ap_0309_assessment",
+      "publisher": "Associated Press",
+      "date": "2026-03-09",
+      "title": "Prewar US intel assessment found intervention in Iran wasn't likely to change leadership",
+      "url": "https://apnews.com/article/ad20c1f1168d4318af516d7b19d372e7"
+    },
+    {
+      "id": "ap_0312_leader",
+      "publisher": "Associated Press",
+      "date": "2026-03-12",
+      "title": "Iran’s supreme leader resolves to keep fighting in his first public remarks",
+      "url": "https://www.wsaz.com/2026/03/12/irans-unrelenting-attacks-mideast-shipping-energy-infrastructure-send-oil-prices-soaring/?outputType=amp"
+    },
+    {
+      "id": "ap_0312_kharg",
+      "publisher": "Associated Press",
+      "date": "2026-03-12",
+      "title": "Trump says oil isn't priority as U.S. and Israel widen war against Iran while prices soar",
+      "url": "https://apnews.com/article/1b3e770e61c6a05d3e078223e15b20b2"
+    },
+    {
+      "id": "ap_0316_uae",
+      "publisher": "Associated Press",
+      "date": "2026-03-16",
+      "title": "United Arab Emirates briefly closes airspace as Israel strikes Lebanon and Tehran",
+      "url": "https://apnews.com/article/5f56cff945472db519d91dd5036ead9d"
+    },
+    {
+      "id": "ap_0317_barrage",
+      "publisher": "Associated Press",
+      "date": "2026-03-17",
+      "title": "Iran launches barrage of missiles after Israel kills 2 of its top officials",
+      "url": "https://apnews.com/article/35d15d7cbcfa65fd7d180c28d38e7f31"
+    },
+    {
+      "id": "ap_0319_energy",
+      "publisher": "Associated Press",
+      "date": "2026-03-19",
+      "title": "The targeting of key Gulf energy infrastructure raises the risk of long-term disruption",
+      "url": "https://apnews.com/article/36037b31738bd9582f0ca617f292839d"
+    },
+    {
+      "id": "ap_0321_hezbollah",
+      "publisher": "Associated Press",
+      "date": "2026-03-21",
+      "title": "Israel strikes Hezbollah's civilian and military wings in attempt to crush group",
+      "url": "https://apnews.com/article/cf4ac34c7dff091543002400bbdf02cd"
+    },
+    {
+      "id": "ap_0328_month",
+      "publisher": "Associated Press",
+      "date": "2026-03-28",
+      "title": "One month into Iran war, some Trump objectives are unfulfilled as he looks to wind down the conflict",
+      "url": "https://apnews.com/article/1a32141f5ca2104af78625b3aa277421"
+    },
+    {
       "id": "ap_0402_war",
       "publisher": "Associated Press",
       "date": "2026-04-02",
@@ -871,6 +2284,13 @@
       "date": "2026-04-08",
       "title": "What does the Iran ceasefire deal mean? It depends on which side you talk to",
       "url": "https://apnews.com/article/9f5d7fce2cf32b8513861ca872e3cfb2"
+    },
+    {
+      "id": "ap_0408_takeaways",
+      "publisher": "Associated Press",
+      "date": "2026-04-08",
+      "title": "Takeaways after a tentative, 2-week ceasefire reached in Iran war",
+      "url": "https://apnews.com/article/e53287f7594521f125dc1d6014c03a05"
     }
   ]
 }

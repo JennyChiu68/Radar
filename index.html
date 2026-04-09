@@ -200,20 +200,7 @@
               </div>
             </div>
             <div class="mt-8 flex gap-2 w-full max-w-[280px]" id="scoreBars"></div>
-            <div class="mt-5 w-full max-w-[390px] bg-surface-container-low border border-primary/20 px-4 py-3.5" id="heroHistoryBox">
-              <div class="flex items-start justify-between gap-4">
-                <div class="flex flex-col gap-1">
-                  <span class="text-[10px] uppercase tracking-[0.22em] text-on-surface-variant font-label" id="historyLabel">历史</span>
-                  <span class="text-base md:text-lg font-headline font-bold text-on-surface-variant" id="historyComparisonLabel">vs 24h前</span>
-                </div>
-                <div class="text-right">
-                  <div class="text-2xl md:text-[2rem] font-headline font-black" id="historyDelta">↓ 21</div>
-                  <div class="text-lg font-headline font-bold text-on-surface/70 mt-0.5" id="historyPreviousScore">78</div>
-                </div>
-              </div>
-              <div class="mt-3 flex items-end gap-1.5 h-12" id="historyBars"></div>
-              <div class="mt-1.5 text-right text-[10px] text-on-surface-variant font-label tracking-[0.16em]" id="historyTrendLabel">过去7天趋势</div>
-            </div>
+            <div class="mt-5 grid w-full max-w-[390px] grid-cols-1 sm:grid-cols-3 gap-3" id="heroMetricsBox"></div>
             </div>
           </div>
         </div>
@@ -222,6 +209,21 @@
           <div class="text-[9px] font-mono tracking-tighter uppercase hidden" id="scanningRegion"></div>
         </div>
       </header>
+
+      <section class="bg-surface-container-low p-8 lg:p-10 tactical-border space-y-8" id="historyArchiveSection">
+        <div class="flex flex-col xl:flex-row xl:items-end xl:justify-between gap-6">
+          <div class="space-y-3 max-w-[820px]">
+            <div class="flex items-center gap-4">
+              <div class="h-[1px] w-12 bg-primary/50"></div>
+              <span class="text-primary font-label text-sm tracking-[0.45em] font-bold uppercase">战争历史</span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-black font-headline tracking-tight" id="historyArchiveTitle">过去41天战争历史指数</h2>
+            <p class="text-sm md:text-base text-on-surface-variant max-w-[760px]" id="historyArchiveSubtitle">按北京时间日快照回填公开报道事实。点击任一天，查看当日五条红线的结构。</p>
+          </div>
+          <div class="flex flex-wrap gap-3 items-center" id="historyArchiveLegend"></div>
+        </div>
+        <div class="grid gap-3 sm:grid-cols-4 lg:grid-cols-8 xl:grid-cols-10" id="historyArchiveGrid"></div>
+      </section>
 
       <div class="grid grid-cols-1 xl:grid-cols-12 gap-8">
         <div class="xl:col-span-8 space-y-8">
@@ -289,6 +291,10 @@
           </div>
         </aside>
       </div>
+    </div>
+    <div class="fixed inset-0 z-50 hidden items-center justify-center p-4 md:p-8" id="historyModal">
+      <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="historyModalBackdrop"></div>
+      <div class="relative z-10 w-full max-w-[1200px]" id="historyModalPanel"></div>
     </div>
   </main>
 </body>
