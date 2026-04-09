@@ -181,6 +181,10 @@ function lookupRiskLabel(score, bands) {
   return lookupBand(score, bands, "label") || "";
 }
 
+function lookupHistoryTone(score, data) {
+  return lookupBand(score, data.history?.history_ui_tones || data.bands?.ui_tones, "tone") || "red";
+}
+
 function metricScore(metric, facts) {
   const value = facts?.[metric.fact];
   if (metric.type === "enum") {
@@ -270,6 +274,7 @@ function computeHistorySnapshots(data) {
       baseOverallScore: derived.overallScore,
       overallScore: adjustedOverallScore,
       overallTone: lookupTone(adjustedOverallScore, data.bands.ui_tones),
+      historyTone: lookupHistoryTone(adjustedOverallScore, data),
       overallLabel: lookupRiskLabel(adjustedOverallScore, data.bands.risk_labels),
       appliedAdjustment,
       dimensions: derived.dimensions
@@ -464,13 +469,13 @@ function renderHeroMetrics(historySnapshots, derived) {
       label: "历史峰值",
       value: String(peakSnapshot?.overallScore ?? derived.overallScore),
       helper: peakSnapshot ? formatMonthDay(peakSnapshot.date) : "当前",
-      className: getTone(peakSnapshot?.overallTone || derived.overallTone).historyText
+      className: getTone(peakSnapshot?.historyTone || peakSnapshot?.overallTone || derived.overallTone).historyText
     },
     {
       label: "历史低点",
       value: String(lowSnapshot?.overallScore ?? derived.overallScore),
       helper: lowSnapshot ? formatMonthDay(lowSnapshot.date) : "当前",
-      className: getTone(lowSnapshot?.overallTone || derived.overallTone).historyText
+      className: getTone(lowSnapshot?.historyTone || lowSnapshot?.overallTone || derived.overallTone).historyText
     }
   ];
 
@@ -506,7 +511,7 @@ function renderHistoryMonthDivider(monthKey, count, isFirst) {
 }
 
 function renderHistoryDay(snapshot, warDay, latestDate) {
-  const tone = getTone(snapshot.overallTone);
+  const tone = getTone(snapshot.historyTone || snapshot.overallTone);
   const fillHeight = Math.max(22, Math.min(100, snapshot.overallScore));
   const latestBadge = snapshot.date === latestDate
     ? `<span class="text-[10px] font-label ${tone.historyText}">最新</span>`

@@ -76,6 +76,23 @@
     "timezone": "Asia/Shanghai",
     "cutoff_time_bjt": "21:00",
     "method": "按北京时间每日固定时点回填公开报道事实；若当日无同口径新变化，则沿用最近一次已确认状态，直到关键事件改变事实变量。",
+    "history_ui_tones": [
+      {
+        "min": 0,
+        "max": 68,
+        "tone": "green"
+      },
+      {
+        "min": 69,
+        "max": 82,
+        "tone": "yellow"
+      },
+      {
+        "min": 83,
+        "max": 100,
+        "tone": "red"
+      }
+    ],
     "snapshots": [
       {
         "date": "2026-02-28",
@@ -1746,20 +1763,20 @@
       }
     ],
     "archiveTitle": "过去41天战争历史指数",
-    "archiveSubtitle": "按北京时间日快照回填公开报道事实。点击任一天，查看当日五条红线的结构。",
+    "archiveSubtitle": "按北京时间日快照回填公开报道事实。颜色按过去41天的相对分布显示，点击任一天查看当日五条红线的结构。",
     "modalTitle": "当日红线雷达",
     "legend": [
       {
         "tone": "green",
-        "label": "短暂缓和"
+        "label": "相对缓和"
       },
       {
         "tone": "yellow",
-        "label": "胶着脆弱"
+        "label": "胶着区间"
       },
       {
         "tone": "red",
-        "label": "升级高压"
+        "label": "高压峰段"
       }
     ]
   },
