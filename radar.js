@@ -275,9 +275,8 @@ function renderHistoryDelta(currentScore, previous24hScore) {
   return { text: `↑ ${diff}`, className: "text-primary" };
 }
 
-function renderOverlayRight(snapshotTime, items) {
-  const values = [`快照时间: 北京时间 ${snapshotTime}`, ...(items || [])];
-  return values.map((item) => `<div>${escapeHtml(item)}</div>`).join("");
+function renderOverlayRight(items) {
+  return (items || []).map((item) => `<div>${escapeHtml(item)}</div>`).join("");
 }
 
 function renderBlips(dimensions) {
@@ -414,9 +413,10 @@ function renderHero(data, derived, historySnapshots) {
 
 function renderRadar(data, derived) {
   setHtml("overlayLeft", "");
-  setHtml("overlayRight", renderOverlayRight(data.meta.snapshot_time_bjt, data.radar.rightMeta));
+  const rightMeta = data.radar.rightMeta || [];
+  setHtml("overlayRight", renderOverlayRight(rightMeta));
   toggleHidden("overlayLeft", true);
-  toggleHidden("overlayRight", false);
+  toggleHidden("overlayRight", rightMeta.length === 0);
   setText("radarCenterLabel", data.radar.centerLabel || "总雷达分");
   setText("radarCenterScore", String(derived.overallScore));
   setHtml("radarBlips", renderBlips(derived.dimensions));
