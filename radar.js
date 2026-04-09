@@ -1,85 +1,92 @@
-const RING_CIRCUMFERENCE = 282.7;
+const SEMI_GAUGE_LENGTH = 63;
 
 const APP_STATE = {
   data: null,
   derived: null,
   historySnapshots: [],
-  sourceMap: new Map()
+  sourceMap: new Map(),
+  heatmapExpanded: false
 };
 
 const TONE_MAP = {
   red: {
-    tactical: "tactical-border-red",
-    leftBorder: "border-primary",
-    label: "text-primary",
-    chipBg: "bg-primary/10",
-    chipText: "text-primary",
-    chipBorder: "border-primary/30",
-    bullet: "bg-primary",
-    ringBg: "rgba(255,59,48,0.1)",
-    ringStroke: "#FF3B30",
-    blipDot: "bg-primary",
-    blipText: "text-primary",
-    blipBorder: "border-primary/50",
-    blipShadow: "shadow-[0_0_10px_#FF3B30]",
-    blipGlow: "shadow-[0_0_15px_#FF3B30]",
-    statusBadge: "bg-primary text-on-primary",
-    scoreBar: "bg-primary",
-    historyFill: "bg-primary/18",
-    historyOutline: "border-primary/30",
-    historyText: "text-primary",
-    historyBadge: "bg-primary/10 text-primary border border-primary/30"
+    textClass: "text-primary",
+    badgeClass: "bg-primary/20 text-primary border border-primary/40",
+    borderClass: "border-primary/40",
+    leftBorderClass: "border-l-primary",
+    dotClass: "bg-primary",
+    glowClass: "shadow-[0_0_12px_rgba(255,59,48,1)]",
+    softGlowClass: "shadow-[0_0_8px_rgba(255,59,48,0.5)]",
+    heatClass: "bg-primary/80",
+    hex: "#FF3B30"
   },
   yellow: {
-    tactical: "tactical-border-yellow",
-    leftBorder: "border-tertiary",
-    label: "text-tertiary",
-    chipBg: "bg-tertiary/10",
-    chipText: "text-tertiary",
-    chipBorder: "border-tertiary/30",
-    bullet: "bg-tertiary",
-    ringBg: "rgba(252,196,25,0.1)",
-    ringStroke: "#fcc419",
-    blipDot: "bg-tertiary",
-    blipText: "text-tertiary",
-    blipBorder: "border-tertiary/50",
-    blipShadow: "shadow-[0_0_10px_#fcc419]",
-    blipGlow: "shadow-[0_0_15px_#fcc419]",
-    statusBadge: "bg-tertiary text-black",
-    scoreBar: "bg-tertiary",
-    historyFill: "bg-tertiary/18",
-    historyOutline: "border-tertiary/30",
-    historyText: "text-tertiary",
-    historyBadge: "bg-tertiary/10 text-tertiary border border-tertiary/30"
+    textClass: "text-tertiary",
+    badgeClass: "bg-tertiary/20 text-tertiary border border-tertiary/40",
+    borderClass: "border-tertiary/40",
+    leftBorderClass: "border-l-tertiary",
+    dotClass: "bg-tertiary",
+    glowClass: "shadow-[0_0_10px_rgba(252,196,25,0.8)]",
+    softGlowClass: "shadow-[0_0_8px_rgba(252,196,25,0.5)]",
+    heatClass: "bg-tertiary/80",
+    hex: "#fcc419"
   },
   green: {
-    tactical: "tactical-border-green",
-    leftBorder: "border-emerald-400",
-    label: "text-emerald-300",
-    chipBg: "bg-emerald-400/10",
-    chipText: "text-emerald-300",
-    chipBorder: "border-emerald-400/30",
-    bullet: "bg-emerald-400",
-    ringBg: "rgba(52,211,153,0.1)",
-    ringStroke: "#34d399",
-    blipDot: "bg-emerald-400",
-    blipText: "text-emerald-300",
-    blipBorder: "border-emerald-400/50",
-    blipShadow: "shadow-[0_0_10px_#34d399]",
-    blipGlow: "shadow-[0_0_15px_#34d399]",
-    statusBadge: "bg-emerald-400/15 text-emerald-300 border border-emerald-400/30",
-    scoreBar: "bg-emerald-400",
-    historyFill: "bg-emerald-400/18",
-    historyOutline: "border-emerald-400/30",
-    historyText: "text-emerald-300",
-    historyBadge: "bg-emerald-400/10 text-emerald-300 border border-emerald-400/30"
+    textClass: "text-success",
+    badgeClass: "bg-success/20 text-success border border-success/40",
+    borderClass: "border-success/40",
+    leftBorderClass: "border-l-success",
+    dotClass: "bg-success",
+    glowClass: "shadow-[0_0_10px_rgba(88,214,141,0.8)]",
+    softGlowClass: "shadow-[0_0_8px_rgba(88,214,141,0.5)]",
+    heatClass: "bg-success/80",
+    hex: "#58d68d"
   }
 };
 
-const DOT_SIZE_MAP = {
-  sm: "w-2 h-2",
-  md: "w-2.5 h-2.5",
-  lg: "w-3 h-3"
+const RADAR_BLIP_LAYOUT = {
+  ceasefire: {
+    wrapperStyle: "top: 23.7%; left: 34.8%; z-index: 30; width: 0; height: 0;",
+    labelClass: "absolute bottom-3 radar-tag shadow-lg transform -translate-x-1/2",
+    dotVariant: "default"
+  },
+  hormuz: {
+    wrapperStyle: "top: 31.6%; left: 81.9%; z-index: 30; width: 0; height: 0;",
+    labelClass: "absolute bottom-3 radar-tag shadow-lg transform -translate-x-[70%]",
+    dotVariant: "ping"
+  },
+  civilian_infra: {
+    wrapperStyle: "top: 66.8%; left: 79.1%; z-index: 30; width: 0; height: 0;",
+    labelClass: "absolute top-3 radar-tag shadow-lg transform translate-x-1/4",
+    dotVariant: "soft"
+  },
+  new_front: {
+    wrapperStyle: "top: 80.5%; left: 32.4%; z-index: 30; width: 0; height: 0;",
+    labelClass: "absolute top-3 radar-tag shadow-lg transform -translate-x-1/4",
+    dotVariant: "medium"
+  },
+  energy_shipping: {
+    wrapperStyle: "top: 50%; left: 15.6%; z-index: 30; width: 0; height: 0;",
+    labelClass: "absolute top-3 left-0 radar-tag shadow-lg",
+    dotVariant: "default"
+  }
+};
+
+const RADAR_LABELS = {
+  ceasefire: "停火/谈判",
+  hormuz: "霍尔木兹",
+  civilian_infra: "民用设施",
+  new_front: "新战线",
+  energy_shipping: "能源安全"
+};
+
+const RADAR_ORDER = ["ceasefire", "hormuz", "civilian_infra", "new_front", "energy_shipping"];
+const MODAL_METRIC_IDS = {
+  hormuz: "m-hormuz",
+  ceasefire: "m-nego",
+  new_front: "m-front",
+  civilian_infra: "m-civil",
+  energy_shipping: "m-energy"
 };
 
 function getTone(tone) {
@@ -109,60 +116,40 @@ function setHtml(id, html) {
   }
 }
 
-function toggleHidden(id, shouldHide) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.classList.toggle("hidden", shouldHide);
+function splitDateParts(dateString) {
+  const [year, month, day] = String(dateString || "").split("-").map((value) => Number(value));
+  return { year, month, day };
+}
+
+function formatMonthDay(dateString) {
+  const { month, day } = splitDateParts(dateString);
+  return `${month}月${day}日`;
+}
+
+function formatHeatmapDate(dateString) {
+  const { month, day } = splitDateParts(dateString);
+  return `${month}/${day}`;
+}
+
+function formatSnapshotDisplay(snapshotTime) {
+  if (!snapshotTime) {
+    return "";
   }
-}
-
-function setDisplay(id, value) {
-  const el = document.getElementById(id);
-  if (el) {
-    el.style.display = value;
+  const [datePart, timePart = ""] = String(snapshotTime).trim().split(/\s+/);
+  const date = datePart.replace(/-/g, ".");
+  if (!timePart) {
+    return date;
   }
-}
-
-function formatBeijingNow() {
-  const parts = new Intl.DateTimeFormat("zh-CN", {
-    timeZone: "Asia/Shanghai",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: false
-  }).formatToParts(new Date());
-  const get = (type) => parts.find((part) => part.type === type)?.value || "";
-  return {
-    date: `${get("year")}-${get("month")}-${get("day")}`,
-    time: `${get("hour")}:${get("minute")}:${get("second")}`
-  };
-}
-
-function startHeroClock() {
-  const tick = () => {
-    const now = formatBeijingNow();
-    setText("heroClockDate", now.date);
-    setText("heroClockTime", now.time);
-  };
-  tick();
-  window.clearInterval(window.__radarClockTimer);
-  window.__radarClockTimer = window.setInterval(tick, 1000);
+  const time = /^\d{2}:\d{2}$/.test(timePart) ? `${timePart}:00` : timePart;
+  return `${date} / ${time}`;
 }
 
 function roundScore(value) {
   return Math.round(Number(value) || 0);
 }
 
-function ringOffset(score) {
-  const normalized = Math.max(0, Math.min(100, Number(score) || 0));
-  return (RING_CIRCUMFERENCE * (1 - normalized / 100)).toFixed(1);
-}
-
-function positionStyle(position) {
-  return Object.entries(position || {}).map(([key, value]) => `${key}: ${value}`).join("; ");
+function clampScore(score) {
+  return Math.max(0, Math.min(100, roundScore(score)));
 }
 
 function lookupBand(value, bands, key) {
@@ -224,16 +211,13 @@ function computeDerived(data) {
   const overallScore = roundScore(dimensions.reduce((sum, dimension) => {
     return sum + dimension.score * (dimension.overall_weight || 0);
   }, 0));
+
   return {
     overallScore,
     overallTone: lookupTone(overallScore, data.bands.ui_tones),
     overallLabel: lookupRiskLabel(overallScore, data.bands.risk_labels),
     dimensions
   };
-}
-
-function clampScore(score) {
-  return Math.max(0, Math.min(100, roundScore(score)));
 }
 
 function getSnapshotAdjustment(snapshot) {
@@ -267,16 +251,14 @@ function computeHistorySnapshots(data) {
   return (data.history?.snapshots || []).map((snapshot) => {
     const snapshotData = withSnapshotFacts(data, snapshot);
     const derived = computeDerived(snapshotData);
-    const appliedAdjustment = getSnapshotAdjustment(snapshot);
-    const adjustedOverallScore = clampScore(derived.overallScore + appliedAdjustment);
+    const adjustedOverallScore = clampScore(derived.overallScore + getSnapshotAdjustment(snapshot));
+
     return {
       ...snapshot,
-      baseOverallScore: derived.overallScore,
       overallScore: adjustedOverallScore,
       overallTone: lookupTone(adjustedOverallScore, data.bands.ui_tones),
       historyTone: lookupHistoryTone(adjustedOverallScore, data),
       overallLabel: lookupRiskLabel(adjustedOverallScore, data.bands.risk_labels),
-      appliedAdjustment,
       dimensions: derived.dimensions
     };
   });
@@ -286,530 +268,374 @@ function buildSourceMap(sources) {
   return new Map((sources || []).map((source) => [source.id, source]));
 }
 
-function splitDateParts(dateString) {
-  const [year, month, day] = String(dateString || "").split("-").map((value) => Number(value));
+function getAlertConfig(tone) {
+  if (tone === "green") {
+    return {
+      icon: "check_circle",
+      label: "持续观察",
+      iconClass: "text-success text-2xl",
+      textClass: "text-[14px] font-bold text-success tracking-tighter"
+    };
+  }
+  if (tone === "yellow") {
+    return {
+      icon: "warning",
+      label: "高度警戒",
+      iconClass: "text-tertiary text-2xl",
+      textClass: "text-[14px] font-bold text-tertiary tracking-tighter"
+    };
+  }
   return {
-    year,
-    month,
-    day
+    icon: "error",
+    label: "紧急警报",
+    iconClass: "text-primary text-2xl emergency-glow",
+    textClass: "text-[14px] font-bold text-primary tracking-tighter emergency-glow"
   };
 }
 
-function formatChineseDate(dateString) {
-  const { year, month, day } = splitDateParts(dateString);
-  return `${year}年${month}月${day}日`;
+function renderAlertBadge(overallTone) {
+  const config = getAlertConfig(overallTone);
+  setHtml(
+    "alertBadge",
+    `<span class="material-symbols-outlined ${config.iconClass}">${config.icon}</span><span class="${config.textClass}">${config.label}</span>`
+  );
 }
 
-function formatMonthDay(dateString) {
-  const { month, day } = splitDateParts(dateString);
-  return `${month}月${day}日`;
+function renderRadarDot(tone, variant) {
+  if (variant === "ping") {
+    return `
+      <div class="absolute w-2.5 h-2.5">
+        <div class="w-2.5 h-2.5 ${tone.dotClass} rounded-full animate-ping absolute inset-0"></div>
+        <div class="w-2.5 h-2.5 ${tone.dotClass} rounded-full ${tone.glowClass}"></div>
+      </div>
+    `;
+  }
+  if (variant === "soft") {
+    return `<div class="absolute w-2.5 h-2.5 ${tone.dotClass} rounded-full opacity-70 ${tone.softGlowClass}"></div>`;
+  }
+  if (variant === "medium") {
+    return `<div class="absolute w-2.5 h-2.5 ${tone.dotClass} rounded-full opacity-80 ${tone.glowClass}"></div>`;
+  }
+  return `<div class="absolute w-2.5 h-2.5 ${tone.dotClass} rounded-full ${tone.glowClass}"></div>`;
 }
 
-function formatMonthHeader(monthKey) {
-  const [, month] = String(monthKey || "").split("-");
-  return `${Number(month)}月`;
-}
-
-function formatDayNumber(dateString) {
-  const { day } = splitDateParts(dateString);
-  return String(day).padStart(2, "0");
-}
-
-function formatWarDay(dayNumber) {
-  return `第 ${dayNumber} 天`;
-}
-
-function formatSourceDate(dateString) {
-  const { month, day } = splitDateParts(dateString);
-  return `${month}/${String(day).padStart(2, "0")}`;
-}
-
-function renderScoreBars(score, tone) {
-  const activeBars = Math.max(1, Math.round(score / 20));
-  const activeClass = getTone(tone).scoreBar;
-  return Array.from({ length: 5 }, (_, index) => {
-    const className = index < activeBars ? activeClass : "bg-primary/20";
-    return `<div class="h-1.5 flex-1 ${className}"></div>`;
+function renderRadarBlips(dimensions) {
+  const byId = new Map((dimensions || []).map((dimension) => [dimension.id, dimension]));
+  return RADAR_ORDER.map((id) => {
+    const dimension = byId.get(id);
+    const layout = RADAR_BLIP_LAYOUT[id];
+    if (!dimension || !layout) {
+      return "";
+    }
+    const tone = getTone(dimension.tone);
+    const label = RADAR_LABELS[id] || dimension.title;
+    return `
+      <div class="absolute flex justify-center items-center" style="${layout.wrapperStyle}">
+        <div class="${layout.labelClass} border ${tone.borderClass}">
+          <span class="text-[13px] font-bold ${tone.textClass} uppercase whitespace-nowrap">${escapeHtml(label)} ${dimension.score}%</span>
+        </div>
+        ${renderRadarDot(tone, layout.dotVariant)}
+      </div>
+    `;
   }).join("");
 }
 
-function renderHistoryDelta(currentScore, previous24hScore) {
-  const diff = currentScore - previous24hScore;
+function renderHistoryDelta(currentScore, previousScore) {
+  const diff = currentScore - previousScore;
   if (diff === 0) {
-    return { text: "0", className: "text-on-surface/70" };
+    return {
+      value: "0%",
+      className: "text-on-surface"
+    };
   }
-  if (diff < 0) {
-    return { text: `↓ ${Math.abs(diff)}`, className: "text-emerald-400" };
+  if (diff > 0) {
+    return {
+      value: `↑${diff}%`,
+      className: "text-primary"
+    };
   }
-  return { text: `↑ ${diff}`, className: "text-primary" };
+  return {
+    value: `↓${Math.abs(diff)}%`,
+    className: "text-success"
+  };
 }
 
-function renderOverlayRight(items) {
-  return (items || []).map((item) => `<div>${escapeHtml(item)}</div>`).join("");
-}
-
-function renderBlips(dimensions) {
-  return (dimensions || []).map((dimension) => {
-    const tone = getTone(dimension.tone);
-    const size = DOT_SIZE_MAP[dimension.display?.size] || DOT_SIZE_MAP.md;
-    const pulseNode = dimension.display?.pulse === "ping"
-      ? `<div class="${size} ${tone.blipDot} rounded-full animate-ping absolute inset-0 opacity-50"></div>`
-      : "";
-    const dotAnimation = dimension.display?.pulse === "pulse" ? "animate-pulse" : "";
-    return `
-      <div class="absolute group z-30" style="${positionStyle(dimension.display?.position)}">
-        <div class="relative">
-          ${pulseNode}
-          <div class="${size} ${tone.blipDot} rounded-full ${dotAnimation} ${dimension.display?.pulse === "ping" ? tone.blipGlow : tone.blipShadow}"></div>
-        </div>
-        <div class="mt-2 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
-          <div class="bg-black/90 border ${tone.blipBorder} px-2 py-1">
-            <span class="text-[12px] font-bold ${tone.blipText} font-label">${escapeHtml(dimension.title)} ${dimension.score}</span>
-          </div>
-        </div>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderIndicatorCards(dimensions) {
-  return (dimensions || []).map((dimension) => {
-    const tone = getTone(dimension.tone);
-    const bullets = (dimension.bullets || []).map((bullet) => `
-      <li class="flex gap-2">
-        <span class="mt-1.5 w-1.5 h-1.5 rounded-full ${tone.bullet} flex-shrink-0"></span>
-        ${escapeHtml(bullet)}
-      </li>
-    `).join("");
-
-    return `
-      <div class="bg-surface-container-low p-6 ${tone.tactical} space-y-5 flex flex-col min-h-[480px]">
-        <div class="flex justify-between items-start gap-4">
-          <div>
-            <span class="text-[12px] font-label tracking-widest uppercase opacity-70">${escapeHtml(dimension.target)}</span>
-            <h3 class="text-2xl font-bold font-headline mt-1">${escapeHtml(dimension.title)}</h3>
-            <p class="text-[14px] mt-1 text-on-surface-variant">${escapeHtml(dimension.summary)}</p>
-          </div>
-          <div class="relative w-16 h-16 flex-shrink-0 flex items-center justify-center">
-            <svg class="absolute inset-0 -rotate-90" viewBox="0 0 100 100">
-              <circle cx="50" cy="50" fill="none" r="45" stroke="${tone.ringBg}" stroke-width="8"></circle>
-              <circle cx="50" cy="50" fill="none" r="45" stroke="${tone.ringStroke}" stroke-dasharray="${RING_CIRCUMFERENCE}" stroke-dashoffset="${ringOffset(dimension.score)}" stroke-width="8"></circle>
-            </svg>
-            <div class="flex flex-col items-center leading-none">
-              <span class="text-xl font-black font-headline">${dimension.score}</span>
-              <span class="text-[9px] font-bold ${tone.label} uppercase">${escapeHtml(dimension.riskLabel)}</span>
-            </div>
-          </div>
-        </div>
-        <ul class="space-y-4 text-[15px] text-on-surface leading-relaxed pb-4">${bullets}</ul>
-        <div class="mt-auto pt-4 border-t border-outline-variant/10 flex gap-2">
-          <span class="text-[11px] ${tone.chipBg} ${tone.chipText} border ${tone.chipBorder} px-2 py-0.5 font-bold">${escapeHtml(dimension.evidence)}</span>
-        </div>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderWatchItems(items) {
-  return (items || []).map((item, index) => {
-    const tone = getTone(item.tone);
-    const label = item.label || `WATCH ${String(index + 1).padStart(2, "0")}`;
-    return `
-      <div class="bg-surface-container-lowest p-6 border-l-4 ${tone.leftBorder} hover:bg-surface-container-highest transition-colors cursor-pointer ${tone.tactical}">
-        <div class="flex justify-between items-start mb-4">
-          <span class="text-[13px] font-label ${tone.label} uppercase font-bold tracking-[0.2em]">${escapeHtml(label)}</span>
-          <span class="text-[12px] font-label opacity-70">${escapeHtml(item.tag)}</span>
-        </div>
-        <p class="text-[15px] text-on-surface font-body leading-relaxed">${escapeHtml(item.text)}</p>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderTimelineItems(items) {
-  return (items || []).map((item) => {
-    const tone = getTone(item.tone);
-    return `
-      <div class="p-5 bg-surface-container-lowest border border-outline-variant/10 hover:border-primary/30 transition-all group">
-        <div class="flex justify-between items-center mb-2 gap-4">
-          <span class="text-[14px] font-label text-primary font-bold">${escapeHtml(item.date)}</span>
-          <span class="text-[10px] font-label ${tone.chipText} border ${tone.chipBorder} px-3 py-0.5 font-bold uppercase">${escapeHtml(item.tag)}</span>
-        </div>
-        <p class="text-[14px] font-medium text-on-surface">${escapeHtml(item.text)}</p>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderHeroMetrics(historySnapshots, derived) {
-  const previousSnapshot = historySnapshots.length > 1 ? historySnapshots[historySnapshots.length - 2] : null;
+function renderSummaryCards(derived, historySnapshots) {
+  const previousSnapshot = historySnapshots.length > 1 ? historySnapshots[historySnapshots.length - 2] : historySnapshots[historySnapshots.length - 1];
   const previousScore = previousSnapshot?.overallScore ?? derived.overallScore;
   const delta = renderHistoryDelta(derived.overallScore, previousScore);
   const peakSnapshot = historySnapshots.reduce((best, snapshot) => {
-    if (!best || snapshot.overallScore > best.overallScore) {
-      return snapshot;
-    }
-    return best;
+    return !best || snapshot.overallScore > best.overallScore ? snapshot : best;
   }, null);
   const lowSnapshot = historySnapshots.reduce((best, snapshot) => {
-    if (!best || snapshot.overallScore < best.overallScore) {
-      return snapshot;
-    }
-    return best;
+    return !best || snapshot.overallScore < best.overallScore ? snapshot : best;
   }, null);
+  const peakTone = getTone(peakSnapshot?.historyTone || peakSnapshot?.overallTone || derived.overallTone);
+  const lowTone = getTone(lowSnapshot?.historyTone || lowSnapshot?.overallTone || derived.overallTone);
 
-  const cards = [
+  return [
     {
-      label: "24h变化",
-      value: delta.text,
-      helper: `对比前一日 ${previousScore}`,
+      label: "24小时变化",
+      value: delta.value,
+      helper: previousSnapshot ? `${formatMonthDay(previousSnapshot.date)} ${previousScore}%` : `当前 ${derived.overallScore}%`,
       className: delta.className
     },
     {
       label: "历史峰值",
-      value: String(peakSnapshot?.overallScore ?? derived.overallScore),
+      value: `${peakSnapshot?.overallScore ?? derived.overallScore}%`,
       helper: peakSnapshot ? formatMonthDay(peakSnapshot.date) : "当前",
-      className: getTone(peakSnapshot?.historyTone || peakSnapshot?.overallTone || derived.overallTone).historyText
+      className: peakTone.textClass
     },
     {
       label: "历史低点",
-      value: String(lowSnapshot?.overallScore ?? derived.overallScore),
+      value: `${lowSnapshot?.overallScore ?? derived.overallScore}%`,
       helper: lowSnapshot ? formatMonthDay(lowSnapshot.date) : "当前",
-      className: getTone(lowSnapshot?.historyTone || lowSnapshot?.overallTone || derived.overallTone).historyText
+      className: lowTone.textClass
     }
-  ];
-
-  return cards.map((card) => `
-    <div class="bg-surface-container-low/80 border border-outline-variant/15 px-3 py-3 min-h-[86px] flex flex-col justify-between">
-      <div class="text-[10px] font-label tracking-[0.22em] uppercase text-on-surface-variant">${escapeHtml(card.label)}</div>
-      <div class="text-2xl font-black font-headline ${card.className}">${escapeHtml(card.value)}</div>
-      <div class="text-[10px] text-on-surface-variant font-label">${escapeHtml(card.helper)}</div>
+  ].map((card) => `
+    <div class="panel-glass p-3 rounded flex flex-col justify-center text-center">
+      <span class="text-[10px] text-on-surface-variant font-bold mb-1 tracking-widest">${escapeHtml(card.label)}</span>
+      <span class="text-3xl font-black font-headline ${card.className} leading-none">${escapeHtml(card.value)}</span>
+      <span class="text-[9px] text-on-surface-variant mt-1.5">${escapeHtml(card.helper)}</span>
     </div>
   `).join("");
 }
 
-function renderHistoryLegend(items) {
+function renderTimelineItems(items) {
+  return (items || []).map((item) => `
+    <div class="p-2 bg-surface-container-lowest/50 border border-outline-variant/10 rounded">
+      <div class="flex justify-between items-center mb-1">
+        <p class="text-[10px] font-bold text-primary">${escapeHtml(item.date)}</p>
+        <span class="text-[9px] border border-outline-variant/30 px-1 rounded text-on-surface-variant">${escapeHtml(item.tag)}</span>
+      </div>
+      <p class="text-[10px] text-on-surface-variant/90 leading-relaxed">${escapeHtml(item.text)}</p>
+    </div>
+  `).join("");
+}
+
+function renderWatchlistItems(items) {
   return (items || []).map((item) => {
     const tone = getTone(item.tone);
     return `
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-surface-container-lowest border border-outline-variant/10">
-        <span class="w-2.5 h-2.5 rounded-full ${tone.blipDot}"></span>
-        <span class="text-[11px] font-label text-on-surface-variant tracking-[0.16em]">${escapeHtml(item.label)}</span>
+      <div class="border-l-2 ${tone.leftBorderClass.replace("border-l-", "border-")} pl-2 py-0.5">
+        <div class="flex justify-between items-center mb-1.5">
+          <p class="text-[10px] font-bold ${tone.textClass} uppercase tracking-widest">${escapeHtml(item.tag)}</p>
+        </div>
+        <p class="text-[10px] leading-relaxed text-on-surface-variant">${escapeHtml(item.text)}</p>
       </div>
     `;
   }).join("");
 }
 
-function renderHistoryMonthDivider(monthKey, count, isFirst) {
-  return `
-    <div class="col-span-full flex items-center gap-4 ${isFirst ? "" : "pt-5"}">
-      <div class="text-2xl font-black font-headline text-primary">${escapeHtml(formatMonthHeader(monthKey))}</div>
-      <div class="h-px flex-1 bg-primary/15"></div>
-      <div class="text-[11px] font-label tracking-[0.2em] text-on-surface-variant">${count}天</div>
-    </div>
-  `;
+function gaugeOffset(score) {
+  return (SEMI_GAUGE_LENGTH * (1 - clampScore(score) / 100)).toFixed(1);
 }
 
-function renderHistoryDay(snapshot, warDay, latestDate) {
-  const tone = getTone(snapshot.historyTone || snapshot.overallTone);
-  const fillHeight = Math.max(22, Math.min(100, snapshot.overallScore));
-  const latestBadge = snapshot.date === latestDate
-    ? `<span class="text-[10px] font-label ${tone.historyText}">最新</span>`
-    : `<span class="w-2 h-2 rounded-full ${tone.blipDot} ${snapshot.overallScore >= 80 ? tone.blipGlow : tone.blipShadow}"></span>`;
+function extractEvidenceLabel(evidence) {
+  const match = String(evidence || "").match(/[:：]\s*(.+)$/);
+  return match ? match[1] : String(evidence || "");
+}
 
-  return `
-    <button type="button" data-history-date="${escapeHtml(snapshot.date)}" class="group relative min-h-[110px] overflow-hidden bg-surface-container-lowest border ${tone.historyOutline} p-3 text-left transition-all duration-200 hover:-translate-y-1 hover:bg-surface-container-highest hover:border-primary/45">
-      <div class="absolute inset-x-0 bottom-0 ${tone.historyFill}" style="height:${fillHeight}%"></div>
-      <div class="relative z-10 flex h-full flex-col justify-between">
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <div class="text-[10px] font-label tracking-[0.2em] text-on-surface-variant">${escapeHtml(formatWarDay(warDay))}</div>
-            <div class="mt-1 text-sm font-bold text-on-surface">${escapeHtml(formatDayNumber(snapshot.date))}日</div>
+function renderIndicatorCards(dimensions) {
+  return (dimensions || []).map((dimension, index) => {
+    const tone = getTone(dimension.tone);
+    const evidence = extractEvidenceLabel(dimension.evidence);
+    const bullets = (dimension.bullets || []).map((bullet) => `
+      <li class="flex items-start gap-2"><span class="${tone.textClass} mt-0.5">•</span><span>${escapeHtml(bullet)}</span></li>
+    `).join("");
+
+    return `
+      <div class="panel-glass p-5 rounded-lg border-l-4 ${tone.leftBorderClass} scroll-mt-6" id="indicator-${escapeHtml(dimension.id)}">
+        <div class="flex justify-between items-start mb-4">
+          <div class="flex flex-col gap-1.5">
+            <div class="text-[11px] font-mono opacity-60 uppercase tracking-widest">指标 ${index + 1}</div>
+            <div class="flex items-center gap-3">
+              <div class="text-[20px] font-bold">${escapeHtml(dimension.title)}</div>
+              <span class="px-2.5 py-1 ${tone.badgeClass} rounded text-[11px] font-black uppercase">${escapeHtml(dimension.riskLabel)}</span>
+            </div>
           </div>
-          ${latestBadge}
+          <div class="gauge-container flex items-center justify-center">
+            <svg class="absolute inset-0" viewBox="0 0 44 26">
+              <path class="gauge-background" d="M 4,22 A 18,18 0 0,1 40,22"></path>
+              <path class="gauge-value" d="M 4,22 A 18,18 0 0,1 40,22" style="stroke: ${tone.hex}; stroke-dashoffset: ${gaugeOffset(dimension.score)};"></path>
+            </svg>
+            <span class="text-[13px] font-black ${tone.textClass} leading-none pt-2.5">${dimension.score}%</span>
+          </div>
         </div>
-        <div>
-          <div class="text-3xl font-black font-headline ${tone.historyText} leading-none">${snapshot.overallScore}</div>
-          <div class="mt-2 text-[11px] text-on-surface-variant">${escapeHtml(snapshot.tag || snapshot.overallLabel)}</div>
+        <div class="space-y-3">
+          <p class="text-[13px] text-on-surface-variant leading-relaxed">${escapeHtml(dimension.summary)}</p>
+          <ul class="text-[13px] text-on-surface-variant/90 space-y-2">${bullets}</ul>
+          <div class="inline-block mt-2 px-2 py-0.5 bg-surface-container border border-outline-variant/30 rounded text-[10px] font-bold text-on-surface-variant">
+            <span class="${tone.textClass} opacity-70 mr-1">证据强度:</span><span class="${tone.textClass}">${escapeHtml(evidence)}</span>
+          </div>
         </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderHeatmapCell(snapshot, isVisible) {
+  const tone = getTone(snapshot.historyTone || snapshot.overallTone);
+  const hiddenClass = isVisible ? "" : "hidden past-day";
+  return `
+    <button
+      type="button"
+      data-history-date="${escapeHtml(snapshot.date)}"
+      class="flex items-center justify-center aspect-square ${tone.heatClass} rounded-[2px] cursor-pointer hover:ring-2 hover:ring-white transition-all shadow-inner ${hiddenClass}"
+      title="历史存档: ${escapeHtml(formatMonthDay(snapshot.date))}"
+    >
+      <div class="flex flex-col items-center justify-center gap-[1px]">
+        <span class="text-[8px] text-white/80 font-medium leading-none">${escapeHtml(formatHeatmapDate(snapshot.date))}</span>
+        <span class="text-[11px] font-bold text-white drop-shadow-md leading-none">${snapshot.overallScore}%</span>
       </div>
     </button>
   `;
 }
 
-function renderHistoryArchive(data, historySnapshots) {
-  setText("historyArchiveTitle", data.history?.archiveTitle || "过去41天战争历史指数");
-  setText("historyArchiveSubtitle", data.history?.archiveSubtitle || "点击任一天，查看当日五条红线的结构。");
-  setHtml("historyArchiveLegend", renderHistoryLegend(data.history?.legend || []));
-
-  const monthCounts = historySnapshots.reduce((map, snapshot) => {
-    const key = snapshot.date.slice(0, 7);
-    map.set(key, (map.get(key) || 0) + 1);
-    return map;
-  }, new Map());
-
-  let currentMonth = "";
-  const latestDate = historySnapshots[historySnapshots.length - 1]?.date;
-  const gridHtml = historySnapshots.map((snapshot, index) => {
-    const monthKey = snapshot.date.slice(0, 7);
-    const divider = monthKey !== currentMonth
-      ? renderHistoryMonthDivider(monthKey, monthCounts.get(monthKey), currentMonth === "")
-      : "";
-    currentMonth = monthKey;
-    return `${divider}${renderHistoryDay(snapshot, index + 1, latestDate)}`;
-  }).join("");
-
-  setHtml("historyArchiveGrid", gridHtml);
-}
-
-function renderModalRadarBlips(dimensions) {
-  return (dimensions || []).map((dimension) => {
-    const tone = getTone(dimension.tone);
-    const size = DOT_SIZE_MAP[dimension.display?.size] || DOT_SIZE_MAP.md;
-    const ping = dimension.score >= 80 ? `<div class="${size} ${tone.blipDot} rounded-full animate-ping absolute inset-0 opacity-40"></div>` : "";
-    return `
-      <div class="absolute z-20" style="${positionStyle(dimension.display?.position)}">
-        <div class="relative">
-          ${ping}
-          <div class="${size} ${tone.blipDot} rounded-full ${dimension.score >= 80 ? tone.blipGlow : tone.blipShadow}"></div>
-        </div>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderModalDimensionCards(dimensions) {
-  return (dimensions || []).map((dimension) => {
-    const tone = getTone(dimension.tone);
-    return `
-      <div class="bg-surface-container-lowest border ${tone.historyOutline} p-3 space-y-2">
-        <div class="text-[11px] font-label text-on-surface-variant tracking-[0.14em]">${escapeHtml(dimension.title)}</div>
-        <div class="flex items-end justify-between gap-3">
-          <span class="text-2xl font-black font-headline ${tone.historyText}">${dimension.score}</span>
-          <span class="text-[10px] ${tone.historyText} font-bold">${escapeHtml(dimension.riskLabel)}</span>
-        </div>
-      </div>
-    `;
-  }).join("");
-}
-
-function renderDriverList(dimensions) {
-  return [...(dimensions || [])]
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3)
-    .map((dimension) => {
-      const tone = getTone(dimension.tone);
-      return `
-        <div class="flex items-center justify-between gap-4 text-sm">
-          <div class="flex items-center gap-2 text-on-surface">
-            <span class="w-2 h-2 rounded-full ${tone.blipDot}"></span>
-            <span>${escapeHtml(dimension.title)}</span>
-          </div>
-          <span class="font-black font-headline ${tone.historyText}">${dimension.score}</span>
-        </div>
-      `;
-    }).join("");
-}
-
-function renderSourceLinks(sourceMap, sourceIds) {
-  return (sourceIds || []).map((id) => sourceMap.get(id)).filter(Boolean).map((source) => `
-    <a href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer noopener" class="inline-flex items-center gap-2 px-3 py-1.5 bg-surface border border-outline-variant/15 text-[11px] text-on-surface-variant hover:border-primary/35 hover:text-on-surface transition-colors">
-      <span>${escapeHtml(source.publisher)}</span>
-      <span>${escapeHtml(formatSourceDate(source.date))}</span>
-    </a>
-  `).join("");
-}
-
-function renderHistoryModal(snapshot, sourceMap, warDay, data) {
-  const tone = getTone(snapshot.overallTone);
-  const sourceLinks = renderSourceLinks(sourceMap, snapshot.source_ids);
-  const driverList = renderDriverList(snapshot.dimensions);
-
-  return `
-    <div class="bg-surface-container-low tactical-border-red p-6 md:p-8 lg:p-10 shadow-2xl max-h-[88vh] overflow-y-auto">
-      <div class="flex items-start justify-between gap-6">
-        <div class="space-y-3 max-w-[680px]">
-          <div class="flex flex-wrap items-center gap-3 text-[11px] font-label tracking-[0.2em]">
-            <span class="px-3 py-1 ${tone.historyBadge}">${escapeHtml(snapshot.tag || "历史快照")}</span>
-            <span class="text-on-surface-variant">${escapeHtml(formatChineseDate(snapshot.date))}</span>
-            <span class="text-on-surface-variant">${escapeHtml(formatWarDay(warDay))}</span>
-          </div>
-          <h3 class="text-3xl md:text-4xl font-black font-headline tracking-tight text-on-surface">${escapeHtml(snapshot.headline || formatChineseDate(snapshot.date))}</h3>
-          <p class="text-sm md:text-base text-on-surface-variant leading-relaxed">${escapeHtml(snapshot.summary || "")}</p>
-        </div>
-        <div class="flex items-start gap-4 flex-shrink-0">
-          <div class="text-right">
-            <div class="text-[11px] font-label tracking-[0.24em] text-on-surface-variant uppercase">${escapeHtml(data.history?.modalTitle || "当日红线雷达")}</div>
-            <div class="text-7xl md:text-8xl font-black font-headline ${tone.historyText} leading-none">${snapshot.overallScore}</div>
-            <div class="text-sm ${tone.historyText} font-bold mt-1">${escapeHtml(snapshot.overallLabel)}</div>
-          </div>
-          <button type="button" data-history-close class="w-10 h-10 flex items-center justify-center border border-outline-variant/20 bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:border-primary/40 transition-colors">
-            <span class="material-symbols-outlined">close</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="mt-8 grid lg:grid-cols-[320px_1fr] gap-8 items-start">
-        <div class="space-y-4">
-          <div class="bg-surface-container-lowest border border-outline-variant/10 p-4 space-y-2">
-            <div class="text-[11px] font-label tracking-[0.22em] uppercase text-on-surface-variant">当日状态</div>
-            <div class="text-xl font-black font-headline text-on-surface">${snapshot.overallScore} / 100</div>
-            <div class="text-sm text-on-surface-variant">北京时间 ${escapeHtml(snapshot.snapshot_time_bjt)}</div>
-          </div>
-          <div class="bg-surface-container-lowest border border-outline-variant/10 p-4 space-y-3">
-            <div class="text-[11px] font-label tracking-[0.22em] uppercase text-on-surface-variant">主导因子</div>
-            ${driverList}
-          </div>
-          <div class="bg-surface-container-lowest border border-outline-variant/10 p-4 space-y-3">
-            <div class="text-[11px] font-label tracking-[0.22em] uppercase text-on-surface-variant">公开来源</div>
-            <div class="flex flex-wrap gap-2">
-              ${sourceLinks || `<span class="text-sm text-on-surface-variant">暂无来源条目</span>`}
-            </div>
-          </div>
-        </div>
-
-        <div class="space-y-5">
-          <div class="bg-[#060000] tactical-border-red p-4 md:p-6 overflow-hidden">
-            <div class="relative h-[340px] md:h-[420px]">
-              <svg class="absolute inset-0 w-full h-full" viewBox="0 0 600 600">
-                <circle class="radar-grid-line" cx="300" cy="300" fill="none" r="280"></circle>
-                <circle class="radar-grid-line" cx="300" cy="300" fill="none" r="210"></circle>
-                <circle class="radar-grid-line" cx="300" cy="300" fill="none" r="140"></circle>
-                <circle class="radar-grid-line" cx="300" cy="300" fill="none" r="70"></circle>
-                <line class="radar-grid-line" x1="300" x2="300" y1="20" y2="580"></line>
-                <line class="radar-grid-line" x1="20" x2="580" y1="300" y2="300"></line>
-                <line class="radar-grid-line" x1="102" x2="498" y1="102" y2="498"></line>
-                <line class="radar-grid-line" x1="102" x2="498" y1="498" y2="102"></line>
-              </svg>
-              <div class="absolute inset-0 radar-sweep rounded-full opacity-35"></div>
-              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center">
-                <div class="w-2.5 h-2.5 bg-primary rounded-full shadow-[0_0_12px_#FF3B30] mb-2"></div>
-                <span class="text-[11px] text-primary/70 font-label tracking-tighter uppercase">总雷达分</span>
-                <span class="text-6xl md:text-7xl font-black font-headline text-on-surface leading-none">${snapshot.overallScore}</span>
-              </div>
-              ${renderModalRadarBlips(snapshot.dimensions)}
-            </div>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-3">
-            ${renderModalDimensionCards(snapshot.dimensions)}
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function openHistoryModal(date) {
-  const modal = document.getElementById("historyModal");
-  const panel = document.getElementById("historyModalPanel");
-  if (!modal || !panel) {
+function syncHeatmapToggle(totalDays) {
+  const button = document.getElementById("heatmap-toggle");
+  if (!button) {
     return;
   }
-  const index = APP_STATE.historySnapshots.findIndex((snapshot) => snapshot.date === date);
-  if (index === -1) {
+  if (totalDays <= 7) {
+    button.classList.add("hidden");
     return;
   }
-  const snapshot = APP_STATE.historySnapshots[index];
-  panel.innerHTML = renderHistoryModal(snapshot, APP_STATE.sourceMap, index + 1, APP_STATE.data);
+  button.classList.remove("hidden");
+  button.textContent = APP_STATE.heatmapExpanded ? "收起历史记录" : `展开全部 ${totalDays} 天`;
+}
+
+function renderHeatmap(historySnapshots) {
+  const reversedSnapshots = [...historySnapshots].reverse();
+  setHtml("heatmap-grid", reversedSnapshots.map((snapshot, index) => renderHeatmapCell(snapshot, index < 7 || APP_STATE.heatmapExpanded)).join(""));
+  syncHeatmapToggle(reversedSnapshots.length);
+}
+
+function showLoadError(message) {
+  const errorBox = document.getElementById("loadError");
+  const mainApp = document.getElementById("mainApp");
+  if (errorBox) {
+    errorBox.textContent = message;
+    errorBox.classList.remove("hidden");
+  }
+  if (mainApp) {
+    mainApp.classList.add("hidden");
+  }
+}
+
+function updateHeader(data, derived) {
+  document.title = data.meta?.pageTitle || document.title;
+  setText("brand-title", "美伊红线雷达");
+  setText("brand-subtitle", data.hero?.eyebrow || "48小时升级风险雷达");
+  setText("radar-date-display", formatSnapshotDisplay(data.meta?.snapshot_time_bjt));
+  setText("hero-score", `${derived.overallScore}%`);
+  renderAlertBadge(derived.overallTone);
+}
+
+function renderDashboard(data, derived, historySnapshots) {
+  updateHeader(data, derived);
+  setHtml("radar-blips", renderRadarBlips(derived.dimensions));
+  setHtml("summaryCards", renderSummaryCards(derived, historySnapshots));
+  setHtml("timeline-items", renderTimelineItems(data.timeline?.items));
+  setHtml("watchlist-items", renderWatchlistItems(data.watchlist?.items));
+  setText("history-title", data.history?.archiveTitle || "过去41天战争历史指数");
+  renderHeatmap(historySnapshots);
+  setHtml("core-indicators", renderIndicatorCards(derived.dimensions));
+}
+
+function updateModalMetric(id, score, toneName) {
+  const el = document.getElementById(id);
+  if (!el) {
+    return;
+  }
+  const tone = getTone(toneName);
+  el.textContent = `${score}%`;
+  el.style.color = tone.hex;
+}
+
+function openModal(date) {
+  const snapshot = APP_STATE.historySnapshots.find((item) => item.date === date);
+  const modal = document.getElementById("history-modal");
+  const content = document.getElementById("history-modal-content");
+  if (!snapshot || !modal || !content) {
+    return;
+  }
+
+  const tone = getTone(snapshot.historyTone || snapshot.overallTone);
+  setText("modal-title", formatMonthDay(snapshot.date));
+  setText("modal-index", `${snapshot.overallScore}%`);
+  document.getElementById("modal-index").style.color = tone.hex;
+  document.getElementById("modal-color").style.backgroundColor = tone.hex;
+
+  const detailText = [snapshot.headline, snapshot.summary].filter(Boolean).join(" ");
+  setText("modal-details", detailText || "暂无补充说明。");
+
+  const dimensionsById = new Map((snapshot.dimensions || []).map((dimension) => [dimension.id, dimension]));
+  Object.entries(MODAL_METRIC_IDS).forEach(([dimensionId, elementId]) => {
+    const dimension = dimensionsById.get(dimensionId);
+    if (!dimension) {
+      return;
+    }
+    updateModalMetric(elementId, dimension.score, dimension.tone);
+  });
+
   modal.classList.remove("hidden");
-  modal.classList.add("flex");
+  requestAnimationFrame(() => {
+    modal.classList.remove("opacity-0");
+    content.classList.remove("scale-95");
+  });
   document.body.classList.add("overflow-hidden");
   document.documentElement.classList.add("overflow-hidden");
 }
 
-function closeHistoryModal() {
-  const modal = document.getElementById("historyModal");
-  const panel = document.getElementById("historyModalPanel");
-  if (!modal || !panel) {
+function closeModal() {
+  const modal = document.getElementById("history-modal");
+  const content = document.getElementById("history-modal-content");
+  if (!modal || !content || modal.classList.contains("hidden")) {
     return;
   }
-  modal.classList.add("hidden");
-  modal.classList.remove("flex");
-  panel.innerHTML = "";
+
+  modal.classList.add("opacity-0");
+  content.classList.add("scale-95");
+  window.setTimeout(() => {
+    modal.classList.add("hidden");
+  }, 300);
   document.body.classList.remove("overflow-hidden");
   document.documentElement.classList.remove("overflow-hidden");
 }
 
-function bindHistoryInteractions() {
-  if (window.__historyBindingsReady) {
+function bindInteractions() {
+  if (window.__radarBindingsReady) {
     return;
   }
-  const grid = document.getElementById("historyArchiveGrid");
-  const modal = document.getElementById("historyModal");
-  const backdrop = document.getElementById("historyModalBackdrop");
 
-  grid?.addEventListener("click", (event) => {
+  document.getElementById("heatmap-toggle")?.addEventListener("click", () => {
+    APP_STATE.heatmapExpanded = !APP_STATE.heatmapExpanded;
+    renderHeatmap(APP_STATE.historySnapshots);
+  });
+
+  document.getElementById("heatmap-grid")?.addEventListener("click", (event) => {
     const button = event.target.closest("[data-history-date]");
     if (!button) {
       return;
     }
-    openHistoryModal(button.dataset.historyDate);
+    openModal(button.dataset.historyDate);
   });
 
-  backdrop?.addEventListener("click", closeHistoryModal);
-
-  modal?.addEventListener("click", (event) => {
-    if (event.target.closest("[data-history-close]")) {
-      closeHistoryModal();
+  document.getElementById("history-modal-close")?.addEventListener("click", closeModal);
+  document.getElementById("history-modal")?.addEventListener("click", (event) => {
+    if (event.target.id === "history-modal") {
+      closeModal();
     }
   });
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
-      closeHistoryModal();
+      closeModal();
     }
   });
 
-  window.__historyBindingsReady = true;
-}
-
-function renderHero(data, derived, historySnapshots) {
-  document.title = data.meta.pageTitle || document.title;
-  setText("brandTitle", data.meta.brandTitle || "美伊红线指数");
-  setText("heroEyebrow", data.hero.eyebrow || "");
-  toggleHidden("heroEyebrow", !data.hero.eyebrow);
-  setText("heroScoreValue", String(derived.overallScore));
-  setText("heroScoreMax", `/ ${data.hero.scoreMax || 100}`);
-  toggleHidden("dataKey", true);
-  toggleHidden("scanningRegion", true);
-  toggleHidden("heroFooter", true);
-  setHtml("scoreBars", renderScoreBars(derived.overallScore, derived.overallTone));
-  setHtml("heroMetricsBox", renderHeroMetrics(historySnapshots, derived));
-  startHeroClock();
-
-  const statusTone = getTone(derived.overallTone);
-  const statusText = `${data.hero.statusPrefix || ""}${derived.overallLabel}`;
-  setHtml("statusBadge", `<span class="material-symbols-outlined text-sm">${escapeHtml(data.hero.statusIcon || "shield")}</span><span>${escapeHtml(statusText)}</span>`);
-  const badge = document.getElementById("statusBadge");
-  badge.className = `text-[12px] font-label font-black px-5 py-2 tracking-[0.25em] uppercase flex items-center gap-2 ${statusTone.statusBadge}`;
-}
-
-function renderRadar(data, derived) {
-  setHtml("overlayLeft", "");
-  const rightMeta = data.radar.rightMeta || [];
-  setHtml("overlayRight", renderOverlayRight(rightMeta));
-  toggleHidden("overlayLeft", true);
-  toggleHidden("overlayRight", rightMeta.length === 0);
-  setText("radarCenterLabel", data.radar.centerLabel || "总雷达分");
-  setText("radarCenterScore", String(derived.overallScore));
-  setHtml("radarBlips", renderBlips(derived.dimensions));
-}
-
-function renderSections(data, derived) {
-  setText("indicatorsTitle", "5 条红线核心指标");
-  setHtml("indicatorCards", renderIndicatorCards(derived.dimensions));
-  setText("watchlistTitle", data.watchlist.title || "");
-  setHtml("watchItems", renderWatchItems(data.watchlist.items));
-  setText("timelineTitle", data.timeline.title || "");
-  setHtml("timelineItems", renderTimelineItems(data.timeline.items));
-}
-
-function showLoadError(message) {
-  const errorBox = document.getElementById("loadError");
-  const appRoot = document.getElementById("appRoot");
-  errorBox.textContent = message;
-  errorBox.classList.remove("hidden");
-  appRoot.classList.add("hidden");
+  window.__radarBindingsReady = true;
 }
 
 function buildDataCandidates() {
@@ -853,11 +679,8 @@ async function loadRadarData() {
     APP_STATE.historySnapshots = historySnapshots;
     APP_STATE.sourceMap = buildSourceMap(data.sources);
 
-    renderHero(data, derived, historySnapshots);
-    renderHistoryArchive(data, historySnapshots);
-    renderRadar(data, derived);
-    renderSections(data, derived);
-    bindHistoryInteractions();
+    renderDashboard(data, derived, historySnapshots);
+    bindInteractions();
   } catch (error) {
     console.error(error);
     showLoadError("数据加载失败。请刷新页面重试；若仍失败，请重新打开预览链接。");
