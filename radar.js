@@ -443,15 +443,9 @@ function gaugeOffset(score) {
   return (SEMI_GAUGE_LENGTH * (1 - clampScore(score) / 100)).toFixed(1);
 }
 
-function extractEvidenceLabel(evidence) {
-  const match = String(evidence || "").match(/[:：]\s*(.+)$/);
-  return match ? match[1] : String(evidence || "");
-}
-
 function renderIndicatorCards(dimensions) {
   return (dimensions || []).map((dimension, index) => {
     const tone = getTone(dimension.tone);
-    const evidence = extractEvidenceLabel(dimension.evidence);
     const bullets = (dimension.bullets || []).map((bullet) => `
       <li class="flex items-start gap-2"><span class="${tone.textClass} mt-0.5">•</span><span>${escapeHtml(bullet)}</span></li>
     `).join("");
@@ -477,9 +471,6 @@ function renderIndicatorCards(dimensions) {
         <div class="space-y-3">
           <p class="text-[13px] text-on-surface-variant leading-relaxed">${escapeHtml(dimension.summary)}</p>
           <ul class="text-[13px] text-on-surface-variant/90 space-y-2">${bullets}</ul>
-          <div class="inline-block mt-2 px-2 py-0.5 bg-surface-container border border-outline-variant/30 rounded text-[10px] font-bold text-on-surface-variant">
-            <span class="${tone.textClass} opacity-70 mr-1">证据强度:</span><span class="${tone.textClass}">${escapeHtml(evidence)}</span>
-          </div>
         </div>
       </div>
     `;

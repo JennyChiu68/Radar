@@ -1787,7 +1787,6 @@
       "title": "霍尔木兹",
       "summary": "海峡再次关闭，停火后的通行恢复已被打断。",
       "overall_weight": 0.25,
-      "evidence": "证据强度: 高",
       "display": {
         "position": {
           "top": "18%",
@@ -1875,7 +1874,6 @@
       "title": "停火 / 谈判",
       "summary": "停火没有正式破裂，但已经进入高频违约状态。",
       "overall_weight": 0.2,
-      "evidence": "证据强度: 高",
       "display": {
         "position": {
           "top": "35%",
@@ -1938,7 +1936,6 @@
       "title": "新战线",
       "summary": "战火已经重新从伊朗本土外溢到多方向。",
       "overall_weight": 0.25,
-      "evidence": "证据强度: 高",
       "display": {
         "position": {
           "bottom": "28%",
@@ -2000,7 +1997,6 @@
       "title": "民用基础设施",
       "summary": "民用区域已被直接打击，风险重新跃升到高位。",
       "overall_weight": 0.15,
-      "evidence": "证据强度: 高",
       "display": {
         "position": {
           "bottom": "18%",
@@ -2072,7 +2068,6 @@
       "title": "能源与航运",
       "summary": "金融价格回吐了部分溢价，但航运与保险链条仍然紧绷。",
       "overall_weight": 0.15,
-      "evidence": "证据强度: 高",
       "display": {
         "position": {
           "top": "45%",
