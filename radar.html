@@ -291,7 +291,12 @@
         <section id="core-indicators-section" class="mt-4 space-y-5">
           <div class="flex items-center gap-3 px-1">
             <span class="w-6 h-0.5 bg-primary"></span>
-            <h2 class="text-[16px] font-black font-headline tracking-[0.2em] uppercase">核心指标监测</h2>
+            <div class="flex items-center gap-2">
+              <h2 class="text-[16px] font-black font-headline tracking-[0.2em] uppercase">核心指标监测</h2>
+              <button id="indicator-guide-trigger" type="button" class="w-6 h-6 rounded-full border border-outline-variant/50 bg-surface-container-lowest/60 text-on-surface-variant hover:text-on-surface hover:border-primary/40 hover:bg-surface-container-low transition-colors flex items-center justify-center" aria-label="查看指标说明">
+                <span class="material-symbols-outlined text-[15px]">help</span>
+              </button>
+            </div>
           </div>
           <div id="core-indicators" class="space-y-4"></div>
         </section>
@@ -324,6 +329,75 @@
       <div class="space-y-2">
         <p class="text-[12px] font-bold text-on-surface-variant uppercase tracking-widest mb-1.5">关键动态记录</p>
         <p id="modal-details" class="text-[13px] text-on-surface-variant/90 leading-relaxed">详情内容...</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="indicator-guide-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black/80 backdrop-blur-sm px-6 opacity-0 transition-opacity duration-300">
+    <div id="indicator-guide-content" class="panel-glass p-6 rounded-lg w-full max-w-[420px] border-outline-variant/30 relative transform scale-95 transition-transform duration-300 max-h-[88vh] overflow-y-auto">
+      <button id="indicator-guide-close" type="button" class="absolute top-3 right-3 text-on-surface-variant hover:text-white">
+        <span class="material-symbols-outlined text-[24px]">close</span>
+      </button>
+      <div class="flex items-center gap-2 mb-4">
+        <span class="material-symbols-outlined text-[18px] text-primary">help</span>
+        <h3 class="text-[15px] font-black tracking-widest uppercase text-on-surface">指标说明</h3>
+      </div>
+
+      <div class="space-y-5 text-[13px] text-on-surface-variant leading-relaxed">
+        <section class="space-y-2">
+          <h4 class="text-[11px] font-black tracking-[0.18em] uppercase text-on-surface">评分规则</h4>
+          <div class="rounded border border-outline-variant/20 bg-surface-container-lowest/40 p-3 space-y-1.5">
+            <p>总分范围为 0-100，每条红线也单独按 0-100 评分。</p>
+            <p>总分由 5 条红线按权重加总得出，不是主观“拍脑袋”调整。</p>
+            <p>所有评分都必须对应公开事实变化，只有在事实变量变化后才会上调或下调。</p>
+          </div>
+        </section>
+
+        <section class="space-y-2">
+          <h4 class="text-[11px] font-black tracking-[0.18em] uppercase text-on-surface">风险等级</h4>
+          <div class="space-y-2">
+            <div class="flex items-start gap-3 rounded border border-outline-variant/15 bg-surface-container-lowest/30 px-3 py-2">
+              <span class="w-2 h-2 rounded-[2px] bg-success mt-1.5"></span>
+              <p><span class="text-on-surface font-bold">0-19 低风险</span>：局势基本稳定，缺少明确升级信号。</p>
+            </div>
+            <div class="flex items-start gap-3 rounded border border-outline-variant/15 bg-surface-container-lowest/30 px-3 py-2">
+              <span class="w-2 h-2 rounded-[2px] bg-success/70 mt-1.5"></span>
+              <p><span class="text-on-surface font-bold">20-39 可观察</span>：有摩擦，但尚未形成持续升级链条。</p>
+            </div>
+            <div class="flex items-start gap-3 rounded border border-outline-variant/15 bg-surface-container-lowest/30 px-3 py-2">
+              <span class="w-2 h-2 rounded-[2px] bg-tertiary/70 mt-1.5"></span>
+              <p><span class="text-on-surface font-bold">40-59 脆弱</span>：存在明显不确定性，局势可能反复。</p>
+            </div>
+            <div class="flex items-start gap-3 rounded border border-outline-variant/15 bg-surface-container-lowest/30 px-3 py-2">
+              <span class="w-2 h-2 rounded-[2px] bg-tertiary mt-1.5"></span>
+              <p><span class="text-on-surface font-bold">60-74 紧绷</span>：多个风险点同时抬升，局势承压。</p>
+            </div>
+            <div class="flex items-start gap-3 rounded border border-outline-variant/15 bg-surface-container-lowest/30 px-3 py-2">
+              <span class="w-2 h-2 rounded-[2px] bg-primary/80 mt-1.5"></span>
+              <p><span class="text-on-surface font-bold">75-89 临界</span>：关键升级触发器已经接近兑现。</p>
+            </div>
+            <div class="flex items-start gap-3 rounded border border-outline-variant/15 bg-surface-container-lowest/30 px-3 py-2">
+              <span class="w-2 h-2 rounded-[2px] bg-primary mt-1.5"></span>
+              <p><span class="text-on-surface font-bold">90-100 极高</span>：局势已接近或进入实质性升级。</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-2">
+          <h4 class="text-[11px] font-black tracking-[0.18em] uppercase text-on-surface">权重与公式</h4>
+          <div class="rounded border border-outline-variant/20 bg-surface-container-lowest/40 p-3 space-y-2">
+            <div class="grid grid-cols-[1fr_auto] gap-x-3 gap-y-1.5">
+              <span>霍尔木兹</span><span class="text-on-surface font-bold">25%</span>
+              <span>停火/谈判</span><span class="text-on-surface font-bold">20%</span>
+              <span>新战线</span><span class="text-on-surface font-bold">25%</span>
+              <span>民用基础设施</span><span class="text-on-surface font-bold">15%</span>
+              <span>能源与航运</span><span class="text-on-surface font-bold">15%</span>
+            </div>
+            <div class="border-t border-outline-variant/15 pt-2 text-on-surface">
+              <span class="font-bold">总分公式：</span>总分 = Σ(分项分 × 分项权重)
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   </div>

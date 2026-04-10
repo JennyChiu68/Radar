@@ -607,6 +607,38 @@ function closeModal() {
   document.documentElement.classList.remove("overflow-hidden");
 }
 
+function openIndicatorGuide() {
+  const modal = document.getElementById("indicator-guide-modal");
+  const content = document.getElementById("indicator-guide-content");
+  if (!modal || !content) {
+    return;
+  }
+
+  modal.classList.remove("hidden");
+  requestAnimationFrame(() => {
+    modal.classList.remove("opacity-0");
+    content.classList.remove("scale-95");
+  });
+  document.body.classList.add("overflow-hidden");
+  document.documentElement.classList.add("overflow-hidden");
+}
+
+function closeIndicatorGuide() {
+  const modal = document.getElementById("indicator-guide-modal");
+  const content = document.getElementById("indicator-guide-content");
+  if (!modal || !content || modal.classList.contains("hidden")) {
+    return;
+  }
+
+  modal.classList.add("opacity-0");
+  content.classList.add("scale-95");
+  window.setTimeout(() => {
+    modal.classList.add("hidden");
+  }, 300);
+  document.body.classList.remove("overflow-hidden");
+  document.documentElement.classList.remove("overflow-hidden");
+}
+
 function bindInteractions() {
   if (window.__radarBindingsReady) {
     return;
@@ -632,9 +664,18 @@ function bindInteractions() {
     }
   });
 
+  document.getElementById("indicator-guide-trigger")?.addEventListener("click", openIndicatorGuide);
+  document.getElementById("indicator-guide-close")?.addEventListener("click", closeIndicatorGuide);
+  document.getElementById("indicator-guide-modal")?.addEventListener("click", (event) => {
+    if (event.target.id === "indicator-guide-modal") {
+      closeIndicatorGuide();
+    }
+  });
+
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeModal();
+      closeIndicatorGuide();
     }
   });
 
