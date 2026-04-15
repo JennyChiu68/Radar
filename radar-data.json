@@ -2,7 +2,7 @@
   "meta": {
     "pageTitle": "美伊红线雷达 | 48小时升级风险雷达",
     "brandTitle": "美伊红线雷达",
-    "snapshot_time_bjt": "2026-04-09 13:56",
+    "snapshot_time_bjt": "2026-04-15 14:45",
     "scoring_version": "v1.0"
   },
   "bands": {
@@ -1760,10 +1760,238 @@
         "tag": "反弹",
         "headline": "海峡再关、贝鲁特重创、条款争议重燃，指数从停火低点迅速反弹。",
         "summary": "停火未能封住外溢战场和海峡风险，4 月 9 日重新回到高压区。"
+      },
+      {
+        "date": "2026-04-10",
+        "snapshot_time_bjt": "2026-04-10 21:00",
+        "source_ids": [
+          "ap_0410_vance",
+          "ap_0410_markets"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 5.5,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        },
+        "tag": "待谈",
+        "headline": "停火临近失稳之际，华盛顿和德黑兰仍把周末会谈当成最后缓冲。",
+        "summary": "海峡仍未重开，但谈判预期与油价回落让指数暂时脱离 4 月 9 日的极端高点。"
+      },
+      {
+        "date": "2026-04-11",
+        "snapshot_time_bjt": "2026-04-11 21:00",
+        "source_ids": [
+          "ap_0410_vance",
+          "ap_0410_markets"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "closed_or_blocked",
+            "traffic_recovery_pct_estimate": 0,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 4,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        },
+        "tag": "拉扯",
+        "headline": "会谈窗口仍在，但海峡与停火条款继续互相牵制，战场没有真正降温。",
+        "summary": "这一日更像高压僵持，而不是缓和起点，市场先动，事实变量却仍旧僵硬。"
+      },
+      {
+        "date": "2026-04-12",
+        "snapshot_time_bjt": "2026-04-12 21:00",
+        "source_ids": [
+          "ap_0412_blockade"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 10,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "uncertain"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 7,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "high"
+          }
+        },
+        "tag": "封港",
+        "headline": "谈判无果后，美国宣布将封锁伊朗港口，海峡风险重新被制度化抬升。",
+        "summary": "这不是口头威胁，而是把霍尔木兹和能源变量重新推回执行层。"
+      },
+      {
+        "date": "2026-04-13",
+        "snapshot_time_bjt": "2026-04-13 21:00",
+        "source_ids": [
+          "ap_0413_ports"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "military_controlled_open",
+            "traffic_recovery_pct_estimate": 10,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 8,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        },
+        "tag": "封锁",
+        "headline": "美军称已封锁伊朗港口，但对非伊朗目的地仍保留受控通行。",
+        "summary": "海峡没有彻底锁死，可低流量与强军控并存，风险只是从极端退到高位。"
+      },
+      {
+        "date": "2026-04-14",
+        "snapshot_time_bjt": "2026-04-14 21:00",
+        "source_ids": [
+          "ap_0414_talks",
+          "ap_0414_lebanon_talks"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "military_controlled_open",
+            "traffic_recovery_pct_estimate": 15,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "sustained_outer_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 3,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        },
+        "tag": "接触",
+        "headline": "美伊回合谈被重新撮合，以黎几十年来首次直接谈判同步落地。",
+        "summary": "外交接触明显增多，但封锁与海峡低流量现实尚未真正解除。"
+      },
+      {
+        "date": "2026-04-15",
+        "snapshot_time_bjt": "2026-04-15 14:45",
+        "source_ids": [
+          "ap_0415_hopes",
+          "ap_0415_children",
+          "ap_0415_iaea",
+          "ap_0415_markets"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "military_controlled_open",
+            "traffic_recovery_pct_estimate": 10,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "high"
+          },
+          "civilian_infra": {
+            "threat_posture": "active",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": -4.6,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "medium"
+          }
+        },
+        "tag": "僵持",
+        "headline": "续谈希望抬头，但封锁持续、黎巴嫩居民点再遭袭击，风险只小幅回落。",
+        "summary": "当前不是战事结束，而是在高压僵持中寻找第二轮谈判窗口。"
       }
     ],
-    "archiveTitle": "过去41天战争历史指数",
-    "archiveSubtitle": "按北京时间日快照回填公开报道事实。颜色按过去41天的相对分布显示，点击任一天查看当日五条红线的结构。",
+    "archiveTitle": "战争历史指数",
+    "archiveSubtitle": "按北京时间日快照回填公开报道事实。颜色按当前历史窗口的相对分布显示，点击任一天查看当日五条红线的结构。",
     "modalTitle": "当日红线雷达",
     "legend": [
       {
@@ -1785,7 +2013,7 @@
       "id": "hormuz",
       "target": "TARGET 01",
       "title": "霍尔木兹",
-      "summary": "海峡再次关闭，停火后的通行恢复已被打断。",
+      "summary": "海峡未再完全锁死，但已进入强军事控制与低流量状态。",
       "overall_weight": 0.25,
       "display": {
         "position": {
@@ -1796,9 +2024,9 @@
         "pulse": "ping"
       },
       "facts": {
-        "policy_status": "closed_or_blocked",
-        "traffic_recovery_pct_estimate": 0,
-        "shipping_disruption_level": "extreme"
+        "policy_status": "military_controlled_open",
+        "traffic_recovery_pct_estimate": 10,
+        "shipping_disruption_level": "high"
       },
       "metrics": [
         {
@@ -1863,16 +2091,16 @@
         }
       ],
       "bullets": [
-        "AP 报道显示，伊朗在以军扩大黎巴嫩打击后再次关闭霍尔木兹海峡。",
-        "独立航运分析仍未观察到船流恢复，前一日只有 11 艘船通过海峡。",
-        "伊朗仍坚持对过境船只收费，海峡已从“受控开放”重新退回到“再次封堵”。"
+        "AP 报道称，美军对伊朗港口的封锁已生效，但非伊朗目的地仍可在强军事存在下通行。",
+        "美军表示封锁首个 24 小时没有船只越过禁运线，另有 6 艘商船被要求掉头返航。",
+        "接近海峡的油轮一度转向，说明现实通行仍远低于停火前市场曾期待的恢复水平。"
       ]
     },
     {
       "id": "ceasefire",
       "target": "TARGET 02",
       "title": "停火 / 谈判",
-      "summary": "停火没有正式破裂，但已经进入高频违约状态。",
+      "summary": "停火仍在表面维持，但正式结案谈判迟迟没有落地。",
       "overall_weight": 0.2,
       "display": {
         "position": {
@@ -1882,9 +2110,9 @@
         "size": "md"
       },
       "facts": {
-        "ceasefire_status": "repeatedly_disrupted",
-        "violation_level": "widespread",
-        "talks_continuity": "uncertain"
+        "ceasefire_status": "formal_fragile",
+        "violation_level": "repeated",
+        "talks_continuity": "proposed"
       },
       "metrics": [
         {
@@ -1925,16 +2153,16 @@
         }
       ],
       "bullets": [
-        "AP 称这项两周停火“悬于一线”，各方对条款版本和适用范围说法冲突。",
-        "伊朗议长公开称停火和后续谈判“并不合理”，指责美方违反三项条件。",
-        "白宫仍在推动最早周五于巴基斯坦开启谈判，但连续性和可信度都在下降。"
+        "AP 最新主线报道写明，停火看上去仍在维持，但霍尔木兹对峙随时可能重新点燃战事。",
+        "巴基斯坦仍在撮合第二轮美伊谈判，说明沟通链没有断，但还没进入正式确认状态。",
+        "国际原子能机构负责人要求任何协议都附带严格核查机制，谈判门槛仍然很高。"
       ]
     },
     {
       "id": "new_front",
       "target": "TARGET 03",
       "title": "新战线",
-      "summary": "战火已经重新从伊朗本土外溢到多方向。",
+      "summary": "主战场未收束，黎巴嫩与海湾方向仍在同步牵动风险。",
       "overall_weight": 0.25,
       "display": {
         "position": {
@@ -1946,7 +2174,7 @@
       "facts": {
         "geographic_spillover": "multi_front",
         "actor_expansion": "direct_new_actor",
-        "attack_intensity": "extreme"
+        "attack_intensity": "high"
       },
       "metrics": [
         {
@@ -1986,16 +2214,16 @@
         }
       ],
       "bullets": [
-        "以军在 10 分钟内打击了超过 100 个真主党目标，覆盖贝鲁特、南黎和贝卡谷地。",
-        "AP 报道称停火宣布后，伊朗和海湾阿拉伯国家仍遭遇新一轮导弹和无人机袭击。",
-        "真主党随后继续向以色列北部发射火箭，外围战线已不是单点摩擦。"
+        "美国对伊朗港口的海上封锁把海湾方向继续留在高风险清单，外溢战线没有回收。",
+        "以黎双方在华盛顿举行数十年来首次直接谈判，但真主党公开反对，外围战线尚未止血。",
+        "黎巴嫩居民点继续遭到空袭，说明冲突仍在伊朗本土之外维持稳定压力链。"
       ]
     },
     {
       "id": "civilian_infra",
       "target": "TARGET 04",
       "title": "民用基础设施",
-      "summary": "民用区域已被直接打击，风险重新跃升到高位。",
+      "summary": "黎巴嫩居民区继续遭袭，民用风险并未随谈判降温。",
       "overall_weight": 0.15,
       "display": {
         "position": {
@@ -2057,16 +2285,16 @@
         }
       ],
       "bullets": [
-        "AP 报道称，以军周三击中了贝鲁特中部的商业区和居民区。",
-        "黎巴嫩卫生部称，当天至少 182 人死亡、数百人受伤，是本轮战争最致命的一天。",
-        "这一项不再只是“威胁阈值”，而是已经出现确认打击。"
+        "AP 4 月 15 日报道称，远离前线的黎巴嫩住宅再遭空袭，并出现儿童死亡。",
+        "当前民用风险已经不是口头威胁，而是持续存在的确认打击。",
+        "虽然尚未演变成系统性瘫痪，但居民区受袭意味着这一项仍维持硬阈值高位。"
       ]
     },
     {
       "id": "energy_shipping",
       "target": "TARGET 05",
       "title": "能源与航运",
-      "summary": "金融价格回吐了部分溢价，但航运与保险链条仍然紧绷。",
+      "summary": "油价回落，但航运与保险链条仍未摆脱封锁阴影。",
       "overall_weight": 0.15,
       "display": {
         "position": {
@@ -2076,7 +2304,7 @@
         "size": "sm"
       },
       "facts": {
-        "brent_change_48h_pct": -13.3,
+        "brent_change_48h_pct": -4.6,
         "freight_insurance_level": "severe",
         "port_lng_disruption": "medium"
       },
@@ -2142,9 +2370,9 @@
         }
       ],
       "bullets": [
-        "AP 报道中，Brent 一度跌回 95 美元附近，但仍明显高于战前大约 70 美元的水平。",
-        "海峡再次关闭后，市场日内乐观情绪迅速降温，说明价格并未真正反映通行恢复。",
-        "航运分析机构称并未看到船流改善，且伊朗仍要求高额过境费用。"
+        "AP 市场报道显示，Brent 4 月 14 日下跌 4.6%，回到每桶 94.79 美元附近。",
+        "价格回落并不等于链路恢复，因为美军封锁伊朗港口后，船只和承保仍在高度戒备中。",
+        "霍尔木兹对非伊朗目的地保留受控通行，缓和了最坏情景，但远未恢复常态。"
       ]
     }
   ],
@@ -2153,27 +2381,27 @@
     "items": [
       {
         "label": "WATCH 01",
-        "tag": "霍尔木兹",
-        "tone": "red",
-        "text": "海峡再次关闭后，白宫要求重开；未来 24 小时最关键的是是否真的恢复放行，而不是口头承诺。"
+        "tag": "第二轮谈判",
+        "tone": "yellow",
+        "text": "最关键的是巴基斯坦撮合的第二轮美伊谈判能否被正式敲定；若再次拖延，停火项会重新走弱。"
       },
       {
         "label": "WATCH 02",
-        "tag": "停火条款",
+        "tag": "霍尔木兹",
         "tone": "red",
-        "text": "伊朗称部分框架条款已被美方破坏，若“停火有效但谈判无效”的状态持续，指数仍会维持高位。"
+        "text": "要盯封锁线外是否重新出现稳定过航；若船只继续掉头，霍尔木兹分项很难继续下修。"
       },
       {
         "label": "WATCH 03",
         "tag": "黎巴嫩",
         "tone": "red",
-        "text": "若以军继续扩大对贝鲁特与真主党目标的空袭，外围战线会继续主导风险评分。"
+        "text": "若居民区空袭继续扩大，民用基础设施和新战线两项会再次联动上行。"
       },
       {
         "label": "WATCH 04",
-        "tag": "周五会谈",
+        "tag": "核查条款",
         "tone": "yellow",
-        "text": "白宫称最早周五可在巴基斯坦开启谈判；若时间表落空，停火/谈判项可能进一步上修。"
+        "text": "国际原子能机构要求严格核查，若谈判开始落到核查细节，停火/谈判项才可能出现实质改善。"
       }
     ]
   },
@@ -2181,28 +2409,28 @@
     "title": "过去48小时的关键转折",
     "items": [
       {
-        "date": "4月9日",
-        "tag": "霍尔木兹",
-        "tone": "red",
-        "text": "AP 报道称伊朗在以军扩大黎巴嫩打击后再次关闭霍尔木兹海峡，白宫要求立即重开。"
+        "date": "4月15日",
+        "tag": "续谈",
+        "tone": "yellow",
+        "text": "AP 报道称，美军确认对伊朗港口的封锁已生效，同时第二轮美伊谈判希望重新抬头。"
       },
       {
-        "date": "4月9日",
+        "date": "4月15日",
         "tag": "黎巴嫩",
         "tone": "red",
-        "text": "以军 10 分钟内打击超 100 个目标，贝鲁特商业区和居民区遭袭，至少 182 人死亡。"
+        "text": "黎巴嫩远离前线的住宅再遭空袭并出现儿童死亡，说明民用风险没有随外交接触同步降温。"
       },
       {
-        "date": "4月9日",
-        "tag": "谈判",
+        "date": "4月14日",
+        "tag": "华盛顿",
         "tone": "yellow",
-        "text": "伊朗议长称停火与谈判“并不合理”，指责美方违反三项条件，条款解释冲突加剧。"
+        "text": "以黎在华盛顿举行数十年来首次直接谈判，外围战线首次出现正式外交接触信号。"
       },
       {
-        "date": "4月9日",
-        "tag": "市场",
-        "tone": "yellow",
-        "text": "油价虽曾跌回 95 美元附近，但市场乐观情绪迅速回落，因为船流与通行并未真正恢复。"
+        "date": "4月14日",
+        "tag": "海峡",
+        "tone": "red",
+        "text": "封锁首个完整交易日里，多艘船只掉头，霍尔木兹从停火后的反弹预期回到强管制现实。"
       }
     ]
   },
@@ -2402,6 +2630,76 @@
       "date": "2026-04-08",
       "title": "Takeaways after a tentative, 2-week ceasefire reached in Iran war",
       "url": "https://apnews.com/article/e53287f7594521f125dc1d6014c03a05"
+    },
+    {
+      "id": "ap_0410_markets",
+      "publisher": "Associated Press",
+      "date": "2026-04-10",
+      "title": "Stocks drift lower and oil prices ease ahead of planned US-Iran talks",
+      "url": "https://apnews.com/article/stock-markets-trump-iran-ceasefire-oil-7ef6ebab1aaa731d2da6406b3cbde6dd"
+    },
+    {
+      "id": "ap_0410_vance",
+      "publisher": "Associated Press",
+      "date": "2026-04-10",
+      "title": "Vance warns Iran not to 'play' the US as he departs for negotiations aimed at ending the war",
+      "url": "https://apnews.com/article/iran-us-negotiations-vance-trump-b82625fd24adb2336a5a9615b6953629"
+    },
+    {
+      "id": "ap_0412_blockade",
+      "publisher": "Associated Press",
+      "date": "2026-04-12",
+      "title": "US military says it will blockade Iranian ports after ceasefire talks ended without agreement",
+      "url": "https://apnews.com/article/iran-us-israel-trump-lebanon-april-12-2026-a8a0d22918fc3fb30bc3abf1cd5c5a13"
+    },
+    {
+      "id": "ap_0413_ports",
+      "publisher": "Associated Press",
+      "date": "2026-04-13",
+      "title": "Trump says US military has blockaded Iranian ports to pressure Tehran",
+      "url": "https://apnews.com/article/iran-us-israel-trump-lebanon-blockade-hormuz-april-13-2026-ed7a6cd4bc61dc47f317a2c82afcc1c9"
+    },
+    {
+      "id": "ap_0414_talks",
+      "publisher": "Associated Press",
+      "date": "2026-04-14",
+      "title": "Diplomats try to arrange more US-Iran talks during first full day of American blockade",
+      "url": "https://apnews.com/article/us-iran-war-lebanon-israel-talks-hormuz-14-april-2026-24655d40b2d968c39949e5ec2e01535b"
+    },
+    {
+      "id": "ap_0414_lebanon_talks",
+      "publisher": "Associated Press",
+      "date": "2026-04-14",
+      "title": "Lebanon and Israel hold first direct diplomatic talks in decades in Washington",
+      "url": "https://apnews.com/article/lebanon-israel-us-war-hezbollah-negotiations-28b207b800de1804d8c2ab5242237542"
+    },
+    {
+      "id": "ap_0415_markets",
+      "publisher": "Associated Press",
+      "date": "2026-04-15",
+      "title": "Asian shares mostly rise after Wall Street rallies on lower oil prices",
+      "url": "https://apnews.com/article/stock-markets-trump-oil-iran-war-7659569791b1f5e108489360d18e50f1"
+    },
+    {
+      "id": "ap_0415_hopes",
+      "publisher": "Associated Press",
+      "date": "2026-04-15",
+      "title": "Hopes rise for renewed talks as US military says Iran blockade is in force",
+      "url": "https://apnews.com/article/us-iran-war-lebanon-israel-talks-hormuz-15-april-2026-f1b02d16f81d6fdcf68c0ed16d7a719d"
+    },
+    {
+      "id": "ap_0415_children",
+      "publisher": "Associated Press",
+      "date": "2026-04-15",
+      "title": "Children killed in Lebanon as Israeli strikes hit homes far from front lines of war with Hezbollah",
+      "url": "https://apnews.com/article/lebanon-children-killed-israel-war-hezbollah-beirut-49b7e5a3aa477368c099f9bf6d88c005"
+    },
+    {
+      "id": "ap_0415_iaea",
+      "publisher": "Associated Press",
+      "date": "2026-04-15",
+      "title": "UN nuclear chief urges strict Iran checks in any deal to end war",
+      "url": "https://apnews.com/article/iaea-iran-grossi-us-nuclear-f96d4f5f5a0b086fec5ddba158a36145"
     }
   ]
 }

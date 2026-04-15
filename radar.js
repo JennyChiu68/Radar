@@ -541,7 +541,7 @@ function renderDashboard(data, derived, historySnapshots) {
   setHtml("summaryCards", renderSummaryCards(derived, historySnapshots));
   setHtml("timeline-items", renderTimelineItems(data.timeline?.items));
   setHtml("watchlist-items", renderWatchlistItems(data.watchlist?.items));
-  setText("history-title", data.history?.archiveTitle || "过去41天战争历史指数");
+  setText("history-title", data.history?.archiveTitle || "战争历史指数");
   renderHeatmap(historySnapshots);
   setHtml("core-indicators", renderIndicatorCards(derived.dimensions));
 }
