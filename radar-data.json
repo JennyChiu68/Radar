@@ -79,16 +79,16 @@
     "history_ui_tones": [
       {
         "min": 0,
-        "max": 68,
+        "max": 39,
         "tone": "green"
       },
       {
-        "min": 69,
-        "max": 82,
+        "min": 40,
+        "max": 74,
         "tone": "yellow"
       },
       {
-        "min": 83,
+        "min": 75,
         "max": 100,
         "tone": "red"
       }

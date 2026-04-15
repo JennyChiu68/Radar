@@ -90,9 +90,9 @@ const MODAL_METRIC_IDS = {
 };
 
 const HISTORY_SIGNAL_LABELS = {
-  green: "短暂缓和",
-  yellow: "胶着脆弱",
-  red: "升级高压"
+  green: "低/可观察",
+  yellow: "脆弱/紧绷",
+  red: "临界/极高"
 };
 
 function getTone(tone) {
@@ -306,7 +306,8 @@ function getHistorySignalTone(score, data) {
 
 function renderAlertBadge(data, score) {
   const tone = getHistorySignalTone(score, data);
-  const config = getAlertConfig(tone, HISTORY_SIGNAL_LABELS[tone]);
+  const preciseLabel = lookupRiskLabel(score, data.bands?.risk_labels);
+  const config = getAlertConfig(tone, preciseLabel);
   setHtml(
     "alertBadge",
     `<span class="material-symbols-outlined ${config.iconClass}">${config.icon}</span><span class="${config.textClass}">${config.label}</span>`
