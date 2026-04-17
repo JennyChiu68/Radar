@@ -2,7 +2,7 @@
   "meta": {
     "pageTitle": "美伊红线雷达 | 48小时升级风险雷达",
     "brandTitle": "美伊红线雷达",
-    "snapshot_time_bjt": "2026-04-15 14:45",
+    "snapshot_time_bjt": "2026-04-17 17:07",
     "scoring_version": "v1.0"
   },
   "bands": {
@@ -1988,23 +1988,104 @@
         "tag": "僵持",
         "headline": "续谈希望抬头，但封锁持续、黎巴嫩居民点再遭袭击，风险只小幅回落。",
         "summary": "当前不是战事结束，而是在高压僵持中寻找第二轮谈判窗口。"
+      },
+      {
+        "date": "2026-04-16",
+        "snapshot_time_bjt": "2026-04-16 21:00",
+        "source_ids": [
+          "ap_0416_blockade",
+          "ap_0416_lebanon",
+          "ap_0416_markets",
+          "ap_0416_iea"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 5,
+            "shipping_disruption_level": "high"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "proposed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "direct_new_actor",
+            "attack_intensity": "moderate"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 4.9,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "high"
+          }
+        },
+        "tag": "延停",
+        "headline": "黎巴嫩停火启动，但全球拦截扩围与海峡封闭让风险只短暂喘息。",
+        "summary": "外交窗口打开，但封锁升级仍把指数压在高位。"
+      },
+      {
+        "date": "2026-04-17",
+        "snapshot_time_bjt": "2026-04-17 17:07",
+        "source_ids": [
+          "ap_0416_blockade",
+          "ap_0416_iea",
+          "ap_0417_truce",
+          "ap_0417_hormuz",
+          "ap_0417_markets"
+        ],
+        "facts": {
+          "hormuz": {
+            "policy_status": "partial_closure",
+            "traffic_recovery_pct_estimate": 5,
+            "shipping_disruption_level": "extreme"
+          },
+          "ceasefire": {
+            "ceasefire_status": "formal_fragile",
+            "violation_level": "repeated",
+            "talks_continuity": "scheduled_and_confirmed"
+          },
+          "new_front": {
+            "geographic_spillover": "multi_front",
+            "actor_expansion": "indirect_state_support",
+            "attack_intensity": "moderate"
+          },
+          "civilian_infra": {
+            "threat_posture": "explicit",
+            "confirmed_strikes": "limited_civilian",
+            "service_disruption": "local"
+          },
+          "energy_shipping": {
+            "brent_change_48h_pct": 3.7,
+            "freight_insurance_level": "severe",
+            "port_lng_disruption": "high"
+          }
+        },
+        "tag": "续谈",
+        "headline": "美伊延停出现原则共识，海峡重开仍停留在多国筹划阶段。",
+        "summary": "停火希望增强，但霍尔木兹与能源链仍未脱离硬约束。"
       }
     ],
     "archiveTitle": "战争历史指数",
-    "archiveSubtitle": "按北京时间日快照回填公开报道事实。颜色按当前历史窗口的相对分布显示，点击任一天查看当日五条红线的结构。",
+    "archiveSubtitle": "按北京时间日快照回填公开报道事实。颜色按统一风险区间显示，点击任一天查看当日五条红线的结构。",
     "modalTitle": "当日红线雷达",
     "legend": [
       {
         "tone": "green",
-        "label": "相对缓和"
+        "label": "低/可观察"
       },
       {
         "tone": "yellow",
-        "label": "胶着区间"
+        "label": "脆弱/紧绷"
       },
       {
         "tone": "red",
-        "label": "高压峰段"
+        "label": "临界/极高"
       }
     ]
   },
@@ -2013,7 +2094,7 @@
       "id": "hormuz",
       "target": "TARGET 01",
       "title": "霍尔木兹",
-      "summary": "海峡未再完全锁死，但已进入强军事控制与低流量状态。",
+      "summary": "海峡仍处于事实性半封闭，封锁已从港口管制推进到全球拦截。",
       "overall_weight": 0.25,
       "display": {
         "position": {
@@ -2024,9 +2105,9 @@
         "pulse": "ping"
       },
       "facts": {
-        "policy_status": "military_controlled_open",
-        "traffic_recovery_pct_estimate": 10,
-        "shipping_disruption_level": "high"
+        "policy_status": "partial_closure",
+        "traffic_recovery_pct_estimate": 5,
+        "shipping_disruption_level": "extreme"
       },
       "metrics": [
         {
@@ -2091,16 +2172,16 @@
         }
       ],
       "bullets": [
-        "AP 报道称，美军对伊朗港口的封锁已生效，但非伊朗目的地仍可在强军事存在下通行。",
-        "美军表示封锁首个 24 小时没有船只越过禁运线，另有 6 艘商船被要求掉头返航。",
-        "接近海峡的油轮一度转向，说明现实通行仍远低于停火前市场曾期待的恢复水平。"
+        "AP 4月16日报道称，美军把拦截范围扩大到全球伊朗关联船只，并列出可扣押货物清单。",
+        "五角大楼称三天内已有 14 艘船掉头，说明通行恢复仍接近停滞。",
+        "法英4月17日召集多国商议防御性护航，侧面印证霍尔木兹尚未恢复正常。"
       ]
     },
     {
       "id": "ceasefire",
       "target": "TARGET 02",
       "title": "停火 / 谈判",
-      "summary": "停火仍在表面维持，但正式结案谈判迟迟没有落地。",
+      "summary": "延长停火的原则性共识出现，但执行仍脆弱且附带多项难题。",
       "overall_weight": 0.2,
       "display": {
         "position": {
@@ -2112,7 +2193,7 @@
       "facts": {
         "ceasefire_status": "formal_fragile",
         "violation_level": "repeated",
-        "talks_continuity": "proposed"
+        "talks_continuity": "scheduled_and_confirmed"
       },
       "metrics": [
         {
@@ -2153,16 +2234,16 @@
         }
       ],
       "bullets": [
-        "AP 最新主线报道写明，停火看上去仍在维持，但霍尔木兹对峙随时可能重新点燃战事。",
-        "巴基斯坦仍在撮合第二轮美伊谈判，说明沟通链没有断，但还没进入正式确认状态。",
-        "国际原子能机构负责人要求任何协议都附带严格核查机制，谈判门槛仍然很高。"
+        "AP 4月17日报道称，区域官员透露美伊已就延长停火形成原则性共识，以换取更多外交时间。",
+        "巴基斯坦仍在撮合周末续谈，说明沟通链条未断，并开始从试探转向排期。",
+        "核计划、霍尔木兹和战损赔偿仍是三大卡点，停火距离正式落地还差一步。"
       ]
     },
     {
       "id": "new_front",
       "target": "TARGET 03",
       "title": "新战线",
-      "summary": "主战场未收束，黎巴嫩与海湾方向仍在同步牵动风险。",
+      "summary": "黎巴嫩前线短暂停火，但海峡与外围安全线仍维持多点外溢。",
       "overall_weight": 0.25,
       "display": {
         "position": {
@@ -2173,8 +2254,8 @@
       },
       "facts": {
         "geographic_spillover": "multi_front",
-        "actor_expansion": "direct_new_actor",
-        "attack_intensity": "high"
+        "actor_expansion": "indirect_state_support",
+        "attack_intensity": "moderate"
       },
       "metrics": [
         {
@@ -2214,16 +2295,16 @@
         }
       ],
       "bullets": [
-        "美国对伊朗港口的海上封锁把海湾方向继续留在高风险清单，外溢战线没有回收。",
-        "以黎双方在华盛顿举行数十年来首次直接谈判，但真主党公开反对，外围战线尚未止血。",
-        "黎巴嫩居民点继续遭到空袭，说明冲突仍在伊朗本土之外维持稳定压力链。"
+        "以黎10天停火生效，外围火力链较4月15日有所降温。",
+        "但以军仍保留黎南安全区、真主党也未作为正式签署方，外线只是暂缓而非收束。",
+        "海峡封锁与多国安全磋商并行，说明冲突仍跨越伊朗本土与外围方向。"
       ]
     },
     {
       "id": "civilian_infra",
       "target": "TARGET 04",
       "title": "民用基础设施",
-      "summary": "黎巴嫩居民区继续遭袭，民用风险并未随谈判降温。",
+      "summary": "民用目标暂未见新一轮系统升级，但既有居民区打击后果仍在。",
       "overall_weight": 0.15,
       "display": {
         "position": {
@@ -2234,7 +2315,7 @@
         "pulse": "pulse"
       },
       "facts": {
-        "threat_posture": "active",
+        "threat_posture": "explicit",
         "confirmed_strikes": "limited_civilian",
         "service_disruption": "local"
       },
@@ -2285,16 +2366,16 @@
         }
       ],
       "bullets": [
-        "AP 4 月 15 日报道称，远离前线的黎巴嫩住宅再遭空袭，并出现儿童死亡。",
-        "当前民用风险已经不是口头威胁，而是持续存在的确认打击。",
-        "虽然尚未演变成系统性瘫痪，但居民区受袭意味着这一项仍维持硬阈值高位。"
+        "贝鲁特受损居民楼在4月16日仍处于清理与搜救余波中，民用损害并未从事实层面消失。",
+        "返乡民众仍被警告暂勿贸然回到受损区域，说明服务恢复只在局部。",
+        "这一项没有继续恶化，但也缺乏足够证据支持显著下修。"
       ]
     },
     {
       "id": "energy_shipping",
       "target": "TARGET 05",
       "title": "能源与航运",
-      "summary": "油价回落，但航运与保险链条仍未摆脱封锁阴影。",
+      "summary": "油价短线回落，但海峡封闭已开始向燃料和航运实物流通传导。",
       "overall_weight": 0.15,
       "display": {
         "position": {
@@ -2304,9 +2385,9 @@
         "size": "sm"
       },
       "facts": {
-        "brent_change_48h_pct": -4.6,
+        "brent_change_48h_pct": 3.7,
         "freight_insurance_level": "severe",
-        "port_lng_disruption": "medium"
+        "port_lng_disruption": "high"
       },
       "metrics": [
         {
@@ -2370,9 +2451,9 @@
         }
       ],
       "bullets": [
-        "AP 市场报道显示，Brent 4 月 14 日下跌 4.6%，回到每桶 94.79 美元附近。",
-        "价格回落并不等于链路恢复，因为美军封锁伊朗港口后，船只和承保仍在高度戒备中。",
-        "霍尔木兹对非伊朗目的地保留受控通行，缓和了最坏情景，但远未恢复常态。"
+        "AP 4月17日报道称，Brent 早盘回落至每桶 98.26 美元，较前一日高位略有降温。",
+        "IEA 同日警告欧洲可能只剩约 6 周航煤缓冲，说明扰动已从价格转向供应。",
+        "AP 采访显示仍有逾110艘油轮和15艘以上LNG船等待出海，航运链条没有真正恢复。"
       ]
     }
   ],
@@ -2381,27 +2462,27 @@
     "items": [
       {
         "label": "WATCH 01",
-        "tag": "第二轮谈判",
+        "tag": "周末续谈",
         "tone": "yellow",
-        "text": "最关键的是巴基斯坦撮合的第二轮美伊谈判能否被正式敲定；若再次拖延，停火项会重新走弱。"
+        "text": "若美伊周末续谈被正式确认并带来停火延长文本，停火/谈判项才有条件继续下修。"
       },
       {
         "label": "WATCH 02",
-        "tag": "霍尔木兹",
+        "tag": "海峡通航",
         "tone": "red",
-        "text": "要盯封锁线外是否重新出现稳定过航；若船只继续掉头，霍尔木兹分项很难继续下修。"
+        "text": "要盯是否出现首批可验证的稳定过航或清雷安排；若仍无实船恢复，霍尔木兹难以改善。"
       },
       {
         "label": "WATCH 03",
-        "tag": "黎巴嫩",
+        "tag": "全球拦截",
         "tone": "red",
-        "text": "若居民区空袭继续扩大，民用基础设施和新战线两项会再次联动上行。"
+        "text": "若美军开始实际登检或扣押伊朗关联船只，霍尔木兹与能源航运两项会同步再上跳。"
       },
       {
         "label": "WATCH 04",
-        "tag": "核查条款",
+        "tag": "燃料短缺",
         "tone": "yellow",
-        "text": "国际原子能机构要求严格核查，若谈判开始落到核查细节，停火/谈判项才可能出现实质改善。"
+        "text": "若欧洲航司开始公布削班或燃油附加费，说明能源扰动已从预警进入实质传导。"
       }
     ]
   },
@@ -2409,28 +2490,28 @@
     "title": "过去48小时的关键转折",
     "items": [
       {
-        "date": "4月15日",
+        "date": "4月17日",
         "tag": "续谈",
         "tone": "yellow",
-        "text": "AP 报道称，美军确认对伊朗港口的封锁已生效，同时第二轮美伊谈判希望重新抬头。"
+        "text": "区域官员称美伊已原则同意延长停火，周末续谈窗口重新打开。"
       },
       {
-        "date": "4月15日",
-        "tag": "黎巴嫩",
-        "tone": "red",
-        "text": "黎巴嫩远离前线的住宅再遭空袭并出现儿童死亡，说明民用风险没有随外交接触同步降温。"
-      },
-      {
-        "date": "4月14日",
-        "tag": "华盛顿",
-        "tone": "yellow",
-        "text": "以黎在华盛顿举行数十年来首次直接谈判，外围战线首次出现正式外交接触信号。"
-      },
-      {
-        "date": "4月14日",
+        "date": "4月17日",
         "tag": "海峡",
         "tone": "red",
-        "text": "封锁首个完整交易日里，多艘船只掉头，霍尔木兹从停火后的反弹预期回到强管制现实。"
+        "text": "法英在巴黎召集多国筹划防御性航行倡议，反映霍尔木兹仍处事实性封闭。"
+      },
+      {
+        "date": "4月16日",
+        "tag": "封锁",
+        "tone": "red",
+        "text": "美军宣布全球追截伊朗关联船只，三天内已有14艘船掉头，海上压力进一步升级。"
+      },
+      {
+        "date": "4月16日",
+        "tag": "黎巴嫩",
+        "tone": "yellow",
+        "text": "以黎10天停火生效，但以军保留安全区、真主党未签字，外围战线只是脆弱降温。"
       }
     ]
   },
@@ -2464,18 +2545,18 @@
       "url": "https://apnews.com/article/ad20c1f1168d4318af516d7b19d372e7"
     },
     {
-      "id": "ap_0312_leader",
-      "publisher": "Associated Press",
-      "date": "2026-03-12",
-      "title": "Iran’s supreme leader resolves to keep fighting in his first public remarks",
-      "url": "https://www.wsaz.com/2026/03/12/irans-unrelenting-attacks-mideast-shipping-energy-infrastructure-send-oil-prices-soaring/?outputType=amp"
-    },
-    {
       "id": "ap_0312_kharg",
       "publisher": "Associated Press",
       "date": "2026-03-12",
       "title": "Trump says oil isn't priority as U.S. and Israel widen war against Iran while prices soar",
       "url": "https://apnews.com/article/1b3e770e61c6a05d3e078223e15b20b2"
+    },
+    {
+      "id": "ap_0312_leader",
+      "publisher": "Associated Press",
+      "date": "2026-03-12",
+      "title": "Iran’s supreme leader resolves to keep fighting in his first public remarks",
+      "url": "https://www.wsaz.com/2026/03/12/irans-unrelenting-attacks-mideast-shipping-energy-infrastructure-send-oil-prices-soaring/?outputType=amp"
     },
     {
       "id": "ap_0316_uae",
@@ -2520,13 +2601,6 @@
       "url": "https://apnews.com/article/c41dbdb8148d02ce6561ea6bd4aa0da1"
     },
     {
-      "id": "ap_0403_hormuz",
-      "publisher": "Associated Press",
-      "date": "2026-04-03",
-      "title": "Bahrain waters down UN proposal over opposition to allowing force to open Strait of Hormuz",
-      "url": "https://apnews.com/article/f2a2fafe3e1691b9f0be5e7d691a90d0"
-    },
-    {
       "id": "ap_0403_fuel",
       "publisher": "Associated Press",
       "date": "2026-04-03",
@@ -2534,11 +2608,11 @@
       "url": "https://apnews.com/article/d649ed3d36e603d57ed5a0e374858832"
     },
     {
-      "id": "ap_0404_live",
+      "id": "ap_0403_hormuz",
       "publisher": "Associated Press",
-      "date": "2026-04-04",
-      "title": "The Latest: US and Iran race to find missing crew member from downed military plane",
-      "url": "https://apnews.com/article/4d6ae06a883920d15ecc800fd8eeb496"
+      "date": "2026-04-03",
+      "title": "Bahrain waters down UN proposal over opposition to allowing force to open Strait of Hormuz",
+      "url": "https://apnews.com/article/f2a2fafe3e1691b9f0be5e7d691a90d0"
     },
     {
       "id": "ap_0404_energy",
@@ -2546,6 +2620,13 @@
       "date": "2026-04-04",
       "title": "European ministers call for profit caps on energy companies as Iran war drives price surge",
       "url": "https://apnews.com/article/85b036564fe87a205bc96e743cb22e83"
+    },
+    {
+      "id": "ap_0404_live",
+      "publisher": "Associated Press",
+      "date": "2026-04-04",
+      "title": "The Latest: US and Iran race to find missing crew member from downed military plane",
+      "url": "https://apnews.com/article/4d6ae06a883920d15ecc800fd8eeb496"
     },
     {
       "id": "ap_0405_live",
@@ -2569,18 +2650,18 @@
       "url": "https://apnews.com/article/93f8ec25d61b58882b25d34bda08d0f9"
     },
     {
-      "id": "ap_0407_deadline",
-      "publisher": "Associated Press",
-      "date": "2026-04-07",
-      "title": "Iranians fear power outages and further attacks as Trump's deadline nears",
-      "url": "https://apnews.com/article/iran-us-trump-power-station-ultimatum-tehran-cc651d7588ecc7b7bdca424474e26e30"
-    },
-    {
       "id": "ap_0407_ceasefire",
       "publisher": "Associated Press",
       "date": "2026-04-07",
       "title": "US and Iran agree to 2-week ceasefire as Trump pulls back on threats",
       "url": "https://apnews.com/article/421ee64fdc9a5c26460df8119c7d1b3f"
+    },
+    {
+      "id": "ap_0407_deadline",
+      "publisher": "Associated Press",
+      "date": "2026-04-07",
+      "title": "Iranians fear power outages and further attacks as Trump's deadline nears",
+      "url": "https://apnews.com/article/iran-us-trump-power-station-ultimatum-tehran-cc651d7588ecc7b7bdca424474e26e30"
     },
     {
       "id": "ap_0407_markets",
@@ -2590,25 +2671,18 @@
       "url": "https://apnews.com/article/bcd3342cd0b4e60ebedc1e81db08f465"
     },
     {
-      "id": "ap_0408_ceasefire",
-      "publisher": "Associated Press",
-      "date": "2026-04-08",
-      "title": "Ceasefire is threatened as Israel expands Lebanon strikes and Iran closes strait again",
-      "url": "https://apnews.com/article/38d75d5e4f1c7339a1456fc99415bb2a"
-    },
-    {
-      "id": "ap_0408_markets",
-      "publisher": "Associated Press",
-      "date": "2026-04-08",
-      "title": "Oil plunges below $95 as the Dow surges 1,300 in a worldwide rally following a ceasefire with Iran",
-      "url": "https://apnews.com/article/2fc5ac7823bea71984b3578ec36aacee"
-    },
-    {
       "id": "ap_0408_beirut",
       "publisher": "Associated Press",
       "date": "2026-04-08",
       "title": "At least 182 killed as Israel strikes central Beirut after saying Iran truce doesn’t apply there",
       "url": "https://apnews.com/article/9402965418687c634d4a157c966ec6ea"
+    },
+    {
+      "id": "ap_0408_ceasefire",
+      "publisher": "Associated Press",
+      "date": "2026-04-08",
+      "title": "Ceasefire is threatened as Israel expands Lebanon strikes and Iran closes strait again",
+      "url": "https://apnews.com/article/38d75d5e4f1c7339a1456fc99415bb2a"
     },
     {
       "id": "ap_0408_live",
@@ -2618,11 +2692,11 @@
       "url": "https://apnews.com/article/4b464b08aaf7220899526c0c6da4317d"
     },
     {
-      "id": "ap_0408_terms",
+      "id": "ap_0408_markets",
       "publisher": "Associated Press",
       "date": "2026-04-08",
-      "title": "What does the Iran ceasefire deal mean? It depends on which side you talk to",
-      "url": "https://apnews.com/article/9f5d7fce2cf32b8513861ca872e3cfb2"
+      "title": "Oil plunges below $95 as the Dow surges 1,300 in a worldwide rally following a ceasefire with Iran",
+      "url": "https://apnews.com/article/2fc5ac7823bea71984b3578ec36aacee"
     },
     {
       "id": "ap_0408_takeaways",
@@ -2630,6 +2704,13 @@
       "date": "2026-04-08",
       "title": "Takeaways after a tentative, 2-week ceasefire reached in Iran war",
       "url": "https://apnews.com/article/e53287f7594521f125dc1d6014c03a05"
+    },
+    {
+      "id": "ap_0408_terms",
+      "publisher": "Associated Press",
+      "date": "2026-04-08",
+      "title": "What does the Iran ceasefire deal mean? It depends on which side you talk to",
+      "url": "https://apnews.com/article/9f5d7fce2cf32b8513861ca872e3cfb2"
     },
     {
       "id": "ap_0410_markets",
@@ -2660,13 +2741,6 @@
       "url": "https://apnews.com/article/iran-us-israel-trump-lebanon-blockade-hormuz-april-13-2026-ed7a6cd4bc61dc47f317a2c82afcc1c9"
     },
     {
-      "id": "ap_0414_talks",
-      "publisher": "Associated Press",
-      "date": "2026-04-14",
-      "title": "Diplomats try to arrange more US-Iran talks during first full day of American blockade",
-      "url": "https://apnews.com/article/us-iran-war-lebanon-israel-talks-hormuz-14-april-2026-24655d40b2d968c39949e5ec2e01535b"
-    },
-    {
       "id": "ap_0414_lebanon_talks",
       "publisher": "Associated Press",
       "date": "2026-04-14",
@@ -2674,18 +2748,11 @@
       "url": "https://apnews.com/article/lebanon-israel-us-war-hezbollah-negotiations-28b207b800de1804d8c2ab5242237542"
     },
     {
-      "id": "ap_0415_markets",
+      "id": "ap_0414_talks",
       "publisher": "Associated Press",
-      "date": "2026-04-15",
-      "title": "Asian shares mostly rise after Wall Street rallies on lower oil prices",
-      "url": "https://apnews.com/article/stock-markets-trump-oil-iran-war-7659569791b1f5e108489360d18e50f1"
-    },
-    {
-      "id": "ap_0415_hopes",
-      "publisher": "Associated Press",
-      "date": "2026-04-15",
-      "title": "Hopes rise for renewed talks as US military says Iran blockade is in force",
-      "url": "https://apnews.com/article/us-iran-war-lebanon-israel-talks-hormuz-15-april-2026-f1b02d16f81d6fdcf68c0ed16d7a719d"
+      "date": "2026-04-14",
+      "title": "Diplomats try to arrange more US-Iran talks during first full day of American blockade",
+      "url": "https://apnews.com/article/us-iran-war-lebanon-israel-talks-hormuz-14-april-2026-24655d40b2d968c39949e5ec2e01535b"
     },
     {
       "id": "ap_0415_children",
@@ -2695,11 +2762,74 @@
       "url": "https://apnews.com/article/lebanon-children-killed-israel-war-hezbollah-beirut-49b7e5a3aa477368c099f9bf6d88c005"
     },
     {
+      "id": "ap_0415_hopes",
+      "publisher": "Associated Press",
+      "date": "2026-04-15",
+      "title": "Hopes rise for renewed talks as US military says Iran blockade is in force",
+      "url": "https://apnews.com/article/us-iran-war-lebanon-israel-talks-hormuz-15-april-2026-f1b02d16f81d6fdcf68c0ed16d7a719d"
+    },
+    {
       "id": "ap_0415_iaea",
       "publisher": "Associated Press",
       "date": "2026-04-15",
       "title": "UN nuclear chief urges strict Iran checks in any deal to end war",
       "url": "https://apnews.com/article/iaea-iran-grossi-us-nuclear-f96d4f5f5a0b086fec5ddba158a36145"
+    },
+    {
+      "id": "ap_0415_markets",
+      "publisher": "Associated Press",
+      "date": "2026-04-15",
+      "title": "Asian shares mostly rise after Wall Street rallies on lower oil prices",
+      "url": "https://apnews.com/article/stock-markets-trump-oil-iran-war-7659569791b1f5e108489360d18e50f1"
+    },
+    {
+      "id": "ap_0416_blockade",
+      "publisher": "Associated Press",
+      "date": "2026-04-16",
+      "title": "US military will target Iran-linked ships worldwide, broadening scope beyond blockade",
+      "url": "https://apnews.com/article/iran-blockade-trump-navy-caine-d16e89f4b50bd18ea109d4b0d2db3826"
+    },
+    {
+      "id": "ap_0416_iea",
+      "publisher": "Associated Press",
+      "date": "2026-04-16",
+      "title": "AP Exclusive: Europe could run out of jet fuel within weeks, IEA warns",
+      "url": "https://apnews.com/article/iran-war-europe-jet-fuel-flight-cancellations-birol-6e67fafd493861b3858de5548aa77703"
+    },
+    {
+      "id": "ap_0416_lebanon",
+      "publisher": "Associated Press",
+      "date": "2026-04-16",
+      "title": "A 10-day ceasefire agreed on by Israel and Lebanon goes into effect",
+      "url": "https://apnews.com/article/us-iran-war-lebanon-israel-talks-pakistan-hormuz-16-april-2026-297a8d2bb94add26e503a4ef3a5d1151"
+    },
+    {
+      "id": "ap_0416_markets",
+      "publisher": "Associated Press",
+      "date": "2026-04-16",
+      "title": "Wall Street sets another record after US stocks tick higher",
+      "url": "https://apnews.com/article/stock-markets-trump-oil-iran-war-210b81a3613f43d024eb80a7928514c7"
+    },
+    {
+      "id": "ap_0417_hormuz",
+      "publisher": "Associated Press",
+      "date": "2026-04-17",
+      "title": "Macron and Starmer hold summit on Hormuz shipping",
+      "url": "https://apnews.com/article/hormuz-strait-iran-blockade-britain-france-10518e69aecbb986c9118ff42ab0ca02"
+    },
+    {
+      "id": "ap_0417_markets",
+      "publisher": "Associated Press",
+      "date": "2026-04-17",
+      "title": "Asian stocks lower and oil falls on ceasefire hopes",
+      "url": "https://apnews.com/article/stock-markets-trump-oil-iran-war-50e10bf2aa9b0b658c51e17db3eb3b13"
+    },
+    {
+      "id": "ap_0417_truce",
+      "publisher": "Associated Press",
+      "date": "2026-04-17",
+      "title": "Trump optimistic about Iran war as Lebanon truce takes effect",
+      "url": "https://apnews.com/article/us-iran-war-lebanon-israel-talks-pakistan-hormuz-17-april-2026-4bd5a29af608ecbd72356559b3c55d67"
     }
   ]
 }
